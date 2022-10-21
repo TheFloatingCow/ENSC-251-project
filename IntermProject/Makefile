@@ -10,15 +10,15 @@ main: main.o student.o stu_sort.o
 	g++ -g -o main main.o student.o stu_sort.o
 
 #compile the main.cpp to main.o
-main.o: ../../../../../CLionProjects/IntermProject/main.cpp ../../../../../CLionProjects/IntermProject/student.hpp ../../../../../CLionProjects/IntermProject/stu_sort.hpp
+main.o: main.cpp student.hpp stu_sort.hpp
 	g++ -g -c main.cpp
 
 #compile the student.cpp to student.o
-student.o: ../../../../../CLionProjects/IntermProject/student.cpp ../../../../../CLionProjects/IntermProject/student.hpp
+student.o: student.cpp student.hpp
 	g++ -g -c student.cpp
 
 #compile the stu_sort.cpp to stu_sort.o
-stu_sort.o: ../../../../../CLionProjects/IntermProject/stu_sort.cpp ../../../../../CLionProjects/IntermProject/stu_sort.hpp
+stu_sort.o: stu_sort.cpp stu_sort.hpp
 	g++ -g -c stu_sort.cpp
 
 #remove built files
