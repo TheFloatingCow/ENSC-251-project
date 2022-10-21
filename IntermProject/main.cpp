@@ -6,6 +6,7 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "stu_sort.hpp"
+using namespace std; //use namespace std
 
 /*I provide example code here to help you read the input
  *data from a file, so that you can focus on creating
