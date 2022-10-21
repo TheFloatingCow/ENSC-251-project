@@ -14,7 +14,7 @@ using namespace std; //use namespace std
  */
 int main(){
     //Read the domestic-stu.txt file and exit if failed
-    cout << "Running main...";
+    cout << "Running main...\n";
     string line;
     ifstream domesticFile("domestic-stu.txt");
     if(!domesticFile.is_open()) {

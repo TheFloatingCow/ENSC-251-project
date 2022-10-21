@@ -19,6 +19,11 @@ public:
     Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const int& id); //non-default constructor
     Student(const Student& s); //copy constructor
 
+    // Friend functions
+    friend int compareCGPA(const Student& stu1, const Student& stu2);
+    friend int compareResearchScore(const Student& stu1, const Student& stu2);
+    friend int compareFirstName(const Student& stu1, const Student& stu2);
+    friend int compareLastName(const Student& stu1, const Student& stu2);
 };
 
 
