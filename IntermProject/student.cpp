@@ -87,7 +87,7 @@ int compareLastName(const Student &stu1, const Student &stu2) {
     return output;
 }
 
-// Get functions
+// Getters
 string Student::getFirstName() {
     return firstName;
 }
@@ -108,6 +108,27 @@ int Student::getId() {
     return id;
 }
 
+// Setters
+void Student::setFirstName(const string& firstName) {
+    this->firstName = firstName;
+}
+
+void Student::setLastName(const string& lastName) {
+    this->lastName = lastName;
+}
+
+void Student::setCGPA(const int& CGPA) {
+    this->CGPA = CGPA;
+}
+
+void Student::setResearchScore(const int& researchScore) {
+    this->researchScore = researchScore;
+}
+
+void Student::setId(const int& id) {
+    this->id = id;
+}
+
 
 
 /** Domestic Student **/
@@ -116,6 +137,16 @@ int Student::getId() {
 DomesticStudent::DomesticStudent() {
 
 } //default constructor
+
+// Getter
+string DomesticStudent::getProvince() {
+    return this->province;
+}
+
+// Setter
+void DomesticStudent::setProvince(const string& province) {
+    this->province = province;
+}
 
 // Friend function
 ostream &operator<<(ostream &out, const DomesticStudent &DomesticStudent) {
@@ -130,6 +161,16 @@ ostream &operator<<(ostream &out, const DomesticStudent &DomesticStudent) {
 InternationalStudent::InternationalStudent() {
 
 } //default constructor
+
+// Getter
+string InternationalStudent::getCountry() {
+    return this->country;
+}
+
+// Setter
+void InternationalStudent::setCountry(const string& country) {
+    this->country = country;
+}
 
 // Friend function
 ostream &operator<<(ostream &out, const InternationalStudent &InternationalStudent) {

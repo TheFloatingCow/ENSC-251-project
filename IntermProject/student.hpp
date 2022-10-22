@@ -5,7 +5,8 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 
-class Student {
+class Student
+{
 public:
     // Variables
     string firstName;
@@ -27,6 +28,13 @@ public:
     int getId();
 
     // Set functions
+    void setFirstName(const string& firstName);
+    void setLastName(const string& lastName);
+    void setCGPA(const int& CGPA);
+    void setResearchScore(const int& researchScore);
+    void setId(const int& id);
+
+    // Set functions
 
     // Friend functions
     friend int compareCGPA(const Student& stu1, const Student& stu2);
@@ -44,6 +52,12 @@ public:
     // Constructor
     DomesticStudent(); //default constructor
 
+    // Getter
+    string getProvince();
+
+    // Setter
+    void setProvince(const string& province);
+
     // Overload operator
     friend ostream& operator <<(ostream& out, const DomesticStudent& DomesticStudent);
 };
@@ -57,6 +71,12 @@ public:
 
     // Constructor
     InternationalStudent(); //default constructor
+
+    // Getter
+    string getCountry();
+
+    // Setter
+    void setCountry(const string& country);
 
     // Overload operator
     friend ostream& operator <<(ostream& out, const InternationalStudent& InternationalStudent);
