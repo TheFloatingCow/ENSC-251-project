@@ -5,6 +5,16 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 
+class stu_sort
+{
+public:
+    Student s[stu_count];
 
+    firstName_sort();
+    lastName_sort();
+    cgpa_sort();
+    researchScore_sort();
+
+};
 
 #endif

@@ -6,7 +6,6 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "stu_sort.hpp"
-using namespace std; //use namespace std
 
 /*I provide example code here to help you read the input
  *data from a file, so that you can focus on creating
@@ -14,7 +13,6 @@ using namespace std; //use namespace std
  */
 int main(){
     //Read the domestic-stu.txt file and exit if failed
-    cout << "Running main...\n";
     string line;
     ifstream domesticFile("domestic-stu.txt");
     if(!domesticFile.is_open()) {
@@ -76,6 +74,78 @@ int main(){
 
     //close your file
     domesticFile.close();
+
+    string line2;
+    ifstream internationalFile("international-stu.txt");
+    if(!domesticFile.is_open()) {
+        cout << "Unable to open file international-stu.txt" << endl;
+        return -1;
+    }
+
+    //Read the first line of domestic-stu.txt, which specifies
+    //the file format. And then print it out to the screen
+    getline(internationalFile, line);
+    cout << "File format: " << line << endl;
+
+    /*Keep reading the rest of the lines in domestic-stu.txt.
+     *In the example code here, I will read each data separated
+     *by a comma, and then print it out to the screen.
+     *In your lab assignment 1, you should use these read data
+     *to initialize your DomesticStudent object. Then you can
+     *use get and set functions to manipulate your object, and
+     *print the object content to the screen
+     */
+    int stu_count = 1;
+    while( getline(internationalFile, line) ) {
+        /*process each line, get each field separated by a comma.
+         *We use istringstream to handle it.
+         *Note in this example code here, we assume the file format
+         *is perfect and do NOT handle error cases. We will leave the
+         *error and exception handling of file format to Lab Assignment 4
+         */
+        istringstream ss(line);
+
+        string firstName, lastName, country, s_cgpa, s_researchScore;
+        float cgpa;
+        int researchScore;
+        int TOEFL, TOEFL1, TOEFL2, TOEFL3, TOEFL4, TOEFL5;
+
+
+        //get firstName separated by comma
+        getline(ss, firstName, ',');
+
+        //get lastName separated by comma
+        getline(ss, lastName, ',');
+
+        //get province separated by comma
+        getline(ss, country, ',');
+
+        //get cpga separated by comma, and convert string to float
+        getline(ss, s_cgpa, ',');
+
+        //get all 5 TOEFL scores
+        getline(ss, TOEFL1, ',');
+        getline(ss, TOEFL2, ',');
+        getline(ss, TOEFL3, ',');
+        getline(ss, TOEFL4, ',');
+        getline(ss, TOEFL5, ',');
+        cgpa = atof(s_cgpa.c_str());
+
+        //get researchScore separated by comma, and convert it to int
+        getline(ss, s_researchScore, ',');
+        researchScore = atoi(s_researchScore.c_str());
+
+        //print the student info to the screen
+        cout << "International student " << stu_count << " " << firstName << " "
+             << lastName << " from " << country << " has cgpa of "
+             << cgpa << ", research score of " << researchScore << ", and TOEFL score of "
+             <<  TOEFL << endl;
+
+        stu_count++;
+    }
+
+    //close your file
+    internationalFile.close();
 
     return 0;
 }
