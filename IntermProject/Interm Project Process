@@ -1,0 +1,14 @@
+Starting Process:
+Open and read txt file at main function -> loops until getline reaches no more \n -> for domestic
+student, getline first name, last name, province, cgpa & research score -> calls to Student class
+to initialize function
+Student Class domestic student process:
+Calls first to initialize Student where first & last names are “N/A” and then s_cgpa and research
+score is 0 -> run through compare CGPA which calls to stu_sort -> stu_sort will have an array of
+Student class labeled “s” that is stu_count size -> sort array and compare based on the given
+input of either names, cgpa or research score -> use sorting system based on most efficient
+process
+Stu_sort process:
+Have firstName_sort, lastName_sort, cgpa_sort, researchScore_sort as member functions ->
+use recursive sorting? Which is nlogn time speed, to sort the array of Student class and then
+print it out in sort or the compare function.

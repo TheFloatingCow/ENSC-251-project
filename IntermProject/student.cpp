@@ -87,3 +87,47 @@ int compareLastName(const Student &stu1, const Student &stu2) {
     return output;
 }
 
+// Get functions
+string Student::getFirstName() {
+    return firstName;
+}
+
+string Student::getLastName() {
+    return lastName;
+}
+
+int Student::getCGPA() {
+    return CGPA;
+}
+
+int Student::getResearchScore() {
+    return researchScore;
+}
+
+int Student::getId() {
+    return id;
+}
+
+/** Domestic Student **/
+
+// Constructor
+DomesticStudent::DomesticStudent() {
+
+} //default constructor
+
+// Friend function
+ostream &operator<<(ostream &out, const DomesticStudent &DomesticStudent) {
+    return out;
+} //overload << operator
+
+/** International Student **/
+
+// Constructor
+InternationalStudent::InternationalStudent() {
+
+} //default constructor
+
+// Friend function
+ostream &operator<<(ostream &out, const InternationalStudent &InternationalStudent) {
+    return out;
+} //overload << operator
