@@ -108,6 +108,8 @@ int Student::getId() {
     return id;
 }
 
+
+
 /** Domestic Student **/
 
 // Constructor
@@ -119,6 +121,8 @@ DomesticStudent::DomesticStudent() {
 ostream &operator<<(ostream &out, const DomesticStudent &DomesticStudent) {
     return out;
 } //overload << operator
+
+
 
 /** International Student **/
 
