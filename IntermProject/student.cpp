@@ -4,7 +4,11 @@
 
 //constructors
 Student::Student() {
-
+    this->firstName = "N/A";
+    this->lastName = "N/A";
+    this->CGPA = 0;
+    this->researchScore = 0;
+    this->id = 20220000;
 } //default constructor
 
 Student::Student(const string &firstName, const string &lastName, const float &CGPA, const int &researchScore,

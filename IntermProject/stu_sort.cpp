@@ -3,27 +3,28 @@
 
 //Make string sort from call function
 
+
 stu_sort::stu_sort()
 {
 
 }
 
-stu_sort::firstName_sort()
+int stu_sort::firstName_sort()
 {
-
+    return 0;
 }
 
-stu_sort::lastName_sort()
+int stu_sort::lastName_sort()
 {
-
+    return 0;
 }
 
-stu_sort::cgpa_sort()
+int stu_sort::cgpa_sort()
 {
-
+    return 0;
 }
 
-stu_sort::researchScore_sort()
+int stu_sort::researchScore_sort()
 {
-
+    return 0;
 }

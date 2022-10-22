@@ -11,7 +11,9 @@
  *data from a file, so that you can focus on creating
  *and manipulating classes and objects
  */
-int main(){
+
+
+int main() {
     //Read the domestic-stu.txt file and exit if failed
     string line;
     ifstream domesticFile("domestic-stu.txt");
@@ -95,7 +97,7 @@ int main(){
      *use get and set functions to manipulate your object, and
      *print the object content to the screen
      */
-    int stu_count = 1;
+    stu_count = 1;
     while( getline(internationalFile, line) ) {
         /*process each line, get each field separated by a comma.
          *We use istringstream to handle it.
@@ -124,11 +126,13 @@ int main(){
         getline(ss, s_cgpa, ',');
 
         //get all 5 TOEFL scores
+        /** wasn't compiling so temporarily commented out
         getline(ss, TOEFL1, ',');
         getline(ss, TOEFL2, ',');
         getline(ss, TOEFL3, ',');
         getline(ss, TOEFL4, ',');
         getline(ss, TOEFL5, ',');
+         */
         cgpa = atof(s_cgpa.c_str());
 
         //get researchScore separated by comma, and convert it to int
