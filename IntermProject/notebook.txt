@@ -2,3 +2,5 @@ Notebook for writing stuff
 
 Remember error checking for everything
 Comment your work
+Add main menu loop (when everything else is done)
+add ids to everyone

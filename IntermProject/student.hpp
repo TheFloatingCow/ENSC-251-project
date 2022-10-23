@@ -4,6 +4,7 @@
 
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
+#include <iostream>
 
 class Student
 {
@@ -17,7 +18,7 @@ public:
 
     // Constructors
     Student(); //default constructor
-    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const int& id); //non-default constructor
+    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore); //non-default constructor
     Student(const Student& s); //copy constructor
 
     // Get functions
@@ -51,6 +52,8 @@ public:
 
     // Constructor
     DomesticStudent(); //default constructor
+    DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province); //non-default constructor
+    DomesticStudent(const DomesticStudent& s); //copy constructor
 
     // Getter
     string getProvince();
@@ -59,7 +62,7 @@ public:
     void setProvince(const string& province);
 
     // Overload operator
-    friend ostream& operator <<(ostream& out, const DomesticStudent& DomesticStudent);
+    friend ostream& operator <<(ostream &out, const DomesticStudent &s);
 };
 
 class InternationalStudent : public Student
@@ -67,10 +70,13 @@ class InternationalStudent : public Student
 public:
     // Variables
     string country;
+    int reading, listening, speaking, writing, toefl;
     float ToeflScore;
 
     // Constructor
     InternationalStudent(); //default constructor
+    InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing); //non-default constructor
+    InternationalStudent(const InternationalStudent& s); //copy constructor
 
     // Getter
     string getCountry();
@@ -79,7 +85,7 @@ public:
     void setCountry(const string& country);
 
     // Overload operator
-    friend ostream& operator <<(ostream& out, const InternationalStudent& InternationalStudent);
+    friend ostream& operator <<(ostream& out, const InternationalStudent& s);
 };
 
 #endif

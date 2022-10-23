@@ -9,17 +9,25 @@ using namespace std; //use namespace std
 class stu_sort
 {
 public:
-    Student s[10];
 
     // Constructor
     stu_sort();
 
-    // Functions
-    int firstName_sort();
-    int lastName_sort();
-    int cgpa_sort();
-    int researchScore_sort();
-
 };
+
+// Functions
+/* think theres a way to combine them so you only need one function
+* for both domestic and international students but not sure how */
+void d_firstName_sort(DomesticStudent s[]);
+void d_lastName_sort(DomesticStudent s[]);
+void d_cgpa_sort(DomesticStudent s[]);
+void d_researchScore_sort(DomesticStudent s[]);
+void d_sort_all(DomesticStudent s[]);
+
+void i_firstName_sort(InternationalStudent s[]);
+void i_lastName_sort(InternationalStudent s[]);
+void i_cgpa_sort(InternationalStudent s[]);
+void i_researchScore_sort(InternationalStudent s[]);
+void i_sort_all(InternationalStudent s[]);
 
 #endif
