@@ -172,6 +172,7 @@ int main() {
         << "Type 2 to pring all international students\n"
         << "Type 3 to sort domestic students\n"
         << "Type 4 to sort international students\n"
+        << "Type 5 to sort all students\n"
         << "Type 9 to exit program\n"
         << ">> ";
 
@@ -200,28 +201,28 @@ int main() {
                 switch(in1) {
                     case 1:
                         // Sort by first name
-                        d_firstName_sort(domesticStudents);
+                        sortDomestic(domesticStudents,"firstname");
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 2:
                         // Sort by last name
-                        d_lastName_sort(domesticStudents);
+                        sortDomestic(domesticStudents,"lastname");
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 3:
                         // Sort by CGPA
-                        d_cgpa_sort(domesticStudents);
+                        sortDomestic(domesticStudents,"cgpa");
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 4:
                         // Sort by research score
-                        d_researchScore_sort(domesticStudents);
+                        sortDomestic(domesticStudents,"research");
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
@@ -234,40 +235,86 @@ int main() {
                 << "Type 2 for last name\n"
                 << "Type 3 for CGPA\n"
                 << "Type 4 for research score\n"
+                << "Type 5 for TOEFL\n"
                 << ">> ";
                 int in2;
                 cin >> in2;
                 switch(in2) {
                     case 1:
                         // Sort by first name
-                        i_firstName_sort(internationalStudents);
+                        sortInternational(internationalStudents,"firstname");
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 2:
                         // Sort by last name
-                        i_lastName_sort(internationalStudents);
+                        sortInternational(internationalStudents,"lastname");
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 3:
                         // Sort by CGPA
-                        i_cgpa_sort(internationalStudents);
+                        sortInternational(internationalStudents,"cgpa");
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 4:
                         // Sort by research score
-                        i_researchScore_sort(internationalStudents);
+                        sortInternational(internationalStudents,"research");
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
+                    case 5:
+                        sortInternational(internationalStudents,"TOEFL");
+                        for (int i = 0; i < 100; i++) {
+                        cout << internationalStudents[i];
+                        }
                 }
             break;
+            // case 5: //Overall Sorting (All Students)
+            //     cout << endl << "What field would you like to sort by\n"
+            //     << "Type 1 for first name\n"
+            //     << "Type 2 for last name\n"
+            //     << "Type 3 for CGPA\n"
+            //     << "Type 4 for research score\n"
+            //     << ">> ";
+            //     int in3;
+            //     cin >> in3;
+            //     switch(in3) {
+            //         case 1:
+            //             // Sort by first name
+            //             i_firstName_sort(internationalStudents);
+            //             for (int i = 0; i < 100; i++) {
+            //             cout << internationalStudents[i];
+            //             }
+            //         break;
+            //         case 2:
+            //             // Sort by last name
+            //             i_lastName_sort(internationalStudents);
+            //             for (int i = 0; i < 100; i++) {
+            //             cout << internationalStudents[i];
+            //             }
+            //         break;
+            //         case 3:
+            //             // Sort by CGPA
+            //             i_cgpa_sort(internationalStudents);
+            //             for (int i = 0; i < 100; i++) {
+            //             cout << internationalStudents[i];
+            //             }
+            //         break;
+            //         case 4:
+            //             // Sort by research score
+            //             i_researchScore_sort(internationalStudents);
+            //             for (int i = 0; i < 100; i++) {
+            //             cout << internationalStudents[i];
+            //             }
+            //         break;
+            //     }
+            // break;
             case 9:
                 cout << "Exiting program..." << endl;
                 exit(1);

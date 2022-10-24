@@ -16,18 +16,11 @@ public:
 };
 
 // Functions
-/* think theres a way to combine them so you only need one function
-* for both domestic and international students but not sure how */
-void d_firstName_sort(DomesticStudent s[]);
-void d_lastName_sort(DomesticStudent s[]);
-void d_cgpa_sort(DomesticStudent s[]);
-void d_researchScore_sort(DomesticStudent s[]);
-void d_sort_all(DomesticStudent s[]);
 
-void i_firstName_sort(InternationalStudent s[]);
-void i_lastName_sort(InternationalStudent s[]);
-void i_cgpa_sort(InternationalStudent s[]);
-void i_researchScore_sort(InternationalStudent s[]);
-void i_sort_all(InternationalStudent s[]);
+void sortDomestic(DomesticStudent s[], string sorted);
+void sortInternational(InternationalStudent s[], string sorted);
+
+// Not Implemented yet
+void sortAll(DomesticStudent d[], InternationalStudent i[], string sorted);
 
 #endif
