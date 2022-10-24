@@ -201,18 +201,30 @@ int main() {
                     case 1:
                         // Sort by first name
                         d_firstName_sort(domesticStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << domesticStudents[i];
+                        }
                     break;
                     case 2:
                         // Sort by last name
                         d_lastName_sort(domesticStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << domesticStudents[i];
+                        }
                     break;
                     case 3:
                         // Sort by CGPA
                         d_cgpa_sort(domesticStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << domesticStudents[i];
+                        }
                     break;
                     case 4:
                         // Sort by research score
                         d_researchScore_sort(domesticStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << domesticStudents[i];
+                        }
                     break;
                 }
             break;
@@ -229,18 +241,30 @@ int main() {
                     case 1:
                         // Sort by first name
                         i_firstName_sort(internationalStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << internationalStudents[i];
+                        }
                     break;
                     case 2:
                         // Sort by last name
                         i_lastName_sort(internationalStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << internationalStudents[i];
+                        }
                     break;
                     case 3:
                         // Sort by CGPA
                         i_cgpa_sort(internationalStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << internationalStudents[i];
+                        }
                     break;
                     case 4:
                         // Sort by research score
                         i_researchScore_sort(internationalStudents);
+                        for (int i = 0; i < 100; i++) {
+                        cout << internationalStudents[i];
+                        }
                     break;
                 }
             break;
