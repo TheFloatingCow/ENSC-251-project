@@ -71,7 +71,7 @@ int main() {
         researchScore = atoi(s_researchScore.c_str());
              
         //add values to array
-        domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province);
+        domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province, id);
 
         stu_count++;
         id++;
@@ -150,7 +150,7 @@ int main() {
         writing = atoi(s_writing.c_str());
 
         // Add values to array
-        internationalStudents[stu_count] = InternationalStudent(firstName, lastName, cgpa, researchScore, country, reading, listening, speaking, writing);
+        internationalStudents[stu_count] = InternationalStudent(firstName, lastName, cgpa, researchScore, country, reading, listening, speaking, writing, id);
 
         stu_count++;
         id++;
@@ -167,17 +167,26 @@ int main() {
     /** -------------------------Main function loop------------------------- **/
 
     while(true) {
-        cout << endl << "\nStudent Directory\n"
-        << "Type 1 to print all domestic students\n"
-        << "Type 2 to pring all international students\n"
-        << "Type 3 to sort domestic students\n"
-        << "Type 4 to sort international students\n"
-        << "Type 5 to sort all students\n"
-        << "Type 9 to exit program\n"
-        << ">> ";
-
+        bool isValid = false;
         int input;
-        cin >> input;
+
+        // Get user input and check if valid
+        do {
+            cout << endl << "\nStudent Directory\n"
+                 << "Type 1 to print all domestic students\n"
+                 << "Type 2 to pring all international students\n"
+                 << "Type 3 to sort domestic students\n"
+                 << "Type 4 to sort international students\n"
+                 << "Type 5 to sort all students\n"
+                 << "Type 9 to exit program\n"
+                 << ">> ";
+
+            cin >> input;
+            if (!cin.fail()) {
+                isValid = true;
+            }
+        }while(!isValid);
+
         switch(input) {
             case 1:
                 for (int i = 0; i < 100; i++) {

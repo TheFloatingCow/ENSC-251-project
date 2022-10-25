@@ -18,7 +18,8 @@ public:
 
     // Constructors
     Student(); //default constructor
-    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore); //non-default constructor
+    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore); //non-default constructor without id
+    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const int& id); //non-default constructor with id
     Student(const Student& s); //copy constructor
 
     // Get functions
@@ -52,7 +53,8 @@ public:
 
     // Constructor
     DomesticStudent(); //default constructor
-    DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province); //non-default constructor
+    DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province); //non-default constructor without ID
+    DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province, const int& id); //non-default constructor with ID
     DomesticStudent(const DomesticStudent& s); //copy constructor
 
     // Getter
@@ -76,6 +78,7 @@ public:
     // Constructor
     InternationalStudent(); //default constructor
     InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing); //non-default constructor
+    InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing, const int& id); //non-default constructor with id
     InternationalStudent(const InternationalStudent& s); //copy constructor
 
     // Getter

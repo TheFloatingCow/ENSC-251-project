@@ -18,6 +18,14 @@ Student::Student(const string &firstName, const string &lastName, const float &C
     this->researchScore = researchScore;
 } //non-default constructor
 
+Student::Student(const string &firstName, const string &lastName, const float &CGPA, const int &researchScore, const int& id) {
+    this->firstName = firstName;
+    this->lastName = lastName;
+    this->CGPA = CGPA;
+    this->researchScore = researchScore;
+    this->id = 20220000 + id;
+} //non-default constructor with ID
+
 Student::Student(const Student& s) {
     this->firstName = s.firstName;
     this->lastName = s.lastName;
@@ -139,7 +147,12 @@ DomesticStudent::DomesticStudent() {
 DomesticStudent::DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province)
 : Student(firstName, lastName, CGPA, researchScore) {
     this->province = province;
-} //non-default constructor
+} //non-default constructor without id
+
+DomesticStudent::DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province, const int& id)
+        : Student(firstName, lastName, CGPA, researchScore, id) {
+    this->province = province;
+} //non-default constructor with id
 
 DomesticStudent::DomesticStudent(const DomesticStudent& s) {
     this->firstName = s.firstName;
@@ -163,8 +176,9 @@ void DomesticStudent::setProvince(const string& province) {
 // Friend function
 ostream& operator <<(ostream &out, const DomesticStudent &s) {
     out << "Domestic student " << s.firstName << " "
-             << s.lastName << " from " << s.province << " province has cgpa of "
-             << s.CGPA << ", and research score of " << s.researchScore << endl;
+        << s.lastName << " " << s.id << " from "
+        << s.province << " province has cgpa of "
+        << s.CGPA << ", and research score of " << s.researchScore << endl;
     return out;
 } //overload << operator
 
@@ -179,6 +193,16 @@ InternationalStudent::InternationalStudent() {
 
 InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing)
 : Student(firstName, lastName, CGPA, researchScore) {
+    this->country = country;
+    this->reading = reading;
+    this->listening = listening;
+    this->speaking = speaking;
+    this->writing = writing;
+    this->toefl = reading + listening + speaking + writing;
+} //non-default constructor
+
+InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing, const int& id)
+        : Student(firstName, lastName, CGPA, researchScore, id) {
     this->country = country;
     this->reading = reading;
     this->listening = listening;
@@ -214,7 +238,8 @@ void InternationalStudent::setCountry(const string& country) {
 // Friend function
 ostream& operator <<(ostream &out, const InternationalStudent &s) {
     out << "International student " << s.firstName << " "
-             << s.lastName << " from " << s.country << " has cgpa of "
+             << s.lastName << " " << s.id << " from "
+             << s.country << " has cgpa of "
              << s.CGPA << ", research of " << s.researchScore
              << ", and TOEFL of " << s.toefl << endl;
     return out;

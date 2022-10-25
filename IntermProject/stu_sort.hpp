@@ -6,15 +6,6 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 
-class stu_sort
-{
-public:
-
-    // Constructor
-    stu_sort();
-
-};
-
 // Functions
 
 void sortDomestic(DomesticStudent s[], string sorted);

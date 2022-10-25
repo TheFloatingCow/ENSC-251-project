@@ -3,11 +3,6 @@
 
 //Make string sort from call function
 
-
-stu_sort::stu_sort() {
-
-} //constructor
-
 /*
 Takes in Domestic Students and a string to specify what order sort
 can pass in "firstname", "lastname", "cgpa", "research"
