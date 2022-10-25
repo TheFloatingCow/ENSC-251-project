@@ -11,7 +11,5 @@ using namespace std; //use namespace std
 void sortDomestic(DomesticStudent s[], string sorted);
 void sortInternational(InternationalStudent s[], string sorted);
 
-// Not Implemented yet
-void sortAll(DomesticStudent d[], InternationalStudent i[], string sorted);
 
 #endif
