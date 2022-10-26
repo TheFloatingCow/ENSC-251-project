@@ -207,17 +207,50 @@ void sortInternational(InternationalStudent s[], string sorted){
             }
         }
     } else if(sorted == "overall") {
-       
+       // Drop students with toefl score < 90 and check if min 20 is achieved in all catagories
+       // Put students in vector
+        vector<InternationalStudent> i_students;
+        for(int i = 0; i < 101; i++){
+            if(s[i].toefl >= 93 && s[i].reading >= 20 && s[i].writing >= 20 && s[i].speaking >= 20 && s[i].listening >= 20){
+                i_students.push_back(s[i]);
+            }
+        }
+
+        for(int i = 0; i < 99; i++)
+        {
+            for(int j = i+1; j < 100; j++)
+            {
+                //Create temporary local constructor
+                InternationalStudent temp;
+                if(i_students[i].CGPA == i_students[j].CGPA){
+                    if((i_students[i].getCountry()) > (i_students[j].getCountry())){
+                        temp = i_students[i];
+                        i_students[i] = i_students[j];
+                        i_students[j] = temp;
+                    }
+                }
+                //Conditional
+                if(i_students[i].CGPA < i_students[j].CGPA)
+                {
+                    //If number or string is bigger than the next then replace s[i] with s[j]
+                    //Since temp beforehand is s[i], swap by making s[j] temp now
+                    temp = i_students[i];
+                    i_students[i] = i_students[j];
+                    i_students[j] = temp;
+                }
+            }
+        }
+
+        for(int i = 0; i < i_students.size()-1; i++){
+            cout << i_students[i];
+        }
 
     } else {
         cout << "Invalid Input\n";
     }
 } 
 
-// Sort All by combining all domestic and international to one array
-void sortAll(DomesticStudent d[], InternationalStudent i[], string sorted){
-    
-}
+
 
 
 

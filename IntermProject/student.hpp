@@ -2,9 +2,10 @@
 #ifndef Student_HG
 #define Student_HG
 
-using namespace std; //use namespace std
+
 #include <string> //you will have to use string in C++
 #include <iostream>
+using namespace std; //use namespace std
 
 class Student
 {
