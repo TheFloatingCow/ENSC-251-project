@@ -172,25 +172,18 @@ int main() {
     /** -------------------------Main function loop------------------------- **/
 
     while(true) {
-        bool isValid = false;
         int input;
 
-        // Get user input and check if valid
-        do {
-            cout << endl << "\nStudent Directory\n"
-                 << "Type 1 to print all domestic students\n"
-                 << "Type 2 to pring all international students\n"
-                 << "Type 3 to sort domestic students\n"
-                 << "Type 4 to sort international students\n"
-                 << "Type 5 to compare students\n"
-                 << "Type 9 to exit program\n"
-                 << ">> ";
+        cout << endl << "\nStudent Directory\n"
+            << "Type 1 to print all domestic students\n"
+            << "Type 2 to pring all international students\n"
+            << "Type 3 to sort domestic students\n"
+            << "Type 4 to sort international students\n"
+            << "Type 5 to compare students\n"
+            << "Type 6 to exit program\n"
+            << ">> ";
 
-            cin >> input;
-            if (!cin.fail()) {
-                isValid = true;
-            }
-        }while(!isValid);
+        cin >> input;
 
         switch(input) {
             case 1:
@@ -248,6 +241,12 @@ int main() {
                         cout << domesticStudents[i];
                         }
                     break;
+
+                    default:
+                        cin.clear();
+                        cin.ignore();
+                        cout << endl << "Invalid option selected" << endl;
+                    break;
                 }
             break;
             case 4: //international
@@ -298,6 +297,12 @@ int main() {
                     break;
                     case 6:
                         sortInternational(internationalStudents,"overall");
+                    break;
+
+                    default:
+                        cin.clear();
+                        cin.ignore();
+                        cout << endl << "Invalid option selected" << endl;
                     break;
                 }
             break;
@@ -412,13 +417,25 @@ int main() {
                     }
 
                 break;
+
+                default:
+                    cin.clear();
+                    cin.ignore();
+                    cout << endl << "Invalid option selected" << endl;
+                break;
                 }
 
             break;
             
-            case 9:
+            case 6:
                 cout << "Exiting program..." << endl;
                 exit(1);
+            break;
+
+            default:
+                cin.clear();
+                cin.ignore();
+                cout << endl << "Invalid option selected" << endl;
             break;
         }
     }
