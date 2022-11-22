@@ -1,0 +1,28 @@
+ENSC 251 INTERIM PROJECT REPORT
+Group 9
+dla207 kmp7 ses16 sas40
+
+Task Distribution				                        Contributors
+1. Class Structures (constructor + set/get)             Kenji Simon Derrick
+2. Friend Functions                                     Kenji Simon Derrick
+3. Overload Operator                                    Kenji
+4. Reading txt to array                                 Kenji Simon
+5. Sorting for single field (Domestic + International)  Amaan Derrick
+6. Overall Sorting (Domestic + International)           Amaan
+7. Test program                                         All
+8. Document                                             Amaan Kenji
+
+
+
+Testing Plan
+Everyone tested the program when adding new functions or changing anything
+Tested valid and invalid inputs
+Valid: Anything asked by the program such as 1, 2, 3
+Invalid: Any numbers not included in the program OR any non-integers such as 99, -5, !@#$, A, asdf, 4c
+
+Weekly project schedule
+Week 1: Beginning of project, meet up as group
+Week 2: Split work into different parts, created a shared file to work on, started work
+Week 3: Header files and basic functions mostly completed, started work on sorting functions
+Week 4: Worked on sorting functions, made main file and user interface
+Week 5: Final testing, fixing bugs, finishing up any loose ends, writing documents, submission
