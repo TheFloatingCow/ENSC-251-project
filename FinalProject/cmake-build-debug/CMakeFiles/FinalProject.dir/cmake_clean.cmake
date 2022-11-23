@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/FinalProject.dir/list.cpp.obj"
+  "CMakeFiles/FinalProject.dir/list.cpp.obj.d"
   "CMakeFiles/FinalProject.dir/main.cpp.obj"
   "CMakeFiles/FinalProject.dir/main.cpp.obj.d"
   "CMakeFiles/FinalProject.dir/stu_sort.cpp.obj"

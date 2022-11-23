@@ -165,7 +165,7 @@ DomesticStudent::DomesticStudent(const DomesticStudent& s) {
 
 // Getter
 string DomesticStudent::getProvince() {
-    return this->province;
+    return province;
 }
 
 // Setter
@@ -227,27 +227,27 @@ InternationalStudent::InternationalStudent(const InternationalStudent& s) {
 
 // Getter
 string InternationalStudent::getCountry() {
-    return this->country;
+    return country;
 }
 
 int InternationalStudent::getReading() {
-    return this->reading;
+    return reading;
 }
 
 int InternationalStudent::getListening() {
-    return this->listening;
+    return listening;
 }
 
 int InternationalStudent::getSpeaking() {
-    return this->speaking;
+    return speaking;
 }
 
 int InternationalStudent::getWriting() {
-    return this->writing;
+    return writing;
 }
 
 int InternationalStudent::getToefl() {
-    return this->toefl;
+    return toefl;
 }
 
 // Setter

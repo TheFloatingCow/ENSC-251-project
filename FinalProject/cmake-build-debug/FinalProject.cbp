@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/list.cpp">
+			<Option target="FinalProject"/>
+		</Unit>
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/main.cpp">
 			<Option target="FinalProject"/>
 		</Unit>

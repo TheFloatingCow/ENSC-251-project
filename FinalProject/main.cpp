@@ -6,6 +6,7 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "stu_sort.hpp"
+#include "list.hpp"
 #include <vector>
 
 int main() {
@@ -332,7 +333,7 @@ int main() {
                         << "While student " << students[app2-20220000].getId() << " has a smaller CGPA of " << students[app2-20220000].getCGPA() << endl;
                     } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 2)
                     {
-                        cout << endl << "Student " << students[app1-20220000].getId() << "has a smaller CGPA of " << students[app1-20220000].getCGPA() << endl
+                        cout << endl << "Student " << students[app1-20220000].getId() << " has a smaller CGPA of " << students[app1-20220000].getCGPA() << endl
                         << "While student " << students[app2-20220000].getId() << " has a greater CGPA of " << students[app2-20220000].getCGPA() << endl;
                     } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 3)
                     {
@@ -428,7 +429,7 @@ int main() {
             break;
             
             case 6:
-                cout << "Exiting program..." << endl;
+                cout << endl << "Exiting program..." << endl;
                 exit(1);
             break;
 

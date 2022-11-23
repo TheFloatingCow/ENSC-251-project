@@ -128,6 +128,30 @@ FinalProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/build
 .PHONY : FinalProject/fast
 
+list.obj: list.cpp.obj
+.PHONY : list.obj
+
+# target to build an object file
+list.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/list.cpp.obj
+.PHONY : list.cpp.obj
+
+list.i: list.cpp.i
+.PHONY : list.i
+
+# target to preprocess a source file
+list.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/list.cpp.i
+.PHONY : list.cpp.i
+
+list.s: list.cpp.s
+.PHONY : list.s
+
+# target to generate assembly for a file
+list.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/list.cpp.s
+.PHONY : list.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -209,6 +233,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... FinalProject
+	@echo ... list.obj
+	@echo ... list.i
+	@echo ... list.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
