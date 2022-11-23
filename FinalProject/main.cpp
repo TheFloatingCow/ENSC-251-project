@@ -6,7 +6,6 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "stu_sort.hpp"
-#include "list.hpp"
 #include <vector>
 
 int main() {
@@ -174,7 +173,8 @@ int main() {
 
     while(true) {
         int input;
-
+        int size_d = sizeof(domesticStudents)/sizeof(DomesticStudent);
+        int size_i = sizeof(internationalStudents)/sizeof(InternationalStudent);
         cout << endl << "\nStudent Directory\n"
             << "Type 1 to print all domestic students\n"
             << "Type 2 to pring all international students\n"
@@ -208,36 +208,37 @@ int main() {
                 int in1;
                 cin >> in1;
                 switch(in1) {
+                    
                     case 1:
                         // Sort by first name
-                        sortDomestic(domesticStudents,"firstname");
+                        sortDomestic(domesticStudents,"firstname",size_d);
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 2:
                         // Sort by last name
-                        sortDomestic(domesticStudents,"lastname");
+                        sortDomestic(domesticStudents,"lastname",size_d);
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 3:
                         // Sort by CGPA
-                        sortDomestic(domesticStudents,"cgpa");
+                        sortDomestic(domesticStudents,"cgpa",size_d);
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 4:
                         // Sort by research score
-                        sortDomestic(domesticStudents,"research");
+                        sortDomestic(domesticStudents,"research",size_d);
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
                     break;
                     case 5:
-                        sortDomestic(domesticStudents, "overall");
+                        sortDomestic(domesticStudents, "overall",size_d);
                         for (int i = 0; i < 100; i++) {
                         cout << domesticStudents[i];
                         }
@@ -264,40 +265,40 @@ int main() {
                 switch(in2) {
                     case 1:
                         // Sort by first name
-                        sortInternational(internationalStudents,"firstname");
+                        sortInternational(internationalStudents,"firstname",size_i);
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 2:
                         // Sort by last name
-                        sortInternational(internationalStudents,"lastname");
+                        sortInternational(internationalStudents,"lastname",size_i);
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 3:
                         // Sort by CGPA
-                        sortInternational(internationalStudents,"cgpa");
+                        sortInternational(internationalStudents,"cgpa",size_i);
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 4:
                         // Sort by research score
-                        sortInternational(internationalStudents,"research");
+                        sortInternational(internationalStudents,"research",size_i);
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 5:
-                        sortInternational(internationalStudents,"TOEFL");
+                        sortInternational(internationalStudents,"TOEFL",size_i);
                         for (int i = 0; i < 100; i++) {
                         cout << internationalStudents[i];
                         }
                     break;
                     case 6:
-                        sortInternational(internationalStudents,"overall");
+                        sortInternational(internationalStudents,"overall",size_i);
                     break;
 
                     default:
@@ -333,7 +334,7 @@ int main() {
                         << "While student " << students[app2-20220000].getId() << " has a smaller CGPA of " << students[app2-20220000].getCGPA() << endl;
                     } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 2)
                     {
-                        cout << endl << "Student " << students[app1-20220000].getId() << " has a smaller CGPA of " << students[app1-20220000].getCGPA() << endl
+                        cout << endl << "Student " << students[app1-20220000].getId() << "has a smaller CGPA of " << students[app1-20220000].getCGPA() << endl
                         << "While student " << students[app2-20220000].getId() << " has a greater CGPA of " << students[app2-20220000].getCGPA() << endl;
                     } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 3)
                     {
@@ -429,7 +430,7 @@ int main() {
             break;
             
             case 6:
-                cout << endl << "Exiting program..." << endl;
+                cout << "Exiting program..." << endl;
                 exit(1);
             break;
 

@@ -5,6 +5,7 @@
 
 #include <string> //you will have to use string in C++
 #include <iostream>
+#include "toeflscore.hpp"
 using namespace std; //use namespace std
 
 class Student
@@ -16,8 +17,9 @@ protected:
     float CGPA;
     int researchScore;
     int id;
-
 public:
+    
+
     // Constructors
     Student(); //default constructor
     Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore); //non-default constructor without id
@@ -27,7 +29,7 @@ public:
     // Get functions
     string getFirstName();
     string getLastName();
-    int getCGPA();
+    float getCGPA();
     int getResearchScore();
     int getId();
 
@@ -49,11 +51,12 @@ public:
 
 class DomesticStudent : public Student
 {
-private:
+protected:
     // Variable
     string province;
-
 public:
+    
+
     // Constructor
     DomesticStudent(); //default constructor
     DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province); //non-default constructor without ID
@@ -72,13 +75,15 @@ public:
 
 class InternationalStudent : public Student
 {
-private:
+protected:
     // Variables
     string country;
-    int reading, listening, speaking, writing, toefl;
-    float ToeflScore;
+    // int reading, listening, speaking, writing, toefl;
+    // float ToeflScore; 
 
+    ToeflScore score;
 public:
+
     // Constructor
     InternationalStudent(); //default constructor
     InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing); //non-default constructor
@@ -87,11 +92,7 @@ public:
 
     // Getter
     string getCountry();
-    int getReading();
-    int getListening();
-    int getSpeaking();
-    int getWriting();
-    int getToefl();
+    ToeflScore get_score();
 
     // Setter
     void setCountry(const string& country);

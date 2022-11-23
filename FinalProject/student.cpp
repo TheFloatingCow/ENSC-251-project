@@ -102,7 +102,7 @@ string Student::getLastName() {
     return lastName;
 }
 
-int Student::getCGPA() {
+float Student::getCGPA() {
     return CGPA;
 }
 
@@ -165,7 +165,7 @@ DomesticStudent::DomesticStudent(const DomesticStudent& s) {
 
 // Getter
 string DomesticStudent::getProvince() {
-    return province;
+    return this->province;
 }
 
 // Setter
@@ -194,21 +194,19 @@ InternationalStudent::InternationalStudent() {
 InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing)
 : Student(firstName, lastName, CGPA, researchScore) {
     this->country = country;
-    this->reading = reading;
-    this->listening = listening;
-    this->speaking = speaking;
-    this->writing = writing;
-    this->toefl = reading + listening + speaking + writing;
+    this->score.set_reading(reading);
+    this->score.set_listening(listening);
+    this->score.set_speaking(speaking);
+    this->score.set_writing(writing);
 } //non-default constructor
 
 InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing, const int& id)
         : Student(firstName, lastName, CGPA, researchScore, id) {
     this->country = country;
-    this->reading = reading;
-    this->listening = listening;
-    this->speaking = speaking;
-    this->writing = writing;
-    this->toefl = reading + listening + speaking + writing;
+    this->score.set_reading(reading);
+    this->score.set_listening(listening);
+    this->score.set_speaking(speaking);
+    this->score.set_writing(writing);
 } //non-default constructor
 
 InternationalStudent::InternationalStudent(const InternationalStudent& s) {
@@ -218,36 +216,19 @@ InternationalStudent::InternationalStudent(const InternationalStudent& s) {
     this->researchScore = s.researchScore;
     this->id = s.id;
     this->country = s.country;
-    this->reading = s.reading;
-    this->listening = s.listening;
-    this->speaking = s.speaking;
-    this->writing = s.writing;
-    this->toefl = s.toefl;
+    this->score.set_reading(s.score.get_reading());
+    this->score.set_listening(s.score.get_listening());
+    this->score.set_speaking(s.score.get_speaking());
+    this->score.set_writing(s.score.get_writing());
 } //copy constructor
 
 // Getter
 string InternationalStudent::getCountry() {
-    return country;
+    return this->country;
 }
 
-int InternationalStudent::getReading() {
-    return reading;
-}
-
-int InternationalStudent::getListening() {
-    return listening;
-}
-
-int InternationalStudent::getSpeaking() {
-    return speaking;
-}
-
-int InternationalStudent::getWriting() {
-    return writing;
-}
-
-int InternationalStudent::getToefl() {
-    return toefl;
+ToeflScore InternationalStudent::get_score(){
+    return this->score;
 }
 
 // Setter
@@ -261,6 +242,6 @@ ostream& operator <<(ostream &out, const InternationalStudent &s) {
              << s.lastName << " " << s.id << " from "
              << s.country << " has cgpa of "
              << s.CGPA << ", research of " << s.researchScore
-             << ", and TOEFL of " << s.toefl << endl;
+             << ", and TOEFL of " << s.score.get_totalScore() << endl;
     return out;
 } //overload << operator

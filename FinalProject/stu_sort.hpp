@@ -10,8 +10,9 @@
 using namespace std; //use namespace std
 
 // Functions
-void sortDomestic(DomesticStudent s[], string sorted);
-void sortInternational(InternationalStudent s[], string sorted);
+
+void sortDomestic(DomesticStudent s[], string sorted, int size);
+void sortInternational(InternationalStudent s[], string sorted, int size);
 
 
 #endif
