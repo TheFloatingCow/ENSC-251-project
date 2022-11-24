@@ -6,9 +6,18 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "stu_sort.hpp"
+#include "list.hpp"
 #include <vector>
 
 int main() {
+
+    /** -------------------------Linked Lists------------------------- **/
+
+    LinkedList<DomesticStudent> Dlist1;
+    LinkedList<InternationalStudent> Ilist1;
+
+
+
 
     int id = 0;
     //Total Student Array
@@ -70,7 +79,7 @@ int main() {
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
         researchScore = atoi(s_researchScore.c_str());
-             
+
         //add values to array
         domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province, id);
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
@@ -109,7 +118,7 @@ int main() {
     //Read the rest of the lines in international-stu.txt
     stu_count = 0;
     while( getline(internationalFile, line) ) {
-        
+
         istringstream ss(line);
 
         //initialize variables
@@ -131,7 +140,7 @@ int main() {
         //get cpga separated by comma, and convert string to float
         getline(ss, s_cgpa, ',');
         cgpa = atof(s_cgpa.c_str());
-        
+
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
         researchScore = atoi(s_researchScore.c_str());
@@ -208,7 +217,7 @@ int main() {
                 int in1;
                 cin >> in1;
                 switch(in1) {
-                    
+
                     case 1:
                         // Sort by first name
                         sortDomestic(domesticStudents,"firstname",size_d);
@@ -375,7 +384,7 @@ int main() {
                     << ">> ";
                     int app6;
                     cin >> app6;
-                    
+
                     if(compareFirstName(students[app5-20220000], students[app6-20220000]) == 1)
                     {
                         cout << "Applicant " << students[app5-20220000].getId() << " begins first with the first name " << students[app5-20220000].getFirstName() << endl
@@ -401,7 +410,7 @@ int main() {
                     << ">> ";
                     int app8;
                     cin >> app8;
-                    
+
                     if(compareLastName(students[app7-20220000], students[app8-20220000]) == 1)
                     {
                         cout << "Applicant " << students[app7-20220000].getId() << " begins first with the last name " << students[app7-20220000].getLastName() << endl
@@ -428,7 +437,7 @@ int main() {
                 }
 
             break;
-            
+
             case 6:
                 cout << "Exiting program..." << endl;
                 exit(1);

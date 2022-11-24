@@ -224,6 +224,30 @@ student.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/student.cpp.s
 .PHONY : student.cpp.s
 
+toeflscore.obj: toeflscore.cpp.obj
+.PHONY : toeflscore.obj
+
+# target to build an object file
+toeflscore.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/toeflscore.cpp.obj
+.PHONY : toeflscore.cpp.obj
+
+toeflscore.i: toeflscore.cpp.i
+.PHONY : toeflscore.i
+
+# target to preprocess a source file
+toeflscore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/toeflscore.cpp.i
+.PHONY : toeflscore.cpp.i
+
+toeflscore.s: toeflscore.cpp.s
+.PHONY : toeflscore.s
+
+# target to generate assembly for a file
+toeflscore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/toeflscore.cpp.s
+.PHONY : toeflscore.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -245,6 +269,9 @@ help:
 	@echo ... student.obj
 	@echo ... student.i
 	@echo ... student.s
+	@echo ... toeflscore.obj
+	@echo ... toeflscore.i
+	@echo ... toeflscore.s
 .PHONY : help
 
 

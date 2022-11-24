@@ -6,35 +6,56 @@
 #include "student.hpp"
 using namespace std; //use namespace std
 
-namespace ENSC251_Final {
+// Node class
+template<class T>
+class Node {
+private:
+    T data;
+    Node *link;
 
-    template<typename T>
-    struct Node {
-        T data;
-        Node *link;
-    };
+public:
+    // Constructors
+    Node(); //default constructor
+    Node(const Node &node); //copy constructor
 
-    template<typename T>
-    class LinkedList {
-        typedef Node<T>* NodePtr;
+    // Getters
+    T getData();
+    Node<T>* getLink();
 
-    private:
-        NodePtr *head;
+    // Setters
+    void setData(T data);
+    void setLink(Node<T>* newLink);
 
-    public:
-        // Constructors
-        LinkedList(); //default constructor
-        LinkedList(const LinkedList &list); //copy constructor
+    // Overload = operator
+    Node<T> &operator=(const Node &node);
 
-        // Destructor
-        ~LinkedList();
+};
 
-        // Linked List operations
-        void head_insert(NodePtr &head, T student); //insert at head
-        void insert(NodePtr after_me, T student); //insert in ordered list
-        void remove(int target); //remove node
-        //NodePtr search(NodePtr head, int target); //search node
 
-    };
-}
+// LinkedList class
+template<class T>
+class LinkedList {
+    typedef Node<T>* NodePtr;
+
+private:
+    NodePtr *head;
+    NodePtr *tail;
+
+public:
+    // Constructors
+    LinkedList(); //default constructor
+    LinkedList(const LinkedList &list); //copy constructor
+
+    // Destructor
+    ~LinkedList();
+
+    // Linked List operations
+    void head_insert(NodePtr &head, T student); //insert at head
+    void insert(NodePtr after_me, T student); //insert in ordered list
+    bool remove(NodePtr &head, int target); //remove node
+    NodePtr search(NodePtr head, int target); //search node
+
+};
+
+
 #endif

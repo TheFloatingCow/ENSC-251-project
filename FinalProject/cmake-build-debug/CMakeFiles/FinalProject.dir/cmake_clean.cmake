@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/FinalProject.dir/stu_sort.cpp.obj.d"
   "CMakeFiles/FinalProject.dir/student.cpp.obj"
   "CMakeFiles/FinalProject.dir/student.cpp.obj.d"
+  "CMakeFiles/FinalProject.dir/toeflscore.cpp.obj"
+  "CMakeFiles/FinalProject.dir/toeflscore.cpp.obj.d"
   "FinalProject.exe"
   "FinalProject.exe.manifest"
   "FinalProject.pdb"

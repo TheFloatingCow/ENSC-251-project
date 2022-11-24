@@ -85,6 +85,9 @@
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/list.cpp">
 			<Option target="FinalProject"/>
 		</Unit>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/list.hpp">
+			<Option target="FinalProject"/>
+		</Unit>
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/main.cpp">
 			<Option target="FinalProject"/>
 		</Unit>
@@ -98,6 +101,12 @@
 			<Option target="FinalProject"/>
 		</Unit>
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/student.hpp">
+			<Option target="FinalProject"/>
+		</Unit>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/toeflscore.cpp">
+			<Option target="FinalProject"/>
+		</Unit>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/toeflscore.hpp">
 			<Option target="FinalProject"/>
 		</Unit>
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/CMakeLists.txt">

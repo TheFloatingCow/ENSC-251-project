@@ -140,6 +140,7 @@ CMakeFiles/FinalProject.dir/main.cpp.obj: \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc \
  C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.hpp \
+ C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.hpp \
  C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.hpp \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
