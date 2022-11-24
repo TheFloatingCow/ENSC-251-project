@@ -168,7 +168,11 @@ int main() {
         stu_count++;
         id++;
     }
-
+    //variables for adding students outside multiple switch cases
+    string add_fName;
+    string add_lName;
+    float add_cgpa;
+    int add_researchScore;
     //close international file
     internationalFile.close();
 
@@ -190,7 +194,10 @@ int main() {
             << "Type 3 to sort domestic students\n"
             << "Type 4 to sort international students\n"
             << "Type 5 to compare students\n"
-            << "Type 6 to exit program\n"
+            << "Type 6 to search sorted list\n"
+            << "Type 7 to add or delete student\n"
+            << "Type 8 to remove top and lowest students\n"
+            << "Type 9 to exit program\n"
             << ">> ";
 
         cin >> input;
@@ -438,7 +445,134 @@ int main() {
 
             break;
 
-            case 6:
+            case 6: //Input of searching students based on app ID, cgpa & research score
+                //Print out data that meets requirement
+            {
+                cout << "What field would you like to search by?\n"
+                << "Type 1 for applicant ID\n"
+                << "Type 2 for CGPA\n"
+                << "Type 3 for research score\n"
+                << ">> ";
+                int in4;
+                cin << in4;
+                switch(in4)
+                {
+                    case 1:
+                    {
+                        cout << "Type in applicant ID\n"
+                        << ">> ";
+                        int searchId;
+                        cin >> searchId;
+
+                        break;
+                    }
+                    case 2:
+                    {
+                        cout << "Type in cgpa\n"
+                        << ">> ";
+                        float searchCGPA;
+                        cin >> searchCGPA;
+                        break;
+                    }
+                    case 3:
+                    {
+                        cout << "Type in research score\n"
+                        << ">> ";
+                        int searchResearchScore;
+                        cin >> searchResearchScore;
+                        break;
+                    }
+                    default:
+                        cin.clear();
+                        cin.ignore();
+                        cout << endl << "Invalid option selected" << endl;
+                    break;
+                }
+                
+            break;
+            case 7:
+                cout << endl << "Choose to add or delete a student" << endl
+                << "Type 1 to add domestic student\n"
+                << "Type 2 to delete domestic student\n"
+                << "Type 3 to add international student\n"
+                << "Type 4 to delete international student\n"
+                << ">>";
+                int in4;
+                cin >> in4;
+                switch(in4)
+                {
+                    
+                    case 1:
+                    {
+                    cout << endl << "Input first name: \n" << ">>";
+                    cin >> add_fName;
+                    cout << endl << "Input last name: \n" << ">>";
+                    cin >> add_lName;
+                    cout << endl << "Input cgpa: \n" << ">>";
+                    cin >> add_cgpa;
+                    cout << endl << "Input research score: \n" << ">>";
+                    cin >> add_researchScore;
+                    cout << endl << "Input province: \n" << ">>";
+                    string add_province;
+                    cin >> add_province;
+                    ++id;
+                    ++stu_count;
+                    domesticStudents[stu_count] = DomesticStudent(add_fName, add_lName, add_cgpa, add_researchScore, add_province, id);
+                    students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
+                    cout << endl << "Creating student: \n";
+                    break;
+                    }
+                    case 2:
+                    {
+                    cout << "Insert first and last name of applicant to delete\n"
+                    << " >>";
+
+                    }
+                    case 3:
+                    {
+                    cout << endl << "Input first name: \n" << ">>";
+                    cin >> add_fName;
+                    cout << endl << "Input last name: \n" << ">>";
+                    cin >> add_lName;
+                    cout << endl << "Input cgpa: \n" << ">>";
+                    cin >> add_cgpa;
+                    cout << endl << "Input research score: \n" << ">>";
+                    cin >> add_researchScore;
+                    cout << endl << "Input country: \n" << ">>";
+                    string add_country;
+                    cin >> add_country;
+                    cout << endl << "Input reading TOEFL score: \n" << ">>";
+                    int add_reading;
+                    cin >> add_reading;
+                    cout << endl << "Input listening TOEFL score: \n" << ">>";
+                    int add_listening;
+                    cin >> add_listening;
+                    cout << endl << "Input speaking TOEFL score: \n" << ">>";
+                    int add_speaking;
+                    cin >> add_speaking;
+                    cout << endl << "Input writing TOEFL score: \n" << ">>";
+                    int add_writing;
+                    cin >> add_writing;
+                    ++id;
+                    ++stu_count;
+                    internationalStudents[stu_count] = InternationalStudent(add_fName, add_lName, add_cgpa, add_researchScore, add_country, add_reading, add_listening, add_speaking, add_writing, id);
+                    students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
+                    cout << endl << "Creating student... \n";
+                    break;
+                    }
+                    case 4:
+                    {
+                    cout << "Insert first and last name of applicant to delete\n"
+                    << " >>";
+                    }
+
+                    
+                }
+            
+            break;
+            case 8:
+            break;
+            case 9:
                 cout << "Exiting program..." << endl;
                 exit(1);
             break;
