@@ -163,6 +163,21 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
     }
 }
 
+template<class T>
+typename LinkedList<T>::NodePtr LinkedList<T>::print()
+{
+    NodePtr here = head;
+    while(here != NULL)
+    {
+        cout << here->data.getId() << " "
+        << here->data.getFirstName() << " "
+        << here->data.getLastName() << " "
+        << here->data.getCGPA() << " "
+        << here->data.getResearchScore() << " " << endl;
+        here = here->link;
+    }
+}
+
 
 // Template instantiations
 template class LinkedList<DomesticStudent>;
