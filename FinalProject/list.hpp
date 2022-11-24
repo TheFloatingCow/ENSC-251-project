@@ -10,10 +10,11 @@ using namespace std; //use namespace std
 template<class T>
 class Node {
 private:
+
+public:
     T data;
     Node *link;
 
-public:
     // Constructors
     Node(); //default constructor
     Node(const Node &node); //copy constructor
@@ -54,6 +55,10 @@ public:
     void insert(NodePtr after_me, T student); //insert in ordered list
     bool remove(NodePtr &head, int target); //remove node
     NodePtr search(NodePtr head, int target); //search node
+
+    // Print functions
+    NodePtr printList(NodePtr head);
+    void printNode(NodePtr here);
 
 };
 

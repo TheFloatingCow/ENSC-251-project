@@ -101,10 +101,10 @@ void LinkedList<T>::head_insert(NodePtr &head, T student) {
     Node<T>* temp_ptr;
     temp_ptr = new Node<T>;
 
-    //temp_ptr->data = student;
+    temp_ptr->data = student;
     //temp_ptr.setData(student);
 
-    //temp_ptr->link = head;
+    temp_ptr->link = head;
     //temp_ptr.setLink(head);
     head = temp_ptr;
 }
@@ -117,8 +117,8 @@ void LinkedList<T>::insert(NodePtr after_me, T student) {
 
     temp_ptr->getData() = student;
 
-    //temp_ptr->link = after_me->getLink();
-    //after_me->link = temp_ptr;
+    temp_ptr->link = after_me->getLink();
+    after_me->link = temp_ptr;
 }
 
 // remove node with student ID
@@ -131,7 +131,7 @@ bool LinkedList<T>::remove(NodePtr &head, int target) {
 
     if (head->getData().getId() == target) {
         NodePtr discard = head;
-        //head = head->link;
+        head = head->link;
         delete discard;
         cout << "Student ID " << discard->getData().getId() << " has been removed" << endl;
         return true;
@@ -152,7 +152,7 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
     }
     else {
         while (here->getData().getId() != target && here->getLink() != nullptr) {
-            //here = here->link;
+            here = here->link;
         }
         if (here->getData().getId() == target) {
             return here;
@@ -164,7 +164,7 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
 }
 
 template<class T>
-typename LinkedList<T>::NodePtr LinkedList<T>::printList()
+typename LinkedList<T>::NodePtr LinkedList<T>::printList(NodePtr head)
 {
     NodePtr here = head;
     while(here != NULL)
@@ -178,6 +178,7 @@ typename LinkedList<T>::NodePtr LinkedList<T>::printList()
     }
 }
 
+template<class T>
 void LinkedList<T>::printNode(NodePtr here)
 {
         cout << here->data.getId() << " "
