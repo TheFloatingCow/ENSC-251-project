@@ -54,10 +54,12 @@ public:
     NodePtr getHead() const;
 
     // Linked List operations domestic
-    void head_insert(NodePtr& head, T student); //insert at head
+    void head_insert(NodePtr head, T student); //insert at head
     void insert(NodePtr after_me, T student); //insert in ordered list
-    bool remove(NodePtr &head, int target); //remove node
+    bool remove(NodePtr &head, string first, string last); //remove node
+    bool removeTail(NodePtr &head); //remove tail node
     NodePtr search(NodePtr head, int target); //search node
+    NodePtr searchCGPA(NodePtr head, float target); //search by CGPA
 
     // Linked List operations international
     //void head_insert_int(NodePtr& head, T student); //insert at head

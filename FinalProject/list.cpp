@@ -109,12 +109,11 @@ typename LinkedList<T>::NodePtr LinkedList<T>::getHead() const{
 }
 
 // Linked List operators
-// insert at head Domestic
+// insert at head
 template<class T>
-void LinkedList<T>::head_insert(NodePtr& head, T student) {
-    //NodePtr& headPtr = *head;
-    NodePtr temp_ptr; // = new Node<T>(student);
-    //temp_ptr = new Node<T>(student);
+void LinkedList<T>::head_insert(NodePtr head, T student) {
+    cout << "running head_insert..." << endl;
+    NodePtr temp_ptr;
     temp_ptr = new Node<T>;
 
     temp_ptr->data = student;
@@ -127,7 +126,7 @@ void LinkedList<T>::head_insert(NodePtr& head, T student) {
     cout << "completed head_insert" << endl;
 }
 
-// insert in organized list Domestic
+// insert in organized list
 template<class T>
 void LinkedList<T>::insert(NodePtr after_me, T student) {
     NodePtr temp_ptr;

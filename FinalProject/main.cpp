@@ -13,8 +13,8 @@ int main() {
 
     /** -------------------------Linked Lists------------------------- **/
 
-    LinkedList<DomesticStudent> Dlist1;
-    LinkedList<InternationalStudent> Ilist1;
+    LinkedList<DomesticStudent> dlist1;
+    LinkedList<InternationalStudent> ilist1;
 
 
     int id = 0;
@@ -82,8 +82,8 @@ int main() {
         domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province, id);
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
 
-        /** head pointer is not working idk why **/
-        Dlist1.head_insert(Dlist1.getHead(), domesticStudents[stu_count]);
+        /** issue here I think **/
+        dlist1.head_insert(dlist1.getHead(), DomesticStudent(firstName, lastName, cgpa, researchScore, province, id));
 
         stu_count++;
         id++;
