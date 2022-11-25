@@ -171,23 +171,49 @@ void LinkedList<T>::insert_int(NodePtr after_me, T student) {
 
 // remove node with student ID
 template<class T>
-bool LinkedList<T>::remove(NodePtr &head, int target) {
-    if (head == nullptr) {
+bool LinkedList<T>::remove(NodePtr &head, string first, string last) {
+    
+
+    while(head != nullptr)
+    {
+        if (head == nullptr) {
         cout << "Error: Empty list" << endl;
         return false;
-    }
+        }
 
-    if (head->data.getId() == target) {
-        NodePtr discard = head;
+        if ((head->data.getFirstName() == first) && (head->data.getLastName() == last)){
+            NodePtr discard = head;
+            head = head->link;
+            delete discard;
+            cout << "Applicant " << discard->data.getFirstName() << " " << discard->data.getLastName() << " has been removed" << endl;
+            return true;
+        }
         head = head->link;
-        delete discard;
-        cout << "Student ID " << discard->data.getId() << " has been removed" << endl;
-        return true;
     }
 
     return true;
 }
 
+template<class T>
+bool LinkedList<T>::removeTail(NodePtr &head) {
+    
+
+    //Traverse until tail where next pointer is null
+    while(head != nullptr)
+    {
+        if (head->link == NULL) {
+        delete head;
+        cout << "Bottom listed applicant deleted" << endl;
+        return true;
+        }else
+        {
+        head = head->link;
+        }
+    }
+
+
+    return true;
+}
 
 // search for node using student's ID
 template<class T>
