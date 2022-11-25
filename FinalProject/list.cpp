@@ -237,6 +237,26 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
 }
 
 template<class T>
+typename LinkedList<T>::NodePtr LinkedList<T>::searchCGPA(NodePtr head, float target) {
+    NodePtr here = head;
+
+    if (here == nullptr) {
+        return nullptr;
+    }
+    else {
+        while (here->data.getId() != target && here->link != nullptr) {
+            here = here->link;
+        }
+        if (here->data.getId() == target) {
+            return here;
+        }
+        else {
+            return nullptr;
+        }
+    }
+}
+
+template<class T>
 void LinkedList<T>::printList(NodePtr head)
 {
     NodePtr here = head;
