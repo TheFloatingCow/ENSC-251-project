@@ -9,8 +9,6 @@ using namespace std; //use namespace std
 // Node class
 template<class T>
 class Node {
-private:
-
 public:
     T data;
     Node *link;
@@ -18,14 +16,17 @@ public:
     // Constructors
     Node(); //default constructor
     Node(const Node &node); //copy constructor
+    Node(Node<T> head, T student); //student constructor
 
+    /*
     // Getters
-    T getData();
-    Node<T>* getLink();
+    T getData() const;
+    Node<T>* getLink() const;
 
     // Setters
     void setData(T data);
     void setLink(Node<T>* newLink);
+     */
 
     // Overload = operator
     Node<T> &operator=(const Node &node);
@@ -50,14 +51,24 @@ public:
     // Destructor
     ~LinkedList();
 
-    // Linked List operations
-    void head_insert(NodePtr &head, T student); //insert at head
+    NodePtr getHead() const;
+
+    // Linked List operations domestic
+    void head_insert(NodePtr& head, T student); //insert at head
     void insert(NodePtr after_me, T student); //insert in ordered list
     bool remove(NodePtr &head, int target); //remove node
     NodePtr search(NodePtr head, int target); //search node
 
+    // Linked List operations international
+    //void head_insert_int(NodePtr& head, T student); //insert at head
+    //void insert_int(NodePtr after_me, T student); //insert in ordered list
+
+
+    //bool remove_int(NodePtr &head, int target); //remove node
+    //NodePtr search_int(NodePtr head, int target); //search node
+
     // Print functions
-    NodePtr printList(NodePtr head);
+    void printList(NodePtr head);
     void printNode(NodePtr here);
 
 };

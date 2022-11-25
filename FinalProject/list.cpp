@@ -22,17 +22,24 @@ Node<T>::Node() {
 template<class T>
 Node<T>::Node(const Node &node) {
     link = node->link;
-    data = node->data;
-    /*
+    //data = node->data;
+
     data.setFirstName(node.getFirstName());
     data.setLastName(node.getLastName());
     data.setCGPA(node.getCGPA());
     data.setResearchScore(node.getResearchScore());
     data.setId(node.getId());
-    */
+
     cout << "running copy constructor" << endl;
 } //copy constructor
 
+template<class T>
+Node<T>::Node(Node<T> head, T student) {
+    link = head;
+    data = student;
+} //student constructor
+
+/*
 // Get data
 template<class T>
 T Node<T>::getData() {
@@ -41,7 +48,7 @@ T Node<T>::getData() {
 
 // Get link
 template<class T>
-Node<T>* Node<T>::getLink() {
+Node<T>* Node<T>::getLink() const{
     return link;
 }
 
@@ -56,6 +63,7 @@ template<class T>
 void Node<T>::setLink(Node<T>* newLink) {
     link = newLink;
 }
+ */
 
 // Overload = operator (calls copy constructor)
 template<class T>
@@ -94,32 +102,72 @@ LinkedList<T>::~LinkedList() {
 
 }
 
-// Linked List operators
-// insert at head
+// Get head pointer
 template<class T>
-void LinkedList<T>::head_insert(NodePtr &head, T student) {
-    Node<T>* temp_ptr;
+typename LinkedList<T>::NodePtr LinkedList<T>::getHead() const{
+    return *head;
+}
+
+// Linked List operators
+// insert at head Domestic
+template<class T>
+void LinkedList<T>::head_insert(NodePtr& head, T student) {
+    //NodePtr& headPtr = *head;
+    NodePtr temp_ptr; // = new Node<T>(student);
+    //temp_ptr = new Node<T>(student);
     temp_ptr = new Node<T>;
 
     temp_ptr->data = student;
-    //temp_ptr.setData(student);
+    cout << "temp data is student" << endl;
 
     temp_ptr->link = head;
-    //temp_ptr.setLink(head);
+    cout << "temp link is head" << endl;
+
     head = temp_ptr;
+    cout << "completed head_insert" << endl;
 }
 
-// insert in organized list
+// insert in organized list Domestic
 template<class T>
 void LinkedList<T>::insert(NodePtr after_me, T student) {
     NodePtr temp_ptr;
     temp_ptr = new Node<T>;
 
-    temp_ptr->getData() = student;
+    temp_ptr->data = student;
 
-    temp_ptr->link = after_me->getLink();
+    temp_ptr->link = after_me->link;
     after_me->link = temp_ptr;
 }
+
+/*
+// insert at head International
+template<class T>
+void LinkedList<T>::head_insert_int(NodePtr& head, T student) {
+    Node<T>* temp_ptr;// = new Node<T>(student);
+    temp_ptr = new Node<T>;
+
+    temp_ptr->data = student;
+    cout << "temp data is student" << endl;
+
+    temp_ptr->link = head;
+    cout << "temp link is head" << endl;
+
+    head = temp_ptr;
+    cout << "completed head_insert" << endl;
+}
+
+// insert in organized list International
+template<class T>
+void LinkedList<T>::insert_int(NodePtr after_me, T student) {
+    NodePtr temp_ptr;
+    temp_ptr = new Node<T>;
+
+    temp_ptr->data = student;
+
+    temp_ptr->link = after_me->link;
+    after_me->link = temp_ptr;
+}
+*/
 
 // remove node with student ID
 template<class T>
@@ -129,14 +177,13 @@ bool LinkedList<T>::remove(NodePtr &head, int target) {
         return false;
     }
 
-    if (head->getData().getId() == target) {
+    if (head->data.getId() == target) {
         NodePtr discard = head;
         head = head->link;
         delete discard;
-        cout << "Student ID " << discard->getData().getId() << " has been removed" << endl;
+        cout << "Student ID " << discard->data.getId() << " has been removed" << endl;
         return true;
     }
-
 
     return true;
 }
@@ -151,10 +198,10 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
         return nullptr;
     }
     else {
-        while (here->getData().getId() != target && here->getLink() != nullptr) {
+        while (here->data.getId() != target && here->link != nullptr) {
             here = here->link;
         }
-        if (here->getData().getId() == target) {
+        if (here->data.getId() == target) {
             return here;
         }
         else {
@@ -164,10 +211,10 @@ typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) 
 }
 
 template<class T>
-typename LinkedList<T>::NodePtr LinkedList<T>::printList(NodePtr head)
+void LinkedList<T>::printList(NodePtr head)
 {
     NodePtr here = head;
-    while(here != NULL)
+    while(here != nullptr)
     {
         cout << here->data.getId() << " "
         << here->data.getFirstName() << " "

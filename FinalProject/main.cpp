@@ -17,8 +17,6 @@ int main() {
     LinkedList<InternationalStudent> Ilist1;
 
 
-
-
     int id = 0;
     //Total Student Array
     Student students[200];
@@ -31,7 +29,7 @@ int main() {
     //Read the domestic-stu.txt file and exit if failed
     string line;
     ifstream domesticFile("domestic-stu.txt");
-    if(!domesticFile.is_open()) {
+    if (!domesticFile.is_open()) {
         cout << "Unable to open file domestic-stu.txt" << endl;
         return -1;
     }
@@ -50,7 +48,7 @@ int main() {
      *print the object content to the screen
      */
     int stu_count = 0;
-    while( getline(domesticFile, line) ) {
+    while (getline(domesticFile, line)) {
         /*process each line, get each field separated by a comma.
          *We use istringstream to handle it.
          *Note in this example code here, we assume the file format
@@ -84,6 +82,9 @@ int main() {
         domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province, id);
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
 
+        /** head pointer is not working idk why **/
+        Dlist1.head_insert(Dlist1.getHead(), domesticStudents[stu_count]);
+
         stu_count++;
         id++;
     }
@@ -106,7 +107,7 @@ int main() {
 
     string line2;
     ifstream internationalFile("international-stu.txt");
-    if(!internationalFile.is_open()) {
+    if (!internationalFile.is_open()) {
         cout << "Unable to open file international-stu.txt" << endl;
         return -1;
     }
@@ -117,7 +118,7 @@ int main() {
 
     //Read the rest of the lines in international-stu.txt
     stu_count = 0;
-    while( getline(internationalFile, line) ) {
+    while (getline(internationalFile, line)) {
 
         istringstream ss(line);
 
@@ -162,7 +163,8 @@ int main() {
         writing = atoi(s_writing.c_str());
 
         // Add values to array
-        internationalStudents[stu_count] = InternationalStudent(firstName, lastName, cgpa, researchScore, country, reading, listening, speaking, writing, id);
+        internationalStudents[stu_count] = InternationalStudent(firstName, lastName, cgpa, researchScore, country,
+                                                                reading, listening, speaking, writing, id);
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
 
         stu_count++;
@@ -184,300 +186,313 @@ int main() {
 
     /** -------------------------Main function loop------------------------- **/
 
-    while(true) {
+    while (true) {
         int input;
-        int size_d = sizeof(domesticStudents)/sizeof(DomesticStudent);
-        int size_i = sizeof(internationalStudents)/sizeof(InternationalStudent);
+        int size_d = sizeof(domesticStudents) / sizeof(DomesticStudent);
+        int size_i = sizeof(internationalStudents) / sizeof(InternationalStudent);
         cout << endl << "\nStudent Directory\n"
-            << "Type 1 to print all domestic students\n"
-            << "Type 2 to pring all international students\n"
-            << "Type 3 to sort domestic students\n"
-            << "Type 4 to sort international students\n"
-            << "Type 5 to compare students\n"
-            << "Type 6 to search sorted list\n"
-            << "Type 7 to add or delete student\n"
-            << "Type 8 to remove top and lowest students\n"
-            << "Type 9 to exit program\n"
-            << ">> ";
+             << "Type 1 to print all domestic students\n"
+             << "Type 2 to pring all international students\n"
+             << "Type 3 to sort domestic students\n"
+             << "Type 4 to sort international students\n"
+             << "Type 5 to compare students\n"
+             << "Type 6 to search sorted list\n"
+             << "Type 7 to add or delete student\n"
+             << "Type 8 to remove top and lowest students\n"
+             << "Type 9 to exit program\n"
+             << ">> ";
 
         cin >> input;
 
-        switch(input) {
+        switch (input) {
             case 1:
                 for (int i = 0; i < 100; i++) {
                     cout << domesticStudents[i];
                 }
-            break;
+                break;
             case 2:
-            for (int i = 0; i < 100; i++) {
-                cout << internationalStudents[i];
-            }
-            break;
+                for (int i = 0; i < 100; i++) {
+                    cout << internationalStudents[i];
+                }
+                break;
             case 3: //domestic
                 cout << endl << "What field would you like to sort by\n"
-                << "Type 1 for first name\n"
-                << "Type 2 for last name\n"
-                << "Type 3 for CGPA\n"
-                << "Type 4 for research score\n"
-                << "Type 5 for overall sort\n"
-                << ">> ";
+                     << "Type 1 for first name\n"
+                     << "Type 2 for last name\n"
+                     << "Type 3 for CGPA\n"
+                     << "Type 4 for research score\n"
+                     << "Type 5 for overall sort\n"
+                     << ">> ";
                 int in1;
                 cin >> in1;
-                switch(in1) {
+                switch (in1) {
 
                     case 1:
                         // Sort by first name
-                        sortDomestic(domesticStudents,"firstname",size_d);
+                        sortDomestic(domesticStudents, "firstname", size_d);
                         for (int i = 0; i < 100; i++) {
-                        cout << domesticStudents[i];
+                            cout << domesticStudents[i];
                         }
-                    break;
+                        break;
                     case 2:
                         // Sort by last name
-                        sortDomestic(domesticStudents,"lastname",size_d);
+                        sortDomestic(domesticStudents, "lastname", size_d);
                         for (int i = 0; i < 100; i++) {
-                        cout << domesticStudents[i];
+                            cout << domesticStudents[i];
                         }
-                    break;
+                        break;
                     case 3:
                         // Sort by CGPA
-                        sortDomestic(domesticStudents,"cgpa",size_d);
+                        sortDomestic(domesticStudents, "cgpa", size_d);
                         for (int i = 0; i < 100; i++) {
-                        cout << domesticStudents[i];
+                            cout << domesticStudents[i];
                         }
-                    break;
+                        break;
                     case 4:
                         // Sort by research score
-                        sortDomestic(domesticStudents,"research",size_d);
+                        sortDomestic(domesticStudents, "research", size_d);
                         for (int i = 0; i < 100; i++) {
-                        cout << domesticStudents[i];
+                            cout << domesticStudents[i];
                         }
-                    break;
+                        break;
                     case 5:
-                        sortDomestic(domesticStudents, "overall",size_d);
+                        sortDomestic(domesticStudents, "overall", size_d);
                         for (int i = 0; i < 100; i++) {
-                        cout << domesticStudents[i];
+                            cout << domesticStudents[i];
                         }
-                    break;
+                        break;
 
                     default:
                         cin.clear();
                         cin.ignore();
                         cout << endl << "Invalid option selected" << endl;
-                    break;
+                        break;
                 }
-            break;
+                break;
             case 4: //international
                 cout << endl << "What field would you like to sort by\n"
-                << "Type 1 for first name\n"
-                << "Type 2 for last name\n"
-                << "Type 3 for CGPA\n"
-                << "Type 4 for research score\n"
-                << "Type 5 for TOEFL\n"
-                << "Type 6 for overall sort\n"
-                << ">> ";
+                     << "Type 1 for first name\n"
+                     << "Type 2 for last name\n"
+                     << "Type 3 for CGPA\n"
+                     << "Type 4 for research score\n"
+                     << "Type 5 for TOEFL\n"
+                     << "Type 6 for overall sort\n"
+                     << ">> ";
                 int in2;
                 cin >> in2;
-                switch(in2) {
+                switch (in2) {
                     case 1:
                         // Sort by first name
-                        sortInternational(internationalStudents,"firstname",size_i);
+                        sortInternational(internationalStudents, "firstname", size_i);
                         for (int i = 0; i < 100; i++) {
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
-                    break;
+                        break;
                     case 2:
                         // Sort by last name
-                        sortInternational(internationalStudents,"lastname",size_i);
+                        sortInternational(internationalStudents, "lastname", size_i);
                         for (int i = 0; i < 100; i++) {
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
-                    break;
+                        break;
                     case 3:
                         // Sort by CGPA
-                        sortInternational(internationalStudents,"cgpa",size_i);
+                        sortInternational(internationalStudents, "cgpa", size_i);
                         for (int i = 0; i < 100; i++) {
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
-                    break;
+                        break;
                     case 4:
                         // Sort by research score
-                        sortInternational(internationalStudents,"research",size_i);
+                        sortInternational(internationalStudents, "research", size_i);
                         for (int i = 0; i < 100; i++) {
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
-                    break;
+                        break;
                     case 5:
-                        sortInternational(internationalStudents,"TOEFL",size_i);
+                        sortInternational(internationalStudents, "TOEFL", size_i);
                         for (int i = 0; i < 100; i++) {
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
-                    break;
+                        break;
                     case 6:
-                        sortInternational(internationalStudents,"overall",size_i);
-                    break;
+                        sortInternational(internationalStudents, "overall", size_i);
+                        break;
 
                     default:
                         cin.clear();
                         cin.ignore();
                         cout << endl << "Invalid option selected" << endl;
-                    break;
+                        break;
                 }
-            break;
+                break;
             case 5: //Input of comparing based on student applicant ID
                 cout << endl << "What field would you want to compare by\n"
-                << "Type 1 for cgpa\n"
-                << "Type 2 for research score\n"
-                << "Type 3 for first name\n"
-                << "Type 4 for last name\n"
-                << ">>";
+                     << "Type 1 for cgpa\n"
+                     << "Type 2 for research score\n"
+                     << "Type 3 for first name\n"
+                     << "Type 4 for last name\n"
+                     << ">>";
                 int in3;
                 cin >> in3;
-                switch(in3){
-                case 1:
-                    cout << endl << "Type in the first student's application number\n"
-                    << ">> ";
-                    int app1;
-                    cin >> app1;
-                    cout << endl << "Type in the second student's application number\n"
-                    << ">> ";
-                    int app2;
-                    cin >> app2;
+                switch (in3) {
+                    case 1:
+                        cout << endl << "Type in the first student's application number\n"
+                             << ">> ";
+                        int app1;
+                        cin >> app1;
+                        cout << endl << "Type in the second student's application number\n"
+                             << ">> ";
+                        int app2;
+                        cin >> app2;
 
-                    if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 1)
-                    {
-                        cout << endl << "Student " << students[app1-20220000].getId() << " has a greater CGPA of " << students[app1-20220000].getCGPA() << endl
-                        << "While student " << students[app2-20220000].getId() << " has a smaller CGPA of " << students[app2-20220000].getCGPA() << endl;
-                    } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 2)
-                    {
-                        cout << endl << "Student " << students[app1-20220000].getId() << "has a smaller CGPA of " << students[app1-20220000].getCGPA() << endl
-                        << "While student " << students[app2-20220000].getId() << " has a greater CGPA of " << students[app2-20220000].getCGPA() << endl;
-                    } else if(compareCGPA(students[app1-20220000], students[app2-20220000]) == 3)
-                    {
-                        cout << endl << "Student " << students[app1-20220000].getId() << " and student " << students[app2-20220000].getId()
-                        << " both have the same CGPA of " << students[app2-20220000].getCGPA() << endl;
-                    }
-                break;
-                case 2:
-                    cout << endl << "Type in the first student's application number\n"
-                    << ">> ";
-                    int app3;
-                    cin >> app3;
-                    cout << endl << "Type in the second student's application number\n"
-                    << ">> ";
-                    int app4;
-                    cin >> app4;
-                    if(compareResearchScore(students[app3-20220000], students[app4-20220000]) == 1)
-                    {
-                        cout << endl << "Student " << students[app3-20220000].getId() << " has a greater research score of " << students[app3-20220000].getResearchScore() << endl
-                        << "While student " << students[app4-20220000].getId() << " has a smaller research score of " << students[app4-20220000].getResearchScore() << endl;
-                    } else if(compareResearchScore(students[app3-20220000], students[app4-20220000]) == 2)
-                    {
-                        cout << endl << "Student " << students[app3-20220000].getId() << " has a smaller research score of " << students[app3-20220000].getResearchScore() << endl
-                        << "While student " << students[app4-20220000].getId() << " has a greater research score of " << students[app4-20220000].getResearchScore() << endl;
-                    } else if(compareResearchScore(students[app1-20220000], students[app2-20220000]) == 3)
-                    {
-                        cout << endl << "Student " << students[app3-20220000].getId() << " and student " << students[app4-20220000].getId()
-                        << " both have the same research score of " << students[app3-20220000].getResearchScore() << endl;
+                        if (compareCGPA(students[app1 - 20220000], students[app2 - 20220000]) == 1) {
+                            cout << endl << "Student " << students[app1 - 20220000].getId() << " has a greater CGPA of "
+                                 << students[app1 - 20220000].getCGPA() << endl
+                                 << "While student " << students[app2 - 20220000].getId() << " has a smaller CGPA of "
+                                 << students[app2 - 20220000].getCGPA() << endl;
+                        } else if (compareCGPA(students[app1 - 20220000], students[app2 - 20220000]) == 2) {
+                            cout << endl << "Student " << students[app1 - 20220000].getId() << "has a smaller CGPA of "
+                                 << students[app1 - 20220000].getCGPA() << endl
+                                 << "While student " << students[app2 - 20220000].getId() << " has a greater CGPA of "
+                                 << students[app2 - 20220000].getCGPA() << endl;
+                        } else if (compareCGPA(students[app1 - 20220000], students[app2 - 20220000]) == 3) {
+                            cout << endl << "Student " << students[app1 - 20220000].getId() << " and student "
+                                 << students[app2 - 20220000].getId()
+                                 << " both have the same CGPA of " << students[app2 - 20220000].getCGPA() << endl;
+                        }
+                        break;
+                    case 2:
+                        cout << endl << "Type in the first student's application number\n"
+                             << ">> ";
+                        int app3;
+                        cin >> app3;
+                        cout << endl << "Type in the second student's application number\n"
+                             << ">> ";
+                        int app4;
+                        cin >> app4;
+                        if (compareResearchScore(students[app3 - 20220000], students[app4 - 20220000]) == 1) {
+                            cout << endl << "Student " << students[app3 - 20220000].getId()
+                                 << " has a greater research score of " << students[app3 - 20220000].getResearchScore()
+                                 << endl
+                                 << "While student " << students[app4 - 20220000].getId()
+                                 << " has a smaller research score of " << students[app4 - 20220000].getResearchScore()
+                                 << endl;
+                        } else if (compareResearchScore(students[app3 - 20220000], students[app4 - 20220000]) == 2) {
+                            cout << endl << "Student " << students[app3 - 20220000].getId()
+                                 << " has a smaller research score of " << students[app3 - 20220000].getResearchScore()
+                                 << endl
+                                 << "While student " << students[app4 - 20220000].getId()
+                                 << " has a greater research score of " << students[app4 - 20220000].getResearchScore()
+                                 << endl;
+                        } else if (compareResearchScore(students[app1 - 20220000], students[app2 - 20220000]) == 3) {
+                            cout << endl << "Student " << students[app3 - 20220000].getId() << " and student "
+                                 << students[app4 - 20220000].getId()
+                                 << " both have the same research score of "
+                                 << students[app3 - 20220000].getResearchScore() << endl;
 
-                    }
-                break;
-                case 3:
-                    cout << endl << "Type in the first student's application number\n"
-                    << ">> ";
-                    int app5;
-                    cin >> app5;
-                    cout << endl << "Type in the second student's application number\n"
-                    << ">> ";
-                    int app6;
-                    cin >> app6;
+                        }
+                        break;
+                    case 3:
+                        cout << endl << "Type in the first student's application number\n"
+                             << ">> ";
+                        int app5;
+                        cin >> app5;
+                        cout << endl << "Type in the second student's application number\n"
+                             << ">> ";
+                        int app6;
+                        cin >> app6;
 
-                    if(compareFirstName(students[app5-20220000], students[app6-20220000]) == 1)
-                    {
-                        cout << "Applicant " << students[app5-20220000].getId() << " begins first with the first name " << students[app5-20220000].getFirstName() << endl
-                        << "Applicant " << students[app6-20220000].getId() << " comes second the first name " << students[app6-20220000].getFirstName() << endl;
-                    }
-                    if(compareFirstName(students[app5-20220000], students[app5-20220000]) == 2)
-                    {
-                        cout << "Applicant " << students[app6-20220000].getId() << " begins first with the first name " << students[app6-20220000].getFirstName() << endl
-                        << "Applicant " << students[app5-20220000].getId() << " comes second the first name " << students[app5-20220000].getFirstName() << endl;
-                    }
-                    if(compareFirstName(students[app5-20220000], students[app6-20220000]) == 3)
-                    {
-                        cout << "Both Applicants " << students[app5-20220000].getId() << " and " << students[app6-20220000].getId() << " share the same first name "
-                        << students[app5-20220000].getFirstName() << endl;
-                    }
-                break;
-                case 4:
-                    cout << endl << "Type in the first student's application number\n"
-                    << ">> ";
-                    int app7;
-                    cin >> app7;
-                    cout << endl << "Type in the second student's application number\n"
-                    << ">> ";
-                    int app8;
-                    cin >> app8;
+                        if (compareFirstName(students[app5 - 20220000], students[app6 - 20220000]) == 1) {
+                            cout << "Applicant " << students[app5 - 20220000].getId()
+                                 << " begins first with the first name " << students[app5 - 20220000].getFirstName()
+                                 << endl
+                                 << "Applicant " << students[app6 - 20220000].getId() << " comes second the first name "
+                                 << students[app6 - 20220000].getFirstName() << endl;
+                        }
+                        if (compareFirstName(students[app5 - 20220000], students[app5 - 20220000]) == 2) {
+                            cout << "Applicant " << students[app6 - 20220000].getId()
+                                 << " begins first with the first name " << students[app6 - 20220000].getFirstName()
+                                 << endl
+                                 << "Applicant " << students[app5 - 20220000].getId() << " comes second the first name "
+                                 << students[app5 - 20220000].getFirstName() << endl;
+                        }
+                        if (compareFirstName(students[app5 - 20220000], students[app6 - 20220000]) == 3) {
+                            cout << "Both Applicants " << students[app5 - 20220000].getId() << " and "
+                                 << students[app6 - 20220000].getId() << " share the same first name "
+                                 << students[app5 - 20220000].getFirstName() << endl;
+                        }
+                        break;
+                    case 4:
+                        cout << endl << "Type in the first student's application number\n"
+                             << ">> ";
+                        int app7;
+                        cin >> app7;
+                        cout << endl << "Type in the second student's application number\n"
+                             << ">> ";
+                        int app8;
+                        cin >> app8;
 
-                    if(compareLastName(students[app7-20220000], students[app8-20220000]) == 1)
-                    {
-                        cout << "Applicant " << students[app7-20220000].getId() << " begins first with the last name " << students[app7-20220000].getLastName() << endl
-                        << "Applicant " << students[app8-20220000].getId() << " comes second the last name " << students[app8-20220000].getLastName() << endl;
-                    }
-                    if(compareLastName(students[app7-20220000], students[app8-20220000]) == 2)
-                    {
-                        cout << "Applicant " << students[app8-20220000].getId() << " begins first with the last name " << students[app8-20220000].getLastName() << endl
-                        << "Applicant " << students[app7-20220000].getId() << " comes second the last name " << students[app7-20220000].getLastName() << endl;
-                    }
-                    if(compareLastName(students[app7-20220000], students[app8-20220000]) == 3)
-                    {
-                        cout << "Both Applicants " << students[app7-20220000].getId() << " and " << students[app8-20220000].getId() << " share the same last name"
-                        << students[app7-20220000].getLastName() << endl;
-                    }
+                        if (compareLastName(students[app7 - 20220000], students[app8 - 20220000]) == 1) {
+                            cout << "Applicant " << students[app7 - 20220000].getId()
+                                 << " begins first with the last name " << students[app7 - 20220000].getLastName()
+                                 << endl
+                                 << "Applicant " << students[app8 - 20220000].getId() << " comes second the last name "
+                                 << students[app8 - 20220000].getLastName() << endl;
+                        }
+                        if (compareLastName(students[app7 - 20220000], students[app8 - 20220000]) == 2) {
+                            cout << "Applicant " << students[app8 - 20220000].getId()
+                                 << " begins first with the last name " << students[app8 - 20220000].getLastName()
+                                 << endl
+                                 << "Applicant " << students[app7 - 20220000].getId() << " comes second the last name "
+                                 << students[app7 - 20220000].getLastName() << endl;
+                        }
+                        if (compareLastName(students[app7 - 20220000], students[app8 - 20220000]) == 3) {
+                            cout << "Both Applicants " << students[app7 - 20220000].getId() << " and "
+                                 << students[app8 - 20220000].getId() << " share the same last name"
+                                 << students[app7 - 20220000].getLastName() << endl;
+                        }
 
-                break;
+                        break;
 
-                default:
-                    cin.clear();
-                    cin.ignore();
-                    cout << endl << "Invalid option selected" << endl;
-                break;
+                    default:
+                        cin.clear();
+                        cin.ignore();
+                        cout << endl << "Invalid option selected" << endl;
+                        break;
                 }
 
-            break;
+                break;
 
             case 6: //Input of searching students based on app ID, cgpa & research score
                 //Print out data that meets requirement
             {
                 cout << "What field would you like to search by?\n"
-                << "Type 1 for applicant ID\n"
-                << "Type 2 for CGPA\n"
-                << "Type 3 for research score\n"
-                << ">> ";
+                     << "Type 1 for applicant ID\n"
+                     << "Type 2 for CGPA\n"
+                     << "Type 3 for research score\n"
+                     << ">> ";
                 int in4;
-                cin << in4;
-                switch(in4)
-                {
-                    case 1:
-                    {
+                cin >> in4;
+                switch (in4) {
+                    case 1: {
                         cout << "Type in applicant ID\n"
-                        << ">> ";
+                             << ">> ";
                         int searchId;
                         cin >> searchId;
 
                         break;
                     }
-                    case 2:
-                    {
+                    case 2: {
                         cout << "Type in cgpa\n"
-                        << ">> ";
+                             << ">> ";
                         float searchCGPA;
                         cin >> searchCGPA;
                         break;
                     }
-                    case 3:
-                    {
+                    case 3: {
                         cout << "Type in research score\n"
-                        << ">> ";
+                             << ">> ";
                         int searchResearchScore;
                         cin >> searchResearchScore;
                         break;
@@ -486,104 +501,104 @@ int main() {
                         cin.clear();
                         cin.ignore();
                         cout << endl << "Invalid option selected" << endl;
-                    break;
+                        break;
                 }
-                
-            break;
-            case 7:
-                cout << endl << "Choose to add or delete a student" << endl
-                << "Type 1 to add domestic student\n"
-                << "Type 2 to delete domestic student\n"
-                << "Type 3 to add international student\n"
-                << "Type 4 to delete international student\n"
-                << ">>";
-                int in4;
-                cin >> in4;
-                switch(in4)
-                {
-                    
-                    case 1:
-                    {
-                    cout << endl << "Input first name: \n" << ">>";
-                    cin >> add_fName;
-                    cout << endl << "Input last name: \n" << ">>";
-                    cin >> add_lName;
-                    cout << endl << "Input cgpa: \n" << ">>";
-                    cin >> add_cgpa;
-                    cout << endl << "Input research score: \n" << ">>";
-                    cin >> add_researchScore;
-                    cout << endl << "Input province: \n" << ">>";
-                    string add_province;
-                    cin >> add_province;
-                    ++id;
-                    ++stu_count;
-                    domesticStudents[stu_count] = DomesticStudent(add_fName, add_lName, add_cgpa, add_researchScore, add_province, id);
-                    students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
-                    cout << endl << "Creating student: \n";
-                    break;
+
+                break;
+                case 7:
+                    cout << endl << "Choose to add or delete a student" << endl
+                         << "Type 1 to add domestic student\n"
+                         << "Type 2 to delete domestic student\n"
+                         << "Type 3 to add international student\n"
+                         << "Type 4 to delete international student\n"
+                         << ">>";
+                int in5;
+                cin >> in5;
+                switch (in4) {
+
+                    case 1: {
+                        cout << endl << "Input first name: \n" << ">>";
+                        cin >> add_fName;
+                        cout << endl << "Input last name: \n" << ">>";
+                        cin >> add_lName;
+                        cout << endl << "Input cgpa: \n" << ">>";
+                        cin >> add_cgpa;
+                        cout << endl << "Input research score: \n" << ">>";
+                        cin >> add_researchScore;
+                        cout << endl << "Input province: \n" << ">>";
+                        string add_province;
+                        cin >> add_province;
+                        ++id;
+                        ++stu_count;
+                        domesticStudents[stu_count] = DomesticStudent(add_fName, add_lName, add_cgpa, add_researchScore,
+                                                                      add_province, id);
+                        students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
+                        cout << endl << "Creating student: \n";
+                        break;
                     }
-                    case 2:
-                    {
-                    cout << "Insert first and last name of applicant to delete\n"
-                    << " >>";
+                    case 2: {
+                        cout << "Insert first and last name of applicant to delete\n"
+                             << " >>";
 
                     }
-                    case 3:
-                    {
-                    cout << endl << "Input first name: \n" << ">>";
-                    cin >> add_fName;
-                    cout << endl << "Input last name: \n" << ">>";
-                    cin >> add_lName;
-                    cout << endl << "Input cgpa: \n" << ">>";
-                    cin >> add_cgpa;
-                    cout << endl << "Input research score: \n" << ">>";
-                    cin >> add_researchScore;
-                    cout << endl << "Input country: \n" << ">>";
-                    string add_country;
-                    cin >> add_country;
-                    cout << endl << "Input reading TOEFL score: \n" << ">>";
-                    int add_reading;
-                    cin >> add_reading;
-                    cout << endl << "Input listening TOEFL score: \n" << ">>";
-                    int add_listening;
-                    cin >> add_listening;
-                    cout << endl << "Input speaking TOEFL score: \n" << ">>";
-                    int add_speaking;
-                    cin >> add_speaking;
-                    cout << endl << "Input writing TOEFL score: \n" << ">>";
-                    int add_writing;
-                    cin >> add_writing;
-                    ++id;
-                    ++stu_count;
-                    internationalStudents[stu_count] = InternationalStudent(add_fName, add_lName, add_cgpa, add_researchScore, add_country, add_reading, add_listening, add_speaking, add_writing, id);
-                    students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
-                    cout << endl << "Creating student... \n";
-                    break;
+                    case 3: {
+                        cout << endl << "Input first name: \n" << ">>";
+                        cin >> add_fName;
+                        cout << endl << "Input last name: \n" << ">>";
+                        cin >> add_lName;
+                        cout << endl << "Input cgpa: \n" << ">>";
+                        cin >> add_cgpa;
+                        cout << endl << "Input research score: \n" << ">>";
+                        cin >> add_researchScore;
+                        cout << endl << "Input country: \n" << ">>";
+                        string add_country;
+                        cin >> add_country;
+                        cout << endl << "Input reading TOEFL score: \n" << ">>";
+                        int add_reading;
+                        cin >> add_reading;
+                        cout << endl << "Input listening TOEFL score: \n" << ">>";
+                        int add_listening;
+                        cin >> add_listening;
+                        cout << endl << "Input speaking TOEFL score: \n" << ">>";
+                        int add_speaking;
+                        cin >> add_speaking;
+                        cout << endl << "Input writing TOEFL score: \n" << ">>";
+                        int add_writing;
+                        cin >> add_writing;
+                        ++id;
+                        ++stu_count;
+                        internationalStudents[stu_count] = InternationalStudent(add_fName, add_lName, add_cgpa,
+                                                                                add_researchScore, add_country,
+                                                                                add_reading, add_listening,
+                                                                                add_speaking, add_writing, id);
+                        students[id] = Student(add_fName, add_lName, add_cgpa, add_researchScore, id);
+                        cout << endl << "Creating student... \n";
+                        break;
                     }
-                    case 4:
-                    {
-                    cout << "Insert first and last name of applicant to delete\n"
-                    << " >>";
+                    case 4: {
+                        cout << "Insert first and last name of applicant to delete\n"
+                             << " >>";
                     }
 
-                    
+
                 }
-            
-            break;
-            case 8:
-            break;
-            case 9:
-                cout << "Exiting program..." << endl;
+
+                break;
+                case 8:
+                    break;
+                case 9:
+                    cout << "Exiting program..." << endl;
                 exit(1);
-            break;
+                break;
 
-            default:
-                cin.clear();
+                default:
+                    cin.clear();
                 cin.ignore();
                 cout << endl << "Invalid option selected" << endl;
-            break;
+                break;
+            }
         }
-    }
 
-    return 0;
+        return 0;
+    }
 }

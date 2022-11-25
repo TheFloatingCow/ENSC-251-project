@@ -1,6 +1,6 @@
 CMakeFiles/FinalProject.dir/student.cpp.obj: \
- C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp \
- C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.hpp \
+ C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp \
+ C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\student.hpp \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
@@ -133,4 +133,4 @@ CMakeFiles/FinalProject.dir/student.cpp.obj: \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream.tcc \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
- C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.hpp
+ C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.hpp
