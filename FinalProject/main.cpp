@@ -9,6 +9,24 @@
 #include "list.hpp"
 #include <vector>
 
+
+// Case-insensitive string compare
+// Char compare
+bool compareChar(char& c1, char& c2) {
+    if (c1 == c2) {
+        return true;
+    }
+    else if (toupper(c1) == toupper(c2)) {
+        return true;
+    }
+    return false;
+}
+
+//bool stringCompare(string& str1, string& str2);
+bool stringCompare(string str1, string str2) {
+    return ((str1.size() == str2.size()) && std::equal(str1.begin(), str1.end(), str2.begin(), &compareChar) );
+}
+
 int main() {
 
     /** -------------------------Linked Lists------------------------- **/
@@ -20,6 +38,9 @@ int main() {
     int id = 0;
     //Total Student Array
     Student students[200];
+
+
+
 /** -------------------------DOMESTIC STUDENTS------------------------- **/
 
     // Domestic student array
@@ -63,19 +84,55 @@ int main() {
 
         //get firstName separated by comma
         getline(ss, firstName, ',');
+        if (firstName.empty()) {
+            cout << "Error: First name is empty" << endl;
+            exit(0);
+        }
 
         //get lastName separated by comma
         getline(ss, lastName, ',');
+        if (lastName.empty()) {
+            cout << "Error: Last name is empty" << endl;
+            exit(0);
+        }
 
         //get province separated by comma
         getline(ss, province, ',');
+        if (province.empty()) {
+            cout << "Error: Province is empty" << endl;
+            exit(0);
+        }
+        if (!stringCompare(province,  "nl") &&
+            !stringCompare(province,  "pe") &&
+            !stringCompare(province,  "ns") &&
+            !stringCompare(province,  "nb") &&
+            !stringCompare(province,  "qc") &&
+            !stringCompare(province,  "on") &&
+            !stringCompare(province,  "mb") &&
+            !stringCompare(province,  "sk") &&
+            !stringCompare(province,  "ab") &&
+            !stringCompare(province,  "bc") &&
+            !stringCompare(province,  "yt") &&
+            !stringCompare(province,  "nt") &&
+            !stringCompare(province,  "nu")) {
+            cout << "Error: Invalid province" << endl;
+            exit(0);
+        }
 
         //get cpga separated by comma, and convert string to float
         getline(ss, s_cgpa, ',');
+        if (s_cgpa.empty()) {
+            cout << "Error: CGPA is empty" << endl;
+            exit(0);
+        }
         cgpa = atof(s_cgpa.c_str());
 
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
+        if (s_researchScore.empty()) {
+            cout << "Error: Research score is empty" << endl;
+            exit(0);
+        }
         researchScore = atoi(s_researchScore.c_str());
 
         //add values to array
@@ -83,7 +140,7 @@ int main() {
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
 
         /** issue here I think **/
-        dlist1.head_insert(dlist1.getHead(), DomesticStudent(firstName, lastName, cgpa, researchScore, province, id));
+        //dlist1.head_insert(dlist1.getHead(), DomesticStudent(firstName, lastName, cgpa, researchScore, province, id));
 
         stu_count++;
         id++;
@@ -131,35 +188,71 @@ int main() {
 
         //get firstName separated by comma
         getline(ss, firstName, ',');
+        if (firstName.empty()) {
+            cout << "Error: First name is empty" << endl;
+            exit(0);
+        }
 
         //get lastName separated by comma
         getline(ss, lastName, ',');
+        if (lastName.empty()) {
+            cout << "Error: Last name is empty" << endl;
+            exit(0);
+        }
 
         //get province separated by comma
         getline(ss, country, ',');
+        if (country.empty()) {
+            cout << "Error: Country is empty" << endl;
+            exit(0);
+        }
 
         //get cpga separated by comma, and convert string to float
         getline(ss, s_cgpa, ',');
+        if (s_cgpa.empty()) {
+            cout << "Error: CGPA is empty" << endl;
+            exit(0);
+        }
         cgpa = atof(s_cgpa.c_str());
 
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
+        if (s_researchScore.empty()) {
+            cout << "Error: Research score is empty" << endl;
+            exit(0);
+        }
         researchScore = atoi(s_researchScore.c_str());
 
         //get reading separated by comma, and convert string to int
         getline(ss, s_reading, ',');
+        if (s_reading.empty()) {
+            cout << "Error: Reading score is empty" << endl;
+            exit(0);
+        }
         reading = atoi(s_reading.c_str());
 
         //get listening separated by comma, and convert string to int
         getline(ss, s_listening, ',');
+        if (s_listening.empty()) {
+            cout << "Error: Listening score is empty" << endl;
+            exit(0);
+        }
         listening = atoi(s_listening.c_str());
 
         //get speaking separated by comma, and convert string to int
         getline(ss, s_speaking, ',');
+        if (s_speaking.empty()) {
+            cout << "Error: Speaking score is empty" << endl;
+            exit(0);
+        }
         speaking = atoi(s_speaking.c_str());
 
         //get writing separated by comma, and convert string to int
         getline(ss, s_writing, ',');
+        if (s_writing.empty()) {
+            cout << "Error: Writing score is empty" << endl;
+            exit(0);
+        }
         writing = atoi(s_writing.c_str());
 
         // Add values to array
@@ -175,6 +268,7 @@ int main() {
     string add_lName;
     float add_cgpa;
     int add_researchScore;
+
     //close international file
     internationalFile.close();
 
