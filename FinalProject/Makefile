@@ -10,7 +10,7 @@ main: main.o student.o stu_sort.o toeflscore.o list.o
 	g++ -g -o main main.o student.o stu_sort.o toeflscore.o list.o
 
 #compile the main.cpp to main.o
-main.o: main.cpp student.hpp stu_sort.hpp
+main.o: main.cpp student.hpp stu_sort.hpp toeflscore.hpp list.hpp
 	g++ -g -c main.cpp
 
 #compile the student.cpp to student.o
@@ -25,10 +25,9 @@ stu_sort.o: stu_sort.cpp stu_sort.hpp
 toeflscore.o: toeflscore.cpp toeflscore.hpp
 	g++ -g -c toeflscore.cpp
 
-# compile list
 list.o: list.cpp list.hpp
 	g++ -g -c list.cpp
 
 #remove built files
 clean:
-	rm -rf main main.o student.o stu_sort.o toeflscore.o *~
+	rm -rf main main.o student.o stu_sort.o toeflscore.o list.o *~

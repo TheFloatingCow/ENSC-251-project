@@ -164,7 +164,7 @@ DomesticStudent::DomesticStudent(const DomesticStudent& s) {
 } //copy constructor
 
 // Getter
-string DomesticStudent::getProvince() {
+string DomesticStudent::getHome() {
     return this->province;
 }
 
@@ -223,7 +223,7 @@ InternationalStudent::InternationalStudent(const InternationalStudent& s) {
 } //copy constructor
 
 // Getter
-string InternationalStudent::getCountry() {
+string InternationalStudent::getHome() {
     return this->country;
 }
 
@@ -234,6 +234,14 @@ ToeflScore InternationalStudent::get_score(){
 // Setter
 void InternationalStudent::setCountry(const string& country) {
     this->country = country;
+}
+
+// Check if toefl requrements are met
+bool InternationalStudent::meetToeflRequirements(){
+    if(score.get_totalScore() >= 93 && score.get_reading() >= 20 && score.get_speaking() >= 20 && score.get_listening() >= 20 && score.get_writing() >= 20){
+        return true;
+    } 
+    return false;
 }
 
 // Friend function

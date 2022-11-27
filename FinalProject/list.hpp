@@ -11,14 +11,14 @@ template<class T>
 class Node {
 public:
     T data;
-    Node *link;
+    Node<T> *link;
 
-    // Constructors
+     // Constructors
     Node(); //default constructor
-    Node(const Node &node); //copy constructor
+    Node(const Node<T> &node); //copy constructor
     Node(Node<T> head, T student); //student constructor
 
-    /*
+    
     // Getters
     T getData() const;
     Node<T>* getLink() const;
@@ -26,22 +26,22 @@ public:
     // Setters
     void setData(T data);
     void setLink(Node<T>* newLink);
-     */
+     
 
     // Overload = operator
     Node<T> &operator=(const Node &node);
 
 };
 
+template <class T>
+using NodePtr = Node<T>*;
 
 // LinkedList class
 template<class T>
 class LinkedList {
-    typedef Node<T>* NodePtr;
-
 private:
-    NodePtr *head;
-    NodePtr *tail;
+    NodePtr<T> head;
+    NodePtr<T> tail;
 
 public:
     // Constructors
@@ -51,17 +51,29 @@ public:
     // Destructor
     ~LinkedList();
 
-    NodePtr getHead() const;
+    NodePtr<T> getHead() const;
+    NodePtr<T> getTail() const;
 
-    // Linked List operations domestic
-    void head_insert(NodePtr head, T student); //insert at head
-    void insert(NodePtr after_me, T student); //insert in ordered list
-    bool remove(NodePtr &head, string first, string last); //remove node
-    bool removeHead(NodePtr &head); //remove head node
-    bool removeTail(NodePtr &head); //remove tail node
-    NodePtr search(NodePtr head, int target); //search node
-    NodePtr searchCGPA(NodePtr head, float target); //search by CGPA
+    void setHead(NodePtr<T> new_head);
+    void setTail(NodePtr<T> new_tail);
 
+    // Update Tail
+    NodePtr<T> updateTail(NodePtr<T> current_head);
+    // Comprare Nodes
+    int CompareNodes(NodePtr<T> first, NodePtr<T> second);
+
+    // Linked List operations 
+    void insert(T student); //insert in ordered list
+    bool remove(string first, string last); //remove node
+
+    // Domestic
+    void searchCGPA(float CGPA); 
+    void searchApplication(int id);
+    void searchResearch(int score);
+    void searchName(string first, string last);
+
+    bool removeHead();
+    bool removeTail();
     // Linked List operations international
     //void head_insert_int(NodePtr& head, T student); //insert at head
     //void insert_int(NodePtr after_me, T student); //insert in ordered list
@@ -71,8 +83,8 @@ public:
     //NodePtr search_int(NodePtr head, int target); //search node
 
     // Print functions
-    void printList(NodePtr head);
-    void printNode(NodePtr here);
+    void printList(NodePtr<T> head);
+    void printNode(NodePtr<T> here);
 
 };
 

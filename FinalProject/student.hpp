@@ -18,7 +18,7 @@ protected:
     int researchScore;
     int id;
 public:
-
+    
 
     // Constructors
     Student(); //default constructor
@@ -40,6 +40,7 @@ public:
     void setResearchScore(const int& researchScore);
     void setId(const int& id);
 
+    // Set functions
 
     // Friend functions
     friend int compareCGPA(const Student& stu1, const Student& stu2);
@@ -54,7 +55,7 @@ protected:
     // Variable
     string province;
 public:
-
+    
 
     // Constructor
     DomesticStudent(); //default constructor
@@ -63,7 +64,7 @@ public:
     DomesticStudent(const DomesticStudent& s); //copy constructor
 
     // Getter
-    string getProvince();
+    string getHome();
 
     // Setter
     void setProvince(const string& province);
@@ -78,7 +79,7 @@ protected:
     // Variables
     string country;
     // int reading, listening, speaking, writing, toefl;
-    // float ToeflScore;
+    // float ToeflScore; 
 
     ToeflScore score;
 public:
@@ -90,11 +91,14 @@ public:
     InternationalStudent(const InternationalStudent& s); //copy constructor
 
     // Getter
-    string getCountry();
+    string getHome();
     ToeflScore get_score();
 
     // Setter
     void setCountry(const string& country);
+
+    // Meet Toefl Requirements
+    bool meetToeflRequirements();
 
     // Overload operator
     friend ostream& operator <<(ostream& out, const InternationalStudent& s);

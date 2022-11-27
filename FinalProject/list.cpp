@@ -5,7 +5,9 @@
 using namespace std;
 
 
-
+// Helper Function Declarations
+template <class T>
+bool compareName(NodePtr<T> node, string first, string last);
 /** ------------------Node------------------ **/
 
 // Constructors
@@ -39,10 +41,10 @@ Node<T>::Node(Node<T> head, T student) {
     data = student;
 } //student constructor
 
-/*
+
 // Get data
 template<class T>
-T Node<T>::getData() {
+T Node<T>::getData() const{
     return data;
 }
 
@@ -63,7 +65,8 @@ template<class T>
 void Node<T>::setLink(Node<T>* newLink) {
     link = newLink;
 }
- */
+ 
+
 
 // Overload = operator (calls copy constructor)
 template<class T>
@@ -80,7 +83,6 @@ Node<T> &Node<T>::operator=(const Node<T> &node) {
     return *this;
 }
 
-
 /** ------------------LinkedList------------------ **/
 
 // Constructors
@@ -94,113 +96,237 @@ template<class T>
 LinkedList<T>::LinkedList(const LinkedList &list) {
     head = nullptr;
     tail = nullptr;
+
+    NodePtr<T> temp;
+    for(temp = list.head; temp != nullptr; temp = temp->link){
+        insert(temp->data);
+    }
 } //copy constructor
 
 // Destructor
 template<class T>
 LinkedList<T>::~LinkedList() {
+    NodePtr<T> temp1;
+    NodePtr<T> temp2;
 
+    temp1 = head;
+    while(temp1 != nullptr){
+        temp2 = temp1;
+        temp1 = temp1->link;
+
+        temp2->link = nullptr;
+        delete temp2;
+    }
 }
 
 // Get head pointer
 template<class T>
-typename LinkedList<T>::NodePtr LinkedList<T>::getHead() const{
-    return *head;
+NodePtr<T> LinkedList<T>::getHead() const{
+    return head;
 }
 
-// Linked List operators
-// insert at head
+// Get tail pointer
 template<class T>
-void LinkedList<T>::head_insert(NodePtr head, T student) {
-    cout << "running head_insert..." << endl;
-    NodePtr temp_ptr;
-    temp_ptr = new Node<T>;
-
-    temp_ptr->data = student;
-    cout << "temp data is student" << endl;
-
-    temp_ptr->link = head;
-    cout << "temp link is head" << endl;
-
-    head = temp_ptr;
-    cout << "completed head_insert" << endl;
+NodePtr<T> LinkedList<T>::getTail() const{
+    return tail;
 }
 
-// insert in organized list
+
+// set head pointer
 template<class T>
-void LinkedList<T>::insert(NodePtr after_me, T student) {
-    NodePtr temp_ptr;
-    temp_ptr = new Node<T>;
-
-    temp_ptr->data = student;
-
-    temp_ptr->link = after_me->link;
-    after_me->link = temp_ptr;
+void LinkedList<T>::setHead(NodePtr<T> new_head){
+    if(new_head == nullptr){
+        std::cout << "ERROR, HEAD CANNOT BE NULLPTR\n";
+        return;
+    }
+    new_head->link = head;
+    head = new_head;
 }
 
-/*
-// insert at head International
+// set tail pointer
 template<class T>
-void LinkedList<T>::head_insert_int(NodePtr& head, T student) {
-    Node<T>* temp_ptr;// = new Node<T>(student);
-    temp_ptr = new Node<T>;
-
-    temp_ptr->data = student;
-    cout << "temp data is student" << endl;
-
-    temp_ptr->link = head;
-    cout << "temp link is head" << endl;
-
-    head = temp_ptr;
-    cout << "completed head_insert" << endl;
+void LinkedList<T>::setTail(NodePtr<T> new_tail){
+    NodePtr<T> temp = head;
+    while(temp->link != nullptr){
+        temp = temp->link;
+    }
+    temp->link = new_tail;
 }
 
-// insert in organized list International
-template<class T>
-void LinkedList<T>::insert_int(NodePtr after_me, T student) {
-    NodePtr temp_ptr;
-    temp_ptr = new Node<T>;
-
-    temp_ptr->data = student;
-
-    temp_ptr->link = after_me->link;
-    after_me->link = temp_ptr;
-}
-*/
-
-// remove node with student ID
-template<class T>
-bool LinkedList<T>::remove(NodePtr &head, string first, string last) {
-    
-
-    while(head != nullptr)
-    {
-        if (head == nullptr) {
-        cout << "Error: Empty list" << endl;
-        return false;
-        }
-
-        if ((head->data.getFirstName() == first) && (head->data.getLastName() == last)){
-            NodePtr discard = head;
-            head = head->link;
-            delete discard;
-            cout << "Applicant " << discard->data.getFirstName() << " " << discard->data.getLastName() << " has been removed" << endl;
-            return true;
-        }
-        head = head->link;
+// Update Tail
+template <class T>
+NodePtr<T> LinkedList<T>::updateTail(NodePtr<T> current_head){
+    NodePtr<T> temp = current_head;
+    while(temp->link != nullptr){
+        temp = temp->link;
     }
 
-    return true;
+    return temp;
+}
+
+// Compare Nodes
+template <class T>
+int LinkedList<T>::CompareNodes(NodePtr<T> first, NodePtr<T> second){
+    int output = 0;
+    if(first->data.getResearchScore() > second->data.getResearchScore()){
+        output = 1;
+    } else if(first->data.getResearchScore() == second->data.getResearchScore()){
+        // check cgpa
+        if(first->data.getCGPA() > second->data.getCGPA()){
+            output = 1;
+        } else if(first->data.getCGPA() == second->data.getCGPA()){
+            // check province or country
+            if(first->data.getHome() < second->data.getHome()){
+                output = 1;
+            }
+        }
+    }
+
+    return output;
+}
+
+template <class T>
+void LinkedList<T>::insert(T student){ //insert in ordered list
+    try
+    {
+        // new pointer
+        NodePtr<T> new_student = new Node<T>;
+        new_student->data = student;
+
+        // if linked list is empty node = head
+        if(head == nullptr){
+            std::cout << "HEAD INSERTED\n";
+            head = new_student;
+        } else {
+            // insert in overall sorted order
+            // research, cgpa, (province, country)
+            NodePtr<T> current = head;
+
+            while(current->link != nullptr && (CompareNodes(current->link,new_student) == 1)){
+                current = current->link;
+            }
+            
+            // set new head or insert into list
+            if(CompareNodes(new_student,head)){
+                new_student->link = head;
+                head = new_student;
+            } else {
+                new_student->link = current->link;
+                current->link = new_student;
+            }
+        }
+
+        // Update tail
+        tail = updateTail(head);
+    }
+    catch(const std::bad_alloc & exception){
+        std::cout << "bad alloc: " << exception.what();
+    }
+}
+
+template <class T>
+bool LinkedList<T>::remove(string first, string last){
+    
+    NodePtr<T> current = head;
+    NodePtr<T> prev = nullptr;
+
+    // Delete Head 
+    if(current != nullptr && (compareName(current,first,last))){
+        head = head->link;
+        delete current;
+        std::cout << "Delete\n";
+        return true;
+    } else {
+        while(current != nullptr && !(compareName(current,first,last))){
+            prev = current;
+            current = current->link;
+        }
+
+        //key not in list
+        if(current == nullptr){
+            std::cout << "Not in Linked List\n";
+            return false;
+        }
+
+        // found current
+        // unlink
+        prev->link = current->link;
+        delete current;
+        std::cout << "Deleted\n";
+
+        // update tail
+        tail = updateTail(head);
+        return true;
+    }
+    return false;
+}
+
+template <class T>
+void LinkedList<T>::searchCGPA(float CGPA){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getCGPA() == CGPA){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Matching Students\n";
+    }
+}
+
+template <class T>
+void LinkedList<T>::searchApplication(int id){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getId() == id){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Matching Students\n";
+    }
+}
+
+template <class T>
+void LinkedList<T>::searchResearch(int score){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getResearchScore() == score){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Matching Students\n";
+    }
+}
+
+template <class T>
+void LinkedList<T>::searchName(string first, string last){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getFirstName() == first && current->data.getLastName() == last){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Matching Students\n";
+    }
 }
 
 template<class T>
-bool LinkedList<T>::removeHead(NodePtr &head) {
-    
-
+bool LinkedList<T>::removeHead() {
     //Traverse until tail where next pointer is null
     if(head != NULL)
     {
-        NodePtr discard = head;
+        NodePtr<T> discard = head;
         head = head->link;
         delete discard;
         cout << "Top listed applicant has been deleted" << endl;
@@ -214,76 +340,40 @@ bool LinkedList<T>::removeHead(NodePtr &head) {
 }
 
 template<class T>
-bool LinkedList<T>::removeTail(NodePtr &head) {
-    
+bool LinkedList<T>::removeTail() {
 
-    //Traverse until tail where next pointer is null
-    while(head != nullptr)
-    {
-        if (head->link == NULL) {
+    if(head == nullptr){
+        return false;
+    }
+    // head is tail
+    if(head->link == nullptr){
         delete head;
-        cout << "Bottom listed applicant deleted" << endl;
         return true;
-        }else
-        {
-        head = head->link;
-        }
+    }
+    //Traverse until tail where next pointer is null
+    NodePtr<T> temp = head;
+    while(temp->link->link != nullptr){
+        temp = temp->link;
     }
 
-
+    delete temp->link;
+    temp->link = nullptr;
+    std::cout<<"Bottom listed applicant deleted\n";
     return true;
-}
 
-// search for node using student's ID
-template<class T>
-typename LinkedList<T>::NodePtr LinkedList<T>::search(NodePtr head, int target) {
-    NodePtr here = head;
 
-    if (here == nullptr) {
-        return nullptr;
-    }
-    else {
-        while (here->data.getId() != target && here->link != nullptr) {
-            here = here->link;
-        }
-        if (here->data.getId() == target) {
-            return here;
-        }
-        else {
-            return nullptr;
-        }
-    }
 }
 
 template<class T>
-typename LinkedList<T>::NodePtr LinkedList<T>::searchCGPA(NodePtr head, float target) {
-    NodePtr here = head;
-
-    if (here == nullptr) {
-        return nullptr;
-    }
-    else {
-        while (here->data.getId() != target && here->link != nullptr) {
-            here = here->link;
-        }
-        if (here->data.getId() == target) {
-            return here;
-        }
-        else {
-            return nullptr;
-        }
-    }
-}
-
-template<class T>
-void LinkedList<T>::printList(NodePtr head)
+void LinkedList<T>::printList(NodePtr<T> head)
 {
-    NodePtr here = head;
+    NodePtr<T> here = head;
     while(here != nullptr)
     {
-        cout << here->data.getId() << " "
+         cout //<< here->data.getId() << " "
         << here->data.getFirstName() << " "
         << here->data.getLastName() << " "
+        << here->data.getHome() << " "
         << here->data.getCGPA() << " "
         << here->data.getResearchScore() << " " << endl;
         here = here->link;
@@ -291,14 +381,25 @@ void LinkedList<T>::printList(NodePtr head)
 }
 
 template<class T>
-void LinkedList<T>::printNode(NodePtr here)
+void LinkedList<T>::printNode(NodePtr<T> here)
 {
-        cout << here->data.getId() << " "
+        cout //<< here->data.getId() << " "
         << here->data.getFirstName() << " "
         << here->data.getLastName() << " "
         << here->data.getCGPA() << " "
         << here->data.getResearchScore() << " " << endl;
         here = here->link;
+}
+
+// Helper Functions 
+template <class T>
+bool compareName(NodePtr<T> node, string first, string last){
+    if(node->getData().getFirstName() == first){
+        if(node->getData().getLastName() == last){
+            return true;
+        }
+    }
+    return false;
 }
 
 

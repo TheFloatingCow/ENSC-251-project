@@ -18,7 +18,7 @@ void mergeSort_international(InternationalStudent s[], int low, int high, string
 
 void sortDomestic(DomesticStudent s[], string sorted, int size){
     mergeSort_domestic(s,0,size-1,sorted);
-}
+} 
 
 /*
 Takes in International Students and a string to specify what order sort
@@ -34,8 +34,8 @@ void sortInternational(InternationalStudent s[], string sorted, int size){
             }
         }
         InternationalStudent* temps = &i_students[0];
-
-
+        
+        
         mergeSort_international(temps,0,i_students.size()-1,sorted);
 
         // print
@@ -45,7 +45,7 @@ void sortInternational(InternationalStudent s[], string sorted, int size){
     } else {
         mergeSort_international(s,0,size-1,sorted);
     }
-}
+} 
 
 
 // Declarations of Helper Functions
@@ -131,7 +131,7 @@ void merge_d(DomesticStudent s[], int low, int high, int mid, string sorted){
                     j++;
                 } else {
                     // same cgpa sort by province
-                    if(s[i].getProvince() < s[j].getProvince()){
+                    if(s[i].getHome() < s[j].getHome()){
                         temp[k] = s[i];
                         k++;
                         i++;
@@ -141,7 +141,7 @@ void merge_d(DomesticStudent s[], int low, int high, int mid, string sorted){
                         j++;
                     }
                 }
-            }
+            }   
         }
     }
 
@@ -169,10 +169,10 @@ void mergeSort_domestic(DomesticStudent s[], int low, int high, string sorted){
         mergeSort_domestic(s,low, mid,sorted);
         mergeSort_domestic(s,mid+1,high,sorted);
 
-
+        
         merge_d(s,low,high,mid,sorted);
-
-    }
+        
+    }   
     return;
 }
 
@@ -267,7 +267,7 @@ void merge_i(InternationalStudent s[], int low, int high, int mid, string sorted
                     j++;
                 } else {
                     // same cgpa sort by province
-                    if(s[i].getCountry() < s[j].getCountry()){
+                    if(s[i].getHome() < s[j].getHome()){
                         temp[k] = s[i];
                         k++;
                         i++;
@@ -277,7 +277,7 @@ void merge_i(InternationalStudent s[], int low, int high, int mid, string sorted
                         j++;
                     }
                 }
-            }
+            }  
         }
     }
 
@@ -305,10 +305,10 @@ void mergeSort_international(InternationalStudent s[], int low, int high, string
         mergeSort_international(s,low, mid,sorted);
         mergeSort_international(s,mid+1,high,sorted);
 
-
+        
         merge_i(s,low,high,mid,sorted);
-
-    }
+        
+    }   
     return;
 }
 
