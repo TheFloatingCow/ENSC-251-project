@@ -194,6 +194,26 @@ bool LinkedList<T>::remove(NodePtr &head, string first, string last) {
 }
 
 template<class T>
+bool LinkedList<T>::removeHead(NodePtr &head) {
+    
+
+    //Traverse until tail where next pointer is null
+    if(head != NULL)
+    {
+        NodePtr discard = head;
+        head = head->next;
+        delete discard;
+        cout << "Top listed applicant has been deleted" << endl;
+        return true;
+    }
+    else{
+        cout <<"No applicant to delete" << endl;
+        return false;
+    }
+
+}
+
+template<class T>
 bool LinkedList<T>::removeTail(NodePtr &head) {
     
 
