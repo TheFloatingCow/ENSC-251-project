@@ -320,10 +320,9 @@ void LinkedList<T>::searchName(string first, string last){
         std::cout << "No Matching Students\n";
     }
 }
-
 template<class T>
-bool LinkedList<T>::removeHead() {
-    //Traverse until tail where next pointer is null
+bool LinkedList<T>::removeHeadTail() {
+    //Start at head position
     if(head != NULL)
     {
         NodePtr<T> discard = head;
@@ -336,11 +335,6 @@ bool LinkedList<T>::removeHead() {
         cout <<"No applicant to delete" << endl;
         return false;
     }
-
-}
-
-template<class T>
-bool LinkedList<T>::removeTail() {
 
     if(head == nullptr){
         return false;
@@ -355,12 +349,11 @@ bool LinkedList<T>::removeTail() {
     while(temp->link->link != nullptr){
         temp = temp->link;
     }
-
+    //Delete once reached the bottom of list
     delete temp->link;
     temp->link = nullptr;
     std::cout<<"Bottom listed applicant deleted\n";
     return true;
-
 
 }
 
