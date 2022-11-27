@@ -72,8 +72,7 @@ public:
     void searchResearch(int score);
     void searchName(string first, string last);
 
-    bool removeHead();
-    bool removeTail();
+    bool removeHeadTail();
     // Linked List operations international
     //void head_insert_int(NodePtr& head, T student); //insert at head
     //void insert_int(NodePtr after_me, T student); //insert in ordered list
