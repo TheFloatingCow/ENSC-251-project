@@ -442,8 +442,7 @@ int main() {
                         break;
                     }
                     case 7: {
-                        domestic_list.removeHead();
-                        domestic_list.removeTail();
+                        domestic_list.removeHeadTail();
                         break;
                     }
                     case 8:
@@ -500,8 +499,7 @@ int main() {
                     break;
                     }
                     case 7:{
-                        international_list.removeHead();
-                        international_list.removeTail();
+                        international_list.removeHeadTail();
                         break;
                     }
                     case 8: {
