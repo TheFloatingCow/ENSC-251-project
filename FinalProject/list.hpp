@@ -71,6 +71,9 @@ public:
     void searchApplication(int id);
     void searchResearch(int score);
     void searchName(string first, string last);
+    
+    void thresholdCGPA(float CGPA);
+    void thresholdResearch(int score);
 
     bool removeHeadTail();
     // Linked List operations international
