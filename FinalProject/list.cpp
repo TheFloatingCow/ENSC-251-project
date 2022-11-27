@@ -320,6 +320,37 @@ void LinkedList<T>::searchName(string first, string last){
         std::cout << "No Matching Students\n";
     }
 }
+
+template <class T>
+void LinkedList<T>::thresholdCGPA(float CGPA){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getCGPA() >= CGPA){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Students Above CGPA " << CGPA << endl;
+    }
+}
+
+template <class T>
+void LinkedList<T>::thresholdResearch(int score){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getResearchScore() >= score){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Students Above Research Score " << score << endl;;
+    }
+}
+
 template<class T>
 bool LinkedList<T>::removeHeadTail() {
     //Start at head position
