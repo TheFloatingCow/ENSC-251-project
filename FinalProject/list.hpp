@@ -57,6 +57,7 @@ public:
     void head_insert(NodePtr head, T student); //insert at head
     void insert(NodePtr after_me, T student); //insert in ordered list
     bool remove(NodePtr &head, string first, string last); //remove node
+    bool removeHead(NodePtr &head); //remove head node
     bool removeTail(NodePtr &head); //remove tail node
     NodePtr search(NodePtr head, int target); //search node
     NodePtr searchCGPA(NodePtr head, float target); //search by CGPA
