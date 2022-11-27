@@ -283,7 +283,8 @@ int main() {
 
         }
         else {
-            cout << "Error in line " << stu_count + 2 << ": There has been a typo. Autocorrecting to " << typoCheck(country, validCountries) << endl;
+            country = typoCheck(country, validCountries);
+            cout << "Error in line " << stu_count + 2 << ": There has been a typo. Autocorrecting to " << country << endl;
         }
 
         //get cpga separated by comma, and convert string to float
