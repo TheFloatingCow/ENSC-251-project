@@ -201,7 +201,7 @@ bool LinkedList<T>::removeHead(NodePtr &head) {
     if(head != NULL)
     {
         NodePtr discard = head;
-        head = head->next;
+        head = head->link;
         delete discard;
         cout << "Top listed applicant has been deleted" << endl;
         return true;
