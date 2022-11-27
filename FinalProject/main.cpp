@@ -4,15 +4,22 @@
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
+#include <string> //strings
+#include <vector>
 #include "student.hpp"
 #include "stu_sort.hpp"
 #include "list.hpp"
-#include <vector>
 
+
+/** ------------------------Error checking------------------------ **/
+
+string validCountries[5] = {"Canada", "China", "India", "Iran", "Korea"};
+string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"};
 
 // Case-insensitive string compare
-// Char compare
+// Compare char
 bool compareChar(char& c1, char& c2) {
+    // Compare chars then compare capitalized chars
     if (c1 == c2) {
         return true;
     }
@@ -22,14 +29,82 @@ bool compareChar(char& c1, char& c2) {
     return false;
 }
 
-//bool stringCompare(string& str1, string& str2);
-bool stringCompare(string str1, string str2) {
-    return ((str1.size() == str2.size()) && std::equal(str1.begin(), str1.end(), str2.begin(), &compareChar) );
+// Compare 2 strings
+bool stringCompare(string str1, string arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        string str2 = arr[i];
+        if ((str1.size() == str2.size()) && equal(str1.begin(), str1.end(), str2.begin(), &compareChar)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Check for typos, false = no typo (could still be wrong word)
+// Step 1: Sort words (using bubble sort) alphabetically and compare
+// Step 2: Run through non-sorted strings and check how many letters are out of place
+// If 2 letters are out of place, they are swapped
+string typoCheck(string str1, string arr[]) {
+    for (int index = 0; index < (*arr).length() - 1; index++) {
+
+        string str2 = arr[index];
+
+        // Check if lengths are equal
+        if (str1.length() != str2.length()) {
+            continue;
+        }
+
+        // Temp variables
+        string sort1 = str1;
+        string sort2 = str2;
+        char temp1;
+        char temp2;
+
+        // Bubble sort alphabetical order
+        for (int i = 0; i < sort1.length(); i++) {
+            for (int j = 0; j < sort1.length() - 1; j++) {
+
+                // str1
+                if (toupper(sort1[j]) > toupper(sort1[j + 1])) {
+                    temp1 = sort1[j];
+                    sort1[j] = sort1[j + 1];
+                    sort1[j + 1] = temp1;
+                }
+
+                // str2
+                if (toupper(sort2[j]) > toupper(sort2[j + 1])) {
+                    temp2 = sort2[j];
+                    sort2[j] = sort2[j + 1];
+                    sort2[j + 1] = temp2;
+                }
+            }
+        }
+
+        // Check if words are the same
+        bool cont = false;
+        for (int i = 0; i < sort1.length(); i++) {
+            if (toupper(sort1[i]) != toupper(sort2[i])) {
+                cont = true;
+            }
+        }
+        if (cont) {
+            continue;
+        }
+
+
+        // Check for error
+        for (int i = 0; i < sort1.length(); i++) {
+            if (toupper(str1[i]) != toupper(str2[i])) {
+                return str2;
+            }
+        }
+    }
+    return "";
 }
 
 int main() {
 
-    /** -------------------------Linked Lists------------------------- **/
+/** -------------------------Linked Lists------------------------- **/
 
     LinkedList<DomesticStudent> dlist1;
     LinkedList<InternationalStudent> ilist1;
@@ -38,7 +113,6 @@ int main() {
     int id = 0;
     //Total Student Array
     Student students[200];
-
 
 
 /** -------------------------DOMESTIC STUDENTS------------------------- **/
@@ -85,55 +159,52 @@ int main() {
         //get firstName separated by comma
         getline(ss, firstName, ',');
         if (firstName.empty()) {
-            cout << "Error: First name is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": First name is empty" << endl;
+            exit(1);
         }
 
         //get lastName separated by comma
         getline(ss, lastName, ',');
         if (lastName.empty()) {
-            cout << "Error: Last name is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Last name is empty" << endl;
+            exit(1);
         }
 
         //get province separated by comma
         getline(ss, province, ',');
         if (province.empty()) {
-            cout << "Error: Province is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Province is empty" << endl;
+            exit(1);
         }
-        if (!stringCompare(province,  "nl") &&
-            !stringCompare(province,  "pe") &&
-            !stringCompare(province,  "ns") &&
-            !stringCompare(province,  "nb") &&
-            !stringCompare(province,  "qc") &&
-            !stringCompare(province,  "on") &&
-            !stringCompare(province,  "mb") &&
-            !stringCompare(province,  "sk") &&
-            !stringCompare(province,  "ab") &&
-            !stringCompare(province,  "bc") &&
-            !stringCompare(province,  "yt") &&
-            !stringCompare(province,  "nt") &&
-            !stringCompare(province,  "nu")) {
-            cout << "Error: Invalid province" << endl;
-            exit(0);
+        if (!stringCompare(province,  validProvinces, sizeof(validProvinces)/sizeof(validProvinces[0]))) {
+            cout << "Error in line " << stu_count + 2 << ": Invalid province" << endl;
+            exit(1);
         }
 
         //get cpga separated by comma, and convert string to float
         getline(ss, s_cgpa, ',');
         if (s_cgpa.empty()) {
-            cout << "Error: CGPA is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": CGPA is empty" << endl;
+            exit(1);
         }
+        if (cgpa > 100 || cgpa < 0) {
+            cout << "Error in line " << stu_count + 2 << ": CGPA is invalid" << endl;
+            exit(1);
+        }
+
         cgpa = atof(s_cgpa.c_str());
 
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
         if (s_researchScore.empty()) {
-            cout << "Error: Research score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Research score is empty" << endl;
+            exit(1);
         }
         researchScore = atoi(s_researchScore.c_str());
+        if (researchScore > 100 || researchScore < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Research score is invalid" << endl;
+            exit(1);
+        }
 
         //add values to array
         domesticStudents[stu_count] = DomesticStudent(firstName, lastName, cgpa, researchScore, province, id);
@@ -161,7 +232,6 @@ int main() {
     // International student arrays
     InternationalStudent internationalStudents[100];
 
-
     string line2;
     ifstream internationalFile("international-stu.txt");
     if (!internationalFile.is_open()) {
@@ -183,77 +253,110 @@ int main() {
         string firstName, lastName, country, s_cgpa, s_researchScore, s_reading, s_listening, s_speaking, s_writing;
         float cgpa;
         int researchScore, reading, listening, speaking, writing;
-        int TOEFL, TOEFL1, TOEFL2, TOEFL3, TOEFL4, TOEFL5;
 
 
         //get firstName separated by comma
         getline(ss, firstName, ',');
         if (firstName.empty()) {
-            cout << "Error: First name is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": First name is empty" << endl;
+            exit(1);
         }
 
         //get lastName separated by comma
         getline(ss, lastName, ',');
         if (lastName.empty()) {
-            cout << "Error: Last name is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Last name is empty" << endl;
+            exit(1);
         }
 
         //get province separated by comma
         getline(ss, country, ',');
         if (country.empty()) {
-            cout << "Error: Country is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Country is empty" << endl;
+            exit(1);
+        }
+        if (typoCheck(country, validCountries).empty()) {
+            if (!stringCompare(country, validCountries, sizeof(validCountries)/sizeof(validCountries[0]))) {
+                cout << "Error in line " << stu_count + 2 << ": Invalid country" << endl;
+                exit(1);
+            }
+
+        }
+        else {
+            cout << "Error in line " << stu_count + 2 << ": There has been a typo. Autocorrecting to " << typoCheck(country, validCountries) << endl;
         }
 
         //get cpga separated by comma, and convert string to float
         getline(ss, s_cgpa, ',');
         if (s_cgpa.empty()) {
-            cout << "Error: CGPA is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": CGPA is empty" << endl;
+            exit(1);
         }
         cgpa = atof(s_cgpa.c_str());
+        if (cgpa > 100 || cgpa < 0) {
+            cout << "Error in line " << stu_count + 2 << ": CGPA is invalid" << endl;
+            exit(1);
+        }
 
         //get researchScore separated by comma, and convert it to int
         getline(ss, s_researchScore, ',');
         if (s_researchScore.empty()) {
-            cout << "Error: Research score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Research score is empty" << endl;
+            exit(1);
         }
         researchScore = atoi(s_researchScore.c_str());
+        if (researchScore > 100 || researchScore < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Research score is invalid" << endl;
+            exit(1);
+        }
 
         //get reading separated by comma, and convert string to int
         getline(ss, s_reading, ',');
         if (s_reading.empty()) {
-            cout << "Error: Reading score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Reading score is empty" << endl;
+            exit(1);
         }
         reading = atoi(s_reading.c_str());
+        if (reading > 100 || reading < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Reading score is invalid" << endl;
+            exit(1);
+        }
 
         //get listening separated by comma, and convert string to int
         getline(ss, s_listening, ',');
         if (s_listening.empty()) {
-            cout << "Error: Listening score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Listening score is empty" << endl;
+            exit(1);
         }
         listening = atoi(s_listening.c_str());
+        if (listening > 100 || listening < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Listening score is invalid" << endl;
+            exit(1);
+        }
 
         //get speaking separated by comma, and convert string to int
         getline(ss, s_speaking, ',');
         if (s_speaking.empty()) {
-            cout << "Error: Speaking score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Speaking score is empty" << endl;
+            exit(1);
         }
         speaking = atoi(s_speaking.c_str());
+        if (speaking > 100 || speaking < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Speaking score is invalid" << endl;
+            exit(1);
+        }
 
         //get writing separated by comma, and convert string to int
         getline(ss, s_writing, ',');
         if (s_writing.empty()) {
-            cout << "Error: Writing score is empty" << endl;
-            exit(0);
+            cout << "Error in line " << stu_count + 2 << ": Writing score is empty" << endl;
+            exit(1);
         }
         writing = atoi(s_writing.c_str());
+        if (writing > 100 || writing < 0) {
+            cout << "Error in line " << stu_count + 2 << ": Writing score is invalid" << endl;
+            exit(1);
+        }
 
         // Add values to array
         internationalStudents[stu_count] = InternationalStudent(firstName, lastName, cgpa, researchScore, country,
@@ -278,7 +381,7 @@ int main() {
 
 
 
-    /** -------------------------Main function loop------------------------- **/
+/** -------------------------Main function loop------------------------- **/
 
     while (true) {
         int input;
@@ -682,13 +785,13 @@ int main() {
                     break;
                 case 9:
                     cout << "Exiting program..." << endl;
-                exit(1);
+                    exit(1);
                 break;
 
                 default:
                     cin.clear();
-                cin.ignore();
-                cout << endl << "Invalid option selected" << endl;
+                    cin.ignore();
+                    cout << endl << "Invalid option selected" << endl;
                 break;
             }
         }
