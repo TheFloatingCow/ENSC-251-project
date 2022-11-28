@@ -6,20 +6,11 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 #include "validCheck.hpp"
-#include <vector>
 #include "list.hpp"
 
-// Helper Functions
-int validInputId();
-float validInputCGPA();
-int validInputResearch();
-string validFirstName();
-string validLastName();
-string validInputProvince();
-string validInputCountry();
-int validToefl(string type);
 
-/** ------------------------Error checking------------------------ **/
+
+    /** ------------------------Error checking------------------------ **/
 
 string validCountries[5] = {"Canada", "China", "India", "Iran", "Korea"};
 string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"};
@@ -32,6 +23,9 @@ int main() {
 
     LinkedList<DomesticStudent> domestic_list;
     LinkedList<InternationalStudent> international_list;
+
+    LinkedList<DomesticStudent> test_domestic_list;
+    LinkedList<InternationalStudent> test_international_list;
 
     int id = 0;
     //Total Student Array
@@ -132,6 +126,7 @@ int main() {
         students[id] = Student(firstName, lastName, cgpa, researchScore, id);
 
         domestic_list.insert(new_student);
+        test_domestic_list.insert(new_student);
 
         stu_count++;
         id++;
@@ -160,16 +155,6 @@ int main() {
     //Read the rest of the lines in international-stu.txt
     stu_count = 0;
     while (getline(internationalFile, line)) {
-
-        /*
-        read a line from the file
-        try
-          add the line to the list
-          catch
-          exit
-
-*/
-
 
         istringstream ss(line);
 
@@ -204,7 +189,6 @@ int main() {
                 cout << "Error in line " << stu_count + 2 << ": Invalid country" << endl;
                 exit(1);
             }
-
         }
         else {
             country = typoCheck(country, validCountries);
@@ -242,7 +226,7 @@ int main() {
             exit(1);
         }
         reading = atoi(s_reading.c_str());
-        if (reading > 100 || reading < 0) {
+        if (reading > 30 || reading < 0) {
             cout << "Error in line " << stu_count + 2 << ": Reading score is invalid" << endl;
             exit(1);
         }
@@ -254,7 +238,7 @@ int main() {
             exit(1);
         }
         listening = atoi(s_listening.c_str());
-        if (listening > 100 || listening < 0) {
+        if (listening > 30 || listening < 0) {
             cout << "Error in line " << stu_count + 2 << ": Listening score is invalid" << endl;
             exit(1);
         }
@@ -266,7 +250,7 @@ int main() {
             exit(1);
         }
         speaking = atoi(s_speaking.c_str());
-        if (speaking > 100 || speaking < 0) {
+        if (speaking > 30 || speaking < 0) {
             cout << "Error in line " << stu_count + 2 << ": Speaking score is invalid" << endl;
             exit(1);
         }
@@ -278,7 +262,7 @@ int main() {
             exit(1);
         }
         writing = atoi(s_writing.c_str());
-        if (writing > 100 || writing < 0) {
+        if (writing > 30 || writing < 0) {
             cout << "Error in line " << stu_count + 2 << ": Writing score is invalid" << endl;
             exit(1);
         }
@@ -292,6 +276,7 @@ int main() {
                 cout << "Error inserting student in line " << stu_count + 2 << endl;
                 exit(1);
             }
+            test_international_list.insert(student);
         }
 
         stu_count++;
@@ -318,33 +303,33 @@ int main() {
     //InternationalStudent) singly linked list in order
 
     // Normal case (should return true)
-    DomesticStudent domesticStudent1 = DomesticStudent("Geoffrey", "Smith", 4.0, 63, "BC", 518);
-    InternationalStudent internationalStudent1 = InternationalStudent("Josephine", "McJosephine", 1.2, 99, "India", 98, 99, 64, 97, 9999);
+    DomesticStudent domesticStudent1 = DomesticStudent("Geoffrey", "Smith", 4.0, 63, "BC", 225);
+    InternationalStudent internationalStudent1 = InternationalStudent("Josephine", "McJosephine", 1.2, 99, "India", 12, 15, 22, 11, 251);
     if (domestic_list.insert(domesticStudent1) && international_list.insert(internationalStudent1)) {
-        cout << "Passed unit test 1 normal" << endl;
+        cout << "-------- Passed unit test 1 normal" << endl;
     }
     else {
-        cout << "Failed unit test 1 normal" << endl;
+        cout << "-------- Failed unit test 1 normal" << endl;
     }
 
     // Corner case (should return true)
-    DomesticStudent domesticStudent2 = DomesticStudent("Geoffrey2", "Smith", 4.3, 63, "bC", 518);
-    InternationalStudent internationalStudent2 = InternationalStudent("Josephine2", "McJosephine", 0, 100, "CINaH", 0, 2, 100, 97, 9999);
+    DomesticStudent domesticStudent2 = DomesticStudent("Geoffrey2", "Smith", 4.3, 63, "BC", 134);
+    InternationalStudent internationalStudent2 = InternationalStudent("Josephine2", "McJosephine", 0, 100, "China", 0, 2, 30, 0, 9999);
     if (domestic_list.insert(domesticStudent2) && international_list.insert(internationalStudent2)) {
-        cout << "Passed unit test 1 corner" << endl;
+        cout << "-------- Passed unit test 1 corner" << endl;
     }
     else {
-        cout << "Failed unit test 1 corner" << endl;
+        cout << "-------- Failed unit test 1 corner" << endl;
     }
 
     // Illegal case (should return false)
-    DomesticStudent domesticStudent3 = DomesticStudent("Geoffrey3", "Smith", 5.0, 63, "BC", 518);
-    InternationalStudent internationalStudent3 = InternationalStudent("Josephine3", "McJosephine", 1.2, 102, "'murica", 98, 99, 64, 97, 9999);
+    DomesticStudent domesticStudent3 = DomesticStudent("", "Smith", 5.0, -55, "BC", 55);
+    InternationalStudent internationalStudent3 = InternationalStudent();
     if (domestic_list.insert(domesticStudent3) || international_list.insert(internationalStudent3)) {
-        cout << "Failed unit test 1 illegal" << endl;
+        cout << "-------- Failed unit test 1 illegal" << endl;
     }
     else {
-        cout << "Passed unit test 1 illegal" << endl;
+        cout << "-------- Passed unit test 1 illegal" << endl;
     }
 
     cout << "UNIT TEST 2---------------------------------------------------" << endl;
@@ -353,31 +338,31 @@ int main() {
     //DomesticStudent (and InternationalStudent) linked list based on the user input information
     //“application id”, or “cgpa”, or “researchScore”
 
-    // Normal case
+    // Normal case (should return true)
     if (domestic_list.searchApplication(20220020) && domestic_list.searchCGPA(3.4) && domestic_list.searchResearch(94)
     && international_list.searchApplication(20220150) && international_list.searchCGPA(3.7) && international_list.searchResearch(95)) {
-        cout << "Passed unit test 2 normal" << endl;
+        cout << "-------- Passed unit test 2 normal" << endl;
     }
     else {
-        cout << "Failed unit test 2 normal" << endl;
+        cout << "-------- Failed unit test 2 normal" << endl;
     }
 
-    // Corner case
-    if (domestic_list.searchApplication(20220000) && domestic_list.searchCGPA(4.33) && domestic_list.searchResearch(100)
-        && international_list.searchApplication(20220199) && international_list.searchCGPA(4.33) && international_list.searchResearch(100)) {
-        cout << "Passed unit test 2 corner" << endl;
+    // Corner case (Should return false)
+    if (domestic_list.searchApplication(20229999) && domestic_list.searchCGPA(0.05) && domestic_list.searchResearch(5)
+        && international_list.searchApplication(20224942) && international_list.searchCGPA(1.00) && international_list.searchResearch(20)) {
+        cout << "-------- Failed unit test 2 corner" << endl;
     }
     else {
-        cout << "Failed unit test 2 corner" << endl;
+        cout << "-------- Passed unit test 2 corner" << endl;
     }
 
-    // Illegal case
-    if (domestic_list.searchApplication(24) || domestic_list.searchCGPA(4.34) || domestic_list.searchResearch(101)
-        || international_list.searchApplication(424242424) || international_list.searchCGPA(-1) || international_list.searchResearch(-4)) {
-        cout << "Failed unit test 2 illegal" << endl;
+    // Illegal case (should return false)
+    if (domestic_list.searchApplication(-45) || domestic_list.searchCGPA(4.34) || domestic_list.searchResearch(101)
+        || international_list.searchApplication(-20220011) || international_list.searchCGPA(-1) || international_list.searchResearch(-4)) {
+        cout << "-------- Failed unit test 2 illegal" << endl;
     }
     else {
-        cout << "Passed unit test 2 illegal" << endl;
+        cout << "-------- Passed unit test 2 illegal" << endl;
     }
 
     cout << "UNIT TEST 3---------------------------------------------------" << endl;
@@ -386,28 +371,28 @@ int main() {
     //DomesticStudent (and InternationalStudent) linked list based on the user input information
     //“firstName and lastName”
 
-    // Normal case
+    // Normal case (should return true)
     if (domestic_list.searchName("Lucas", "Cook") && international_list.searchName("Jiho","Chung")) {
-        cout << "Passed unit test 3 normal" << endl;
+        cout << "-------- Passed unit test 3 normal" << endl;
     }
     else {
-        cout << "Failed unit test 3 normal" << endl;
+        cout << "-------- Failed unit test 3 normal" << endl;
     }
 
-    // Corner case
+    // Corner case (should return true)
     if (domestic_list.searchName("Mary", "White") && international_list.searchName("Guanyin", "Yang")) {
-        cout << "Passed unit test 3 corner" << endl;
+        cout << "-------- Passed unit test 3 corner" << endl;
     }
     else {
-        cout << "Failed unit test 3 corner" << endl;
+        cout << "-------- Failed unit test 3 corner" << endl;
     }
 
-    // Illegal case
-    if (domestic_list.searchName("Mary", "Whitee") || international_list.searchName("person", "...")) {
-        cout << "Failed unit test 3 illegal" << endl;
+    // Illegal case (should return false)
+    if (domestic_list.searchName("-89", "/'") || international_list.searchName("/'897", "...")) {
+        cout << "-------- Failed unit test 3 illegal" << endl;
     }
     else {
-        cout << "Passed unit test 3 illegal" << endl;
+        cout << "-------- Passed unit test 3 illegal" << endl;
     }
 
     cout << "UNIT TEST 4---------------------------------------------------" << endl;
@@ -416,29 +401,29 @@ int main() {
     //DomesticStudent (and InternationalStudent) linked list based on the user input information
     //“firstName and lastName”
 
-    // Normal case
+    // Normal case (should return true)
     if (domestic_list.remove("Mary", "White") && international_list.remove("Guanyin", "Yang")) {
-        cout << "Passed unit test 4 normal" << endl;
+        cout << "-------- Passed unit test 4 normal" << endl;
     }
     else {
-        cout << "Failed unit test 4 normal" << endl;
+        cout << "-------- Failed unit test 4 normal" << endl;
     }
 
-    // Corner case
-    if (domestic_list.remove("James", "Sanchez") && international_list.remove("Daehyun","Gim")) {
-        cout << "Passed unit test 4 corner" << endl;
+    // Corner case (should return false because they have already been removed)
+    if (domestic_list.remove("Mary", "White") && international_list.remove("Guanyin","Yang")) {
+        cout << "-------- Failed unit test 4 corner" << endl;
     }
     else {
-        cout << "Failed unit test 4 corner" << endl;
+        cout << "-------- Passed unit test 4 corner" << endl;
     }
 
-    // Illegal case
+    // Illegal case (should return false)
     if (domestic_list.remove("Marty", "White") || international_list.remove("GU@NY!N", "Yang")) {
-        cout << "Failed unit test 4 illegal" << endl;
+        cout << "-------- Failed unit test 4 illegal" << endl;
 
     }
     else {
-        cout << "Passed unit test 4 illegal" << endl;
+        cout << "-------- Passed unit test 4 illegal" << endl;
     }
 
     cout << "UNIT TEST 5---------------------------------------------------" << endl;
@@ -446,31 +431,41 @@ int main() {
     // 5 Delete both the head node and tail node from the DomesticStudent (and
     //InternationalStudent) linked list in a single delete function
 
-    // Normal case
+    // Normal case (should return true)
     if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
-        cout << "Passed unit test 5 normal" << endl;
+        cout << "-------- Passed unit test 5 normal" << endl;
     }
     else {
-        cout << "Failed unit test 5 normal" << endl;
+        cout << "-------- Failed unit test 5 normal" << endl;
     }
 
-    /* what sort of corner and illegal cases can be done here???
-    // Corner case
-    if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
-        cout << "Passed unit test 5 corner" << endl;
+    // Corner case (should return true: 2 students)
+    LinkedList<DomesticStudent> testDom1;
+    LinkedList<InternationalStudent> testInt1;
+
+    LinkedList<DomesticStudent> testDom2;
+    LinkedList<InternationalStudent> testInt2;
+
+    testDom1.insert(DomesticStudent("Samantha", "Smith", 4.1, 90, "BC", 122));
+    testDom1.insert(DomesticStudent("Joe", "Schlesinger", 4.2, 63, "BC", 123));
+
+    testInt1.insert(InternationalStudent("Josephine", "McJosephine", 1.2, 99, "India", 98, 99, 65, 97, 124));
+    testInt1.insert(InternationalStudent("baguette", "croissant", 1.2, 99, "Korea", 98, 99, 44, 97, 125));
+
+    if (testDom1.removeHeadTail() && testInt1.removeHeadTail()) {
+        cout << "-------- Passed unit test 5 corner" << endl;
     }
     else {
-        cout << "Failed unit test 5 corner" << endl;
+        cout << "-------- Failed unit test 5 corner" << endl;
     }
 
-    // Illegal case
-    if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
-        cout << "Passed unit test 5 illegal" << endl;
+    // Illegal case (should return false: empty lists)
+    if (testDom2.removeHeadTail() && testDom2.removeHeadTail()) {
+        cout << "-------- Failed unit test 5 illegal" << endl;
     }
     else {
-        cout << "Failed unit test 5 illegal" << endl;
+        cout << "-------- Passed unit test 5 illegal" << endl;
     }
-     */
 
     cout << "UNIT TEST 6---------------------------------------------------" << endl;
 
@@ -478,13 +473,114 @@ int main() {
     //Student linked list
 
     // Normal case
+    LinkedList<Student> testMerge1;
+    LinkedList<Student> testMerge2;
+    LinkedList<Student> testMerge3;
+
+    LinkedList<Student> test_domestic_2;
+    LinkedList<Student> test_international_2;
+    LinkedList<Student> test_domestic_3;
+    LinkedList<Student> test_international_3;
+
+    test_domestic_2.insert(DomesticStudent("Geoffrey", "Smith", 4.0, 63, "BC", 518));
+    test_international_2.insert(InternationalStudent("Josephine", "McJosephine", 1.2, 99, "India", 98, 99, 64, 97, 9999));
+
+
+    bool exception_caught = true;
+    try {
+        while(test_domestic_list.getHead() != nullptr){
+            Student newStudent(test_domestic_list.getHead()->data);
+            newStudent.setType(true);
+            newStudent.setHome(test_domestic_list.getHead()->data.getHome());
+            testMerge1.insert(newStudent);
+
+            // remove head
+            test_domestic_list.removeHead();
+        }
+
+        // add international students
+        while(test_international_list.getHead() != nullptr){
+            Student newStudent(test_international_list.getHead()->data);
+            newStudent.setType(false);
+            newStudent.setHome(test_international_list.getHead()->data.getHome());
+            testMerge1.insert(newStudent);
+
+            // remove head
+            test_international_list.removeHead();
+        }
+        exception_caught = false;
+    }
+    catch (const exception&) {
+        cout << "-------- Failed unit test 6 normal" << endl;
+    }
+    if (!exception_caught) {
+        cout << "-------- Passed unit test 6 normal" << endl;
+    }
 
 
     // Corner case
+    exception_caught = true;
+    try {
+        while(test_domestic_2.getHead() != nullptr){
+            Student newStudent(test_domestic_2.getHead()->data);
+            newStudent.setType(true);
+            newStudent.setHome(test_domestic_2.getHead()->data.getHome());
+            testMerge2.insert(newStudent);
 
+            // remove head
+            test_domestic_2.removeHead();
+        }
 
-    // Illegal case
+        // add international students
+        while(test_international_2.getHead() != nullptr){
+            Student newStudent(test_international_2.getHead()->data);
+            newStudent.setType(false);
+            newStudent.setHome(test_international_2.getHead()->data.getHome());
+            testMerge2.insert(newStudent);
 
+            // remove head
+            test_international_2.removeHead();
+        }
+        exception_caught = false;
+    }
+    catch (const exception&) {
+        cout << "-------- Failed unit test 6 corner" << endl;
+    }
+    if (!exception_caught) {
+        cout << "-------- Passed unit test 6 corner" << endl;
+    }
+
+    // Illegal case (Empty lists: should still work)
+    exception_caught = true;
+    try {
+        while(test_domestic_3.getHead() != nullptr){
+            Student newStudent(test_domestic_3.getHead()->data);
+            newStudent.setType(true);
+            newStudent.setHome(test_domestic_3.getHead()->data.getHome());
+            testMerge1.insert(newStudent);
+
+            // remove head
+            test_domestic_3.removeHead();
+        }
+
+        // add international students
+        while(test_international_3.getHead() != nullptr){
+            Student newStudent(test_international_3.getHead()->data);
+            newStudent.setType(false);
+            newStudent.setHome(test_international_3.getHead()->data.getHome());
+            testMerge1.insert(newStudent);
+
+            // remove head
+            test_international_3.removeHead();
+        }
+        exception_caught = false;
+    }
+    catch (const exception&) {
+        cout << "-------- Failed unit test 6 illegal" << endl;
+    }
+    if (!exception_caught) {
+        cout << "-------- Passed unit test 6 illegal" << endl;
+    }
 
 
     cout << "UNIT TEST 7---------------------------------------------------" << endl;
@@ -493,13 +589,28 @@ int main() {
     //information “cgpa_threshold and researchScore_threshold”
 
     // Normal case
-
+    if (testMerge1.thresholdCGPA(4.1) && testMerge1.thresholdResearch(98)) {
+        cout << "-------- Passed unit test 7 normal" << endl;
+    }
+    else {
+        cout << "-------- Failed unit test 7 normal" << endl;
+    }
 
     // Corner case
-
+    if (testMerge1.thresholdCGPA(4.33) && testMerge1.thresholdResearch(100)) {
+        cout << "-------- Passed unit test 7 corner" << endl;
+    }
+    else {
+        cout << "-------- Failed unit test 7 corner" << endl;
+    }
 
     // Illegal case
-
+    if (testMerge1.thresholdCGPA(9.2) && testMerge1.thresholdResearch(101)) {
+        cout << "-------- Failed unit test 7 illegal" << endl;
+    }
+    else {
+        cout << "-------- Passed unit test 7 illegal" << endl;
+    }
 
 
     /** -------------------------Main function loop------------------------- **/
@@ -968,183 +1079,4 @@ int main() {
     }
 
     return 0;
-}
-
-// Helper Functions
-int validInputId(){
-    int id;
-    cout << "Enter Application ID: ";
-    cin >> id;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good()){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter Application ID: ";
-        cin >> id;
-        cout << "\n";
-    }
-
-    return id;
-}
-
-float validInputCGPA(){
-    float input;
-    cout << "Enter CGPA: ";
-    cin >> input;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good()){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter CGPA: ";
-        cin >> input;
-        cout << "\n";
-    }
-    return input;
-}
-
-int validInputResearch(){
-    int score;
-    cout << "Enter Research Score: ";
-    cin >> score;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good()){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter Application ID: ";
-        cin >> score;
-        cout << "\n";
-    }
-    return score;
-}
-
-string validFirstName(){
-    string first;
-    cout << "Enter First Name: ";
-    cin >> first;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good()){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter First Name: ";
-        cin >> first;
-        cout << "\n";
-    }
-    return first;
-}
-
-string validLastName(){
-    string last;
-    cout << "Enter Last Name: ";
-    cin >> last;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good()){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter Last Name: ";
-        cin >> last;
-        cout << "\n";
-    }
-    return last;
-}
-
-string validInputProvince(){
-    string provinces[13] = {"NL","PE","NS","NB","QC","ON","MB","SK","AB","BC","YT","NT","NU"};
-    string province;
-    bool valid = false;
-
-    cout << "Enter Province: ";
-    cin >> province;
-    cout << "\n";
-
-    for(int i = 0; i < 13; i++){
-        if(province == provinces[i]){
-            valid = true;
-            break;
-        }
-    }
-    // bad user input
-    while(!cin.good() || !valid){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter Valid Province:: ";
-        cin >> province;
-        cout << "\n";
-
-        for(int i = 0; i < 13; i++){
-            if(province == provinces[i]){
-                valid = true;
-                break;
-            }
-        }
-    }
-    return province;
-}
-
-string validInputCountry(){
-    string countries[5] = {"Canada","China","India","Iran","Korea"};
-    string country;
-    bool valid = false;
-
-    cout << "Enter Country: ";
-    cin >> country;
-    cout << "\n";
-
-    for(int i = 0; i < 13; i++){
-        if(country == countries[i]){
-            valid = true;
-            break;
-        }
-    }
-    // bad user input
-    while(!cin.good() || !valid){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter Valid Province:: ";
-        cin >> country;
-        cout << "\n";
-
-        for(int i = 0; i < 13; i++){
-            if(country == countries[i]){
-                valid = true;
-                break;
-            }
-        }
-    }
-    return country;
-}
-
-int validToefl(string type){
-    int input;
-
-    cout << "Enter " + type + ": ";
-    cin >> input;
-    cout << "\n";
-
-    // bad user input
-    while(!cin.good() || !(input >= 0 && input <= 30)){
-        cin.clear();
-        cin.ignore();
-        // Ask again
-        cout << "Enter " + type + ": ";;
-        cin >> input;
-        cout << "\n";
-    }
-    return input;
 }

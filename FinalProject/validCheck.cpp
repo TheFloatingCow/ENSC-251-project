@@ -1,3 +1,4 @@
+// Functions for checking validity of inputs
 #include "validCheck.hpp"
 using namespace std;
 
@@ -25,10 +26,8 @@ bool stringCompare(string str1, string arr[], int size) {
     return false;
 }
 
-// Check for typos, false = no typo (could still be wrong word)
-// Step 1: Sort words (using bubble sort) alphabetically and compare
-// Step 2: Run through non-sorted strings and check how many letters are out of place
-// If 2 letters are out of place, they are swapped
+// Check for typos, output false when no typo found (could still be wrong word)
+// Sort words (using bubble sort) alphabetically and compare
 string typoCheck(string str1, string arr[]) {
     for (int index = 0; index < (*arr).length() - 1; index++) {
 
@@ -85,4 +84,184 @@ string typoCheck(string str1, string arr[]) {
         }
     }
     return "";
+}
+
+// Helper Functions
+// Keep asking for valid input until one is given
+int validInputId(){
+    int id;
+    cout << "Enter Application ID: ";
+    cin >> id;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good()){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter Application ID: ";
+        cin >> id;
+        cout << "\n";
+    }
+
+    return id;
+}
+
+float validInputCGPA(){
+    float input;
+    cout << "Enter CGPA: ";
+    cin >> input;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good()){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter CGPA: ";
+        cin >> input;
+        cout << "\n";
+    }
+    return input;
+}
+
+int validInputResearch(){
+    int score;
+    cout << "Enter Research Score: ";
+    cin >> score;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good()){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter Application ID: ";
+        cin >> score;
+        cout << "\n";
+    }
+    return score;
+}
+
+string validFirstName(){
+    string first;
+    cout << "Enter First Name: ";
+    cin >> first;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good()){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter First Name: ";
+        cin >> first;
+        cout << "\n";
+    }
+    return first;
+}
+
+string validLastName(){
+    string last;
+    cout << "Enter Last Name: ";
+    cin >> last;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good()){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter Last Name: ";
+        cin >> last;
+        cout << "\n";
+    }
+    return last;
+}
+
+string validInputProvince(){
+    string provinces[13] = {"NL","PE","NS","NB","QC","ON","MB","SK","AB","BC","YT","NT","NU"};
+    string province;
+    bool valid = false;
+
+    cout << "Enter Province: ";
+    cin >> province;
+    cout << "\n";
+
+    for(int i = 0; i < 13; i++){
+        if(province == provinces[i]){
+            valid = true;
+            break;
+        }
+    }
+    // bad user input
+    while(!cin.good() || !valid){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter Valid Province:: ";
+        cin >> province;
+        cout << "\n";
+
+        for(int i = 0; i < 13; i++){
+            if(province == provinces[i]){
+                valid = true;
+                break;
+            }
+        }
+    }
+    return province;
+}
+
+string validInputCountry(){
+    string countries[5] = {"Canada","China","India","Iran","Korea"};
+    string country;
+    bool valid = false;
+
+    cout << "Enter Country: ";
+    cin >> country;
+    cout << "\n";
+
+    for(int i = 0; i < 13; i++){
+        if(country == countries[i]){
+            valid = true;
+            break;
+        }
+    }
+    // bad user input
+    while(!cin.good() || !valid){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter Valid Province:: ";
+        cin >> country;
+        cout << "\n";
+
+        for(int i = 0; i < 13; i++){
+            if(country == countries[i]){
+                valid = true;
+                break;
+            }
+        }
+    }
+    return country;
+}
+
+int validToefl(string type){
+    int input;
+
+    cout << "Enter " + type + ": ";
+    cin >> input;
+    cout << "\n";
+
+    // bad user input
+    while(!cin.good() || !(input >= 0 && input <= 30)){
+        cin.clear();
+        cin.ignore();
+        // Ask again
+        cout << "Enter " + type + ": ";;
+        cin >> input;
+        cout << "\n";
+    }
+    return input;
 }

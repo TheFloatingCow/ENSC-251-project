@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "student.hpp"
+#include "validCheck.hpp"
+#include "toeflscore.hpp"
 using namespace std; //use namespace std
 
 // Node class
@@ -61,32 +63,30 @@ public:
     NodePtr<T> updateTail(NodePtr<T> current_head);
 
     // Comprare Nodes
-    int CompareNodes(NodePtr<T> first, NodePtr<T> second);
     int CompareObjects(NodePtr<T> first, NodePtr<T> second);
 
     // Linked List operations 
     bool insert(T student); //insert in ordered list
     bool remove(string first, string last); //remove node
 
-    // Domestic
+    // Search functions
     bool searchCGPA(float CGPA);
     bool searchApplication(int id);
     bool searchResearch(int score);
     bool searchName(string first, string last);
-    
-    void thresholdCGPA(float CGPA);
-    void thresholdResearch(int score);
+
+    // Threshold functions
+    bool thresholdCGPA(float CGPA);
+    bool thresholdResearch(int score);
     void threshold(float CGPA, int score);
 
+    // Remove functions
     bool removeHead();
     bool removeHeadTail();
-    // Linked List operations international
-    //void head_insert_int(NodePtr& head, T student); //insert at head
-    //void insert_int(NodePtr after_me, T student); //insert in ordered list
 
-
-    //bool remove_int(NodePtr &head, int target); //remove node
-    //NodePtr search_int(NodePtr head, int target); //search node
+    // Check if student info is valid
+    //bool validCheck(T student);
+    bool validCheck(T student);
 
     // Print functions
     void printList(NodePtr<T> head);

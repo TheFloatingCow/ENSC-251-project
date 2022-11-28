@@ -136,7 +136,13 @@ CMakeFiles/FinalProject.dir/list.cpp.obj: ../list.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
   ../student.hpp \
-  ../toeflscore.hpp
+  ../toeflscore.hpp \
+  ../validCheck.hpp \
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector \
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc
 
 CMakeFiles/FinalProject.dir/main.cpp.obj: ../main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iostream \
@@ -280,7 +286,7 @@ CMakeFiles/FinalProject.dir/main.cpp.obj: ../main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc \
   ../student.hpp \
   ../toeflscore.hpp \
-  ../stu_sort.hpp \
+  ../validCheck.hpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
@@ -1120,6 +1126,18 @@ C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32
 
 ../student.hpp:
 
+../validCheck.hpp:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc:
+
 ../main.cpp:
 
 C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/fstream:
@@ -1132,22 +1150,10 @@ C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32
 
 C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc:
 
-../stu_sort.hpp:
-
-C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector:
-
-C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h:
-
-C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h:
-
-C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h:
-
-C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc:
-
 ../stu_sort.cpp:
+
+../stu_sort.hpp:
 
 ../toeflscore.cpp:
 
 ../validCheck.cpp:
-
-../validCheck.hpp:

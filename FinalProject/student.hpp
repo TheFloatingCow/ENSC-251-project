@@ -47,8 +47,6 @@ public:
     void setHome(const string& newhome);
     void setType(const bool& typestudent);
 
-    // Set functions
-
     // Friend functions
     friend int compareCGPA(const Student& stu1, const Student& stu2);
     friend int compareResearchScore(const Student& stu1, const Student& stu2);

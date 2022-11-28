@@ -198,9 +198,11 @@ int LinkedList<T>::CompareObjects(NodePtr<T> first, NodePtr<T> second){
 
 template <class T>
 bool LinkedList<T>::insert(T student){ //insert in ordered list
+    if (!validCheck(student)) {
+        return false;
+    }
     // throws exception if bad alloc
-    try
-    {
+    try {
         // new pointer
         NodePtr<T> new_student = new Node<T>;
         new_student->data = student;
@@ -231,8 +233,8 @@ bool LinkedList<T>::insert(T student){ //insert in ordered list
         tail = updateTail(head);
         return true;
     }
-    catch(const bad_alloc & exception){
-        cout << "bad alloc: " << exception.what();
+    catch (const bad_alloc & exception) {
+        cout << "Error: Bad alloc. " << exception.what();
         return false;
     }
 }
@@ -279,6 +281,9 @@ bool LinkedList<T>::remove(string first, string last){
 
 template <class T>
 bool LinkedList<T>::searchCGPA(float CGPA){
+    if (CGPA > 4.33 || CGPA < 0) {
+        return false;
+    }
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getCGPA() == CGPA){
@@ -297,6 +302,9 @@ bool LinkedList<T>::searchCGPA(float CGPA){
 
 template <class T>
 bool LinkedList<T>::searchApplication(int id){
+    if (id < 0) {
+        return false;
+    }
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getId() == id){
@@ -315,6 +323,9 @@ bool LinkedList<T>::searchApplication(int id){
 
 template <class T>
 bool LinkedList<T>::searchResearch(int score){
+    if (score > 100 || score < 0) {
+        return false;
+    }
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getResearchScore() == score){
@@ -350,7 +361,10 @@ bool LinkedList<T>::searchName(string first, string last){
 }
 
 template <class T>
-void LinkedList<T>::thresholdCGPA(float CGPA){
+bool LinkedList<T>::thresholdCGPA(float CGPA){
+    if (CGPA > 4.33 || CGPA < 0) {
+        return false;
+    }
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getCGPA() >= CGPA){
@@ -360,12 +374,17 @@ void LinkedList<T>::thresholdCGPA(float CGPA){
     }
 
     if(counter == 0){
-        std::cout << "No Students Above CGPA " << CGPA << endl;
+        cout << "No Students Above CGPA " << CGPA << endl;
+        return false;
     }
+    return true;
 }
 
 template <class T>
-void LinkedList<T>::thresholdResearch(int score){
+bool LinkedList<T>::thresholdResearch(int score){
+    if (score > 100 || score < 0) {
+        return false;
+    }
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getResearchScore() >= score){
@@ -375,8 +394,10 @@ void LinkedList<T>::thresholdResearch(int score){
     }
 
     if(counter == 0){
-        std::cout << "No Students Above Research Score " << score << endl;;
+        cout << "No Students Above Research Score " << score << endl;;
+        return false;
     }
+    return true;
 }
 
 template <class T>
@@ -390,7 +411,7 @@ void LinkedList<T>::threshold(float CGPA,int score){
     }
 
     if(counter == 0){
-        std::cout << "No Students Above CGPA " << CGPA << endl;
+        cout << "No Students Above CGPA " << CGPA << endl;
     }
 }
 
@@ -441,6 +462,47 @@ bool LinkedList<T>::removeHeadTail() {
     return true;
 
 }
+
+// Check if student values are valid
+template<class T>
+bool LinkedList<T>::validCheck(T student) {
+    // Valid countries and provinces
+    string validCountries[5] = {"Canada", "China", "India", "Iran", "Korea"};
+    string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"};
+
+    if (student.getFirstName().empty()) {
+        return false;
+    }
+    if (student.getLastName().empty()) {
+        return false;
+    }
+    if (student.getCGPA() > 4.33 || student.getCGPA() < 0) {
+        return false;
+    }
+    if (!student.getResearchScore() || student.getResearchScore() > 100 || student.getResearchScore() < 0) {
+        return false;
+    }
+    if (!student.getId() || student.getId() < 0) {
+        return false;
+    }
+    if (student.getHome().empty()) {
+        return false;
+    }
+    if (student.getType()) { // domestic
+        if (!stringCompare(student.getHome(),  validProvinces, sizeof(validProvinces)/sizeof(validProvinces[0]))) {
+            return false;
+        }
+    }
+    else { // international
+        if (typoCheck(student.getHome(), validCountries).empty()) {
+            if (!stringCompare(student.getHome(), validCountries, sizeof(validCountries)/sizeof(validCountries[0]))) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 
 template<class T>
 void LinkedList<T>::printList(NodePtr<T> head)
