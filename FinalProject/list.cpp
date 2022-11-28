@@ -321,39 +321,9 @@ void LinkedList<T>::searchName(string first, string last){
     }
 }
 
-template <class T>
-void LinkedList<T>::thresholdCGPA(float CGPA){
-    int counter = 0;
-    for(NodePtr<T> current = head; current != nullptr; current = current->link){
-        if(current->data.getCGPA() >= CGPA){
-            printNode(current);
-            counter++;
-        }
-    }
-
-    if(counter == 0){
-        std::cout << "No Students Above CGPA " << CGPA << endl;
-    }
-}
-
-template <class T>
-void LinkedList<T>::thresholdResearch(int score){
-    int counter = 0;
-    for(NodePtr<T> current = head; current != nullptr; current = current->link){
-        if(current->data.getResearchScore() >= score){
-            printNode(current);
-            counter++;
-        }
-    }
-
-    if(counter == 0){
-        std::cout << "No Students Above Research Score " << score << endl;;
-    }
-}
-
 template<class T>
-bool LinkedList<T>::removeHeadTail() {
-    //Start at head position
+bool LinkedList<T>::removeHead() {
+    //Traverse until tail where next pointer is null
     if(head != NULL)
     {
         NodePtr<T> discard = head;
@@ -366,6 +336,11 @@ bool LinkedList<T>::removeHeadTail() {
         cout <<"No applicant to delete" << endl;
         return false;
     }
+
+}
+
+template<class T>
+bool LinkedList<T>::removeTail() {
 
     if(head == nullptr){
         return false;
@@ -380,11 +355,12 @@ bool LinkedList<T>::removeHeadTail() {
     while(temp->link->link != nullptr){
         temp = temp->link;
     }
-    //Delete once reached the bottom of list
+
     delete temp->link;
     temp->link = nullptr;
     std::cout<<"Bottom listed applicant deleted\n";
     return true;
+
 
 }
 

@@ -418,51 +418,11 @@ int main() {
                     break;
                     case 2:
                         // Seach by CGPA
-                        cout << endl "Search by specific CGPA score or a minimum threshold?\n"
-                        << "Type 1 for specific score\n"
-                        << "Type 2 for minimum score\n"
-                        << ">> ";
-                        
-                        int search1;
-                        cin >> search1;
-                        switch(search1) {
-                            case 1:
-                                domestic_list.searchCGPA(validInputCGPA());
-                            break;
-                            case 2:
-                                domestic_list.thresholdCGPA(validInputCGPA());
-                            break;
-                            default:
-                                cin.clear();
-                                cin.ignore();
-                                cout << endl << "Invalid option selected" << endl;
-                            break;
-                        
-                        }
+                        domestic_list.searchCGPA(validInputCGPA());
                     break;
                     case 3:
                         // Search by Research
-                        cout << endl "Search by specific research score or a minimum threshold?\n"
-                        << "Type 1 for specific score\n"
-                        << "Type 2 for minimum score\n"
-                        << ">> ";
-                        
-                        int search2;
-                        cin >> search2;
-                        switch(search2) {
-                            case 1:
-                                domestic_list.searchResearch(validInputResearch());
-                            break;
-                            case 2:
-                                domestic_list.thresholdResearch(validInputResearch());
-                            break;
-                            default:
-                                cin.clear();
-                                cin.ignore();
-                                cout << endl << "Invalid option selected" << endl;
-                            break;
-                        
-                        }
+                        domestic_list.searchResearch(validInputResearch());
                     break;
                     case 4: {
                         // Search by First and Last name
@@ -482,7 +442,8 @@ int main() {
                         break;
                     }
                     case 7: {
-                        domestic_list.removeHeadTail();
+                        domestic_list.removeHead();
+                        domestic_list.removeTail();
                         break;
                     }
                     case 8:
@@ -516,51 +477,12 @@ int main() {
                         international_list.searchApplication(validInputId());
                     break;
                     case 2:
-                        // Seach by CGPA
-                        cout << endl "Search by specific CGPA score or a minimum threshold?\n"
-                        << "Type 1 for specific score\n"
-                        << "Type 2 for minimum score\n"
-                        << ">> ";
-                        
-                        int search3;
-                        cin >> search3;
-                        switch(search3) {
-                            case 1:
-                                international_list.searchCGPA(validInputCGPA());
-                            break;
-                            case 2:
-                                international_list.thresholdCGPA(validInputCGPA());
-                            break;
-                            default:
-                                cin.clear();
-                                cin.ignore();
-                                cout << endl << "Invalid option selected" << endl;
-                            break;
-                        
-                        }
+                        // search by cgpa
+                        international_list.searchCGPA(validInputCGPA());
                     break;
                     case 3:
-                        // Search by Research
-                        cout << endl "Search by specific research score or a minimum threshold?\n"
-                        << "Type 1 for specific score\n"
-                        << "Type 2 for minimum score\n"
-                        << ">> ";
-                        
-                        int search4;
-                        cin >> search4;
-                        switch(search4) {
-                            case 1:
-                                international_list.searchResearch(validInputResearch());
-                            break;
-                            case 2:
-                                international_list.thresholdResearch(validInputResearch());
-                            break;
-                            default:
-                                cin.clear();
-                                cin.ignore();
-                                cout << endl << "Invalid option selected" << endl;
-                            break;
-                        }
+                        // Search research
+                        international_list.searchResearch(validInputResearch());
                     break;
                     case 4:
                         // Search Name
@@ -578,7 +500,8 @@ int main() {
                     break;
                     }
                     case 7:{
-                        international_list.removeHeadTail();
+                        international_list.removeHead();
+                        international_list.removeTail();
                         break;
                     }
                     case 8: {

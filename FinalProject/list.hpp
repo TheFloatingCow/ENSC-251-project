@@ -71,11 +71,9 @@ public:
     void searchApplication(int id);
     void searchResearch(int score);
     void searchName(string first, string last);
-    
-    void thresholdCGPA(float CGPA);
-    void thresholdResearch(int score);
 
-    bool removeHeadTail();
+    bool removeHead();
+    bool removeTail();
     // Linked List operations international
     //void head_insert_int(NodePtr& head, T student); //insert at head
     //void insert_int(NodePtr after_me, T student); //insert in ordered list
