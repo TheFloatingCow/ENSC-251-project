@@ -63,14 +63,14 @@ public:
     int CompareNodes(NodePtr<T> first, NodePtr<T> second);
 
     // Linked List operations 
-    void insert(T student); //insert in ordered list
+    bool insert(T student); //insert in ordered list
     bool remove(string first, string last); //remove node
 
     // Domestic
-    void searchCGPA(float CGPA); 
-    void searchApplication(int id);
-    void searchResearch(int score);
-    void searchName(string first, string last);
+    bool searchCGPA(float CGPA);
+    bool searchApplication(int id);
+    bool searchResearch(int score);
+    bool searchName(string first, string last);
     
     void thresholdCGPA(float CGPA);
     void thresholdResearch(int score);

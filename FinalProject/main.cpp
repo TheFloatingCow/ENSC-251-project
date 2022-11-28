@@ -5,7 +5,7 @@
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
-#include "stu_sort.hpp"
+#include "validCheck.hpp"
 #include <vector>
 #include "list.hpp"
 
@@ -24,91 +24,6 @@ int validToefl(string type);
 string validCountries[5] = {"Canada", "China", "India", "Iran", "Korea"};
 string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"};
 
-// Case-insensitive string compare
-// Compare char
-bool compareChar(char& c1, char& c2) {
-    // Compare chars then compare capitalized chars
-    if (c1 == c2) {
-        return true;
-    }
-    else if (toupper(c1) == toupper(c2)) {
-        return true;
-    }
-    return false;
-}
-
-// Compare 2 strings
-bool stringCompare(string str1, string arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        string str2 = arr[i];
-        if ((str1.size() == str2.size()) && equal(str1.begin(), str1.end(), str2.begin(), &compareChar)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Check for typos, false = no typo (could still be wrong word)
-// Step 1: Sort words (using bubble sort) alphabetically and compare
-// Step 2: Run through non-sorted strings and check how many letters are out of place
-// If 2 letters are out of place, they are swapped
-string typoCheck(string str1, string arr[]) {
-    for (int index = 0; index < (*arr).length() - 1; index++) {
-
-        string str2 = arr[index];
-
-        // Check if lengths are equal
-        if (str1.length() != str2.length()) {
-            continue;
-        }
-
-        // Temp variables
-        string sort1 = str1;
-        string sort2 = str2;
-        char temp1;
-        char temp2;
-
-        // Bubble sort alphabetical order
-        for (int i = 0; i < sort1.length(); i++) {
-            for (int j = 0; j < sort1.length() - 1; j++) {
-
-                // str1
-                if (toupper(sort1[j]) > toupper(sort1[j + 1])) {
-                    temp1 = sort1[j];
-                    sort1[j] = sort1[j + 1];
-                    sort1[j + 1] = temp1;
-                }
-
-                // str2
-                if (toupper(sort2[j]) > toupper(sort2[j + 1])) {
-                    temp2 = sort2[j];
-                    sort2[j] = sort2[j + 1];
-                    sort2[j + 1] = temp2;
-                }
-            }
-        }
-
-        // Check if words are the same
-        bool cont = false;
-        for (int i = 0; i < sort1.length(); i++) {
-            if (toupper(sort1[i]) != toupper(sort2[i])) {
-                cont = true;
-            }
-        }
-        if (cont) {
-            continue;
-        }
-
-
-        // Check for error
-        for (int i = 0; i < sort1.length(); i++) {
-            if (toupper(str1[i]) != toupper(str2[i])) {
-                return str2;
-            }
-        }
-    }
-    return "";
-}
 
 
 int main() {
@@ -118,15 +33,15 @@ int main() {
     LinkedList<DomesticStudent> domestic_list;
     LinkedList<InternationalStudent> international_list;
 
-
     int id = 0;
     //Total Student Array
     Student students[200];
 
 
-/** -------------------------DOMESTIC STUDENTS------------------------- **/
 
-  
+
+    /** -------------------------DOMESTIC STUDENTS------------------------- **/
+
     //Read the domestic-stu.txt file and exit if failed
     string line;
     ifstream domesticFile("domestic-stu.txt");
@@ -138,7 +53,7 @@ int main() {
     //Read the first line of domestic-stu.txt, which specifies
     //the file format. And then print it out to the screen
     getline(domesticFile, line);
-    cout << "File format: " << line << endl;
+    //cout << "File format: " << line << endl;
 
     /*Keep reading the rest of the lines in domestic-stu.txt.
      *In the example code here, I will read each data separated
@@ -193,7 +108,7 @@ int main() {
             cout << "Error in line " << stu_count + 2 << ": CGPA is empty" << endl;
             exit(1);
         }
-        if (cgpa > 100 || cgpa < 0) {
+        if (cgpa > 4.33 || cgpa < 0) {
             cout << "Error in line " << stu_count + 2 << ": CGPA is invalid" << endl;
             exit(1);
         }
@@ -226,7 +141,10 @@ int main() {
     domesticFile.close();
 
 
-/** -------------------------INTERNATIONAL STUDENTS------------------------- **/
+
+
+
+    /** -------------------------INTERNATIONAL STUDENTS------------------------- **/
 
     string line2;
     ifstream internationalFile("international-stu.txt");
@@ -237,11 +155,21 @@ int main() {
 
     //Read the first line of international-stu.txt
     getline(internationalFile, line);
-    cout << "File format: " << line << endl;
+    //cout << "File format: " << line << endl;
 
     //Read the rest of the lines in international-stu.txt
     stu_count = 0;
     while (getline(internationalFile, line)) {
+
+        /*
+        read a line from the file
+        try
+          add the line to the list
+          catch
+          exit
+
+*/
+
 
         istringstream ss(line);
 
@@ -290,7 +218,7 @@ int main() {
             exit(1);
         }
         cgpa = atof(s_cgpa.c_str());
-        if (cgpa > 100 || cgpa < 0) {
+        if (cgpa > 4.33 || cgpa < 0) {
             cout << "Error in line " << stu_count + 2 << ": CGPA is invalid" << endl;
             exit(1);
         }
@@ -360,7 +288,10 @@ int main() {
 
         // check toefl requirements
         if(student.meetToeflRequirements()){
-            international_list.insert(student);
+            if (!international_list.insert(student)) {
+                cout << "Error inserting student in line " << stu_count + 2 << endl;
+                exit(1);
+            }
         }
 
         stu_count++;
@@ -374,6 +305,201 @@ int main() {
 
     //close international file
     internationalFile.close();
+
+
+
+
+
+    /** -------------------------Unit testing------------------------- **/
+
+    cout << "UNIT TEST 1---------------------------------------------------" << endl;
+
+    // 1 Insert a DomesticStudent (and InternationalStudent) object into the DomesticStudent (and
+    //InternationalStudent) singly linked list in order
+
+    // Normal case (should return true)
+    DomesticStudent domesticStudent1 = DomesticStudent("Geoffrey", "Smith", 4.0, 63, "BC", 518);
+    InternationalStudent internationalStudent1 = InternationalStudent("Josephine", "McJosephine", 1.2, 99, "India", 98, 99, 64, 97, 9999);
+    if (domestic_list.insert(domesticStudent1) && international_list.insert(internationalStudent1)) {
+        cout << "Passed unit test 1 normal" << endl;
+    }
+    else {
+        cout << "Failed unit test 1 normal" << endl;
+    }
+
+    // Corner case (should return true)
+    DomesticStudent domesticStudent2 = DomesticStudent("Geoffrey2", "Smith", 4.3, 63, "bC", 518);
+    InternationalStudent internationalStudent2 = InternationalStudent("Josephine2", "McJosephine", 0, 100, "CINaH", 0, 2, 100, 97, 9999);
+    if (domestic_list.insert(domesticStudent2) && international_list.insert(internationalStudent2)) {
+        cout << "Passed unit test 1 corner" << endl;
+    }
+    else {
+        cout << "Failed unit test 1 corner" << endl;
+    }
+
+    // Illegal case (should return false)
+    DomesticStudent domesticStudent3 = DomesticStudent("Geoffrey3", "Smith", 5.0, 63, "BC", 518);
+    InternationalStudent internationalStudent3 = InternationalStudent("Josephine3", "McJosephine", 1.2, 102, "'murica", 98, 99, 64, 97, 9999);
+    if (domestic_list.insert(domesticStudent3) || international_list.insert(internationalStudent3)) {
+        cout << "Failed unit test 1 illegal" << endl;
+    }
+    else {
+        cout << "Passed unit test 1 illegal" << endl;
+    }
+
+    cout << "UNIT TEST 2---------------------------------------------------" << endl;
+
+    // 2 Search existing DomesticStudent (and InternationalStudent) objects in the
+    //DomesticStudent (and InternationalStudent) linked list based on the user input information
+    //“application id”, or “cgpa”, or “researchScore”
+
+    // Normal case
+    if (domestic_list.searchApplication(20220020) && domestic_list.searchCGPA(3.4) && domestic_list.searchResearch(94)
+    && international_list.searchApplication(20220150) && international_list.searchCGPA(3.7) && international_list.searchResearch(95)) {
+        cout << "Passed unit test 2 normal" << endl;
+    }
+    else {
+        cout << "Failed unit test 2 normal" << endl;
+    }
+
+    // Corner case
+    if (domestic_list.searchApplication(20220000) && domestic_list.searchCGPA(4.33) && domestic_list.searchResearch(100)
+        && international_list.searchApplication(20220199) && international_list.searchCGPA(4.33) && international_list.searchResearch(100)) {
+        cout << "Passed unit test 2 corner" << endl;
+    }
+    else {
+        cout << "Failed unit test 2 corner" << endl;
+    }
+
+    // Illegal case
+    if (domestic_list.searchApplication(24) || domestic_list.searchCGPA(4.34) || domestic_list.searchResearch(101)
+        || international_list.searchApplication(424242424) || international_list.searchCGPA(-1) || international_list.searchResearch(-4)) {
+        cout << "Failed unit test 2 illegal" << endl;
+    }
+    else {
+        cout << "Passed unit test 2 illegal" << endl;
+    }
+
+    cout << "UNIT TEST 3---------------------------------------------------" << endl;
+
+    // 3 Search existing DomesticStudent (and InternationalStudent) objects in the
+    //DomesticStudent (and InternationalStudent) linked list based on the user input information
+    //“firstName and lastName”
+
+    // Normal case
+    if (domestic_list.searchName("Lucas", "Cook") && international_list.searchName("Jiho","Chung")) {
+        cout << "Passed unit test 3 normal" << endl;
+    }
+    else {
+        cout << "Failed unit test 3 normal" << endl;
+    }
+
+    // Corner case
+    if (domestic_list.searchName("Mary", "White") && international_list.searchName("Guanyin", "Yang")) {
+        cout << "Passed unit test 3 corner" << endl;
+    }
+    else {
+        cout << "Failed unit test 3 corner" << endl;
+    }
+
+    // Illegal case
+    if (domestic_list.searchName("Mary", "Whitee") || international_list.searchName("person", "...")) {
+        cout << "Failed unit test 3 illegal" << endl;
+    }
+    else {
+        cout << "Passed unit test 3 illegal" << endl;
+    }
+
+    cout << "UNIT TEST 4---------------------------------------------------" << endl;
+
+    // 4 Delete existing DomesticStudent (and InternationalStudent) objects in the
+    //DomesticStudent (and InternationalStudent) linked list based on the user input information
+    //“firstName and lastName”
+
+    // Normal case
+    if (domestic_list.remove("Mary", "White") && international_list.remove("Guanyin", "Yang")) {
+        cout << "Passed unit test 4 normal" << endl;
+    }
+    else {
+        cout << "Failed unit test 4 normal" << endl;
+    }
+
+    // Corner case
+    if (domestic_list.remove("James", "Sanchez") && international_list.remove("Daehyun","Gim")) {
+        cout << "Passed unit test 4 corner" << endl;
+    }
+    else {
+        cout << "Failed unit test 4 corner" << endl;
+    }
+
+    // Illegal case
+    if (domestic_list.remove("Marty", "White") || international_list.remove("GU@NY!N", "Yang")) {
+        cout << "Failed unit test 4 illegal" << endl;
+
+    }
+    else {
+        cout << "Passed unit test 4 illegal" << endl;
+    }
+
+    cout << "UNIT TEST 5---------------------------------------------------" << endl;
+
+    // 5 Delete both the head node and tail node from the DomesticStudent (and
+    //InternationalStudent) linked list in a single delete function
+
+    // Normal case
+    if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
+        cout << "Passed unit test 5 normal" << endl;
+    }
+    else {
+        cout << "Failed unit test 5 normal" << endl;
+    }
+
+    /* what sort of corner and illegal cases can be done here???
+    // Corner case
+    if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
+        cout << "Passed unit test 5 corner" << endl;
+    }
+    else {
+        cout << "Failed unit test 5 corner" << endl;
+    }
+
+    // Illegal case
+    if (domestic_list.removeHeadTail() && international_list.removeHeadTail()) {
+        cout << "Passed unit test 5 illegal" << endl;
+    }
+    else {
+        cout << "Failed unit test 5 illegal" << endl;
+    }
+     */
+
+    cout << "UNIT TEST 6---------------------------------------------------" << endl;
+
+    // 6 Merge the two sorted DomesticStudent and InternationalStudent linked lists into a single
+    //Student linked list
+
+    // Normal case
+
+
+    // Corner case
+
+
+    // Illegal case
+
+
+
+    cout << "UNIT TEST 7---------------------------------------------------" << endl;
+
+    // 7 Search existing Student objects in the merged linked list based on the user input
+    //information “cgpa_threshold and researchScore_threshold”
+
+    // Normal case
+
+
+    // Corner case
+
+
+    // Illegal case
+
 
 
     /** -------------------------Main function loop------------------------- **/
@@ -418,7 +544,7 @@ int main() {
                     break;
                     case 2:
                         // Seach by CGPA
-                        cout << endl "Search by specific CGPA score or a minimum threshold?\n"
+                        cout << endl << "Search by specific CGPA score or a minimum threshold?\n"
                         << "Type 1 for specific score\n"
                         << "Type 2 for minimum score\n"
                         << ">> ";
@@ -442,7 +568,7 @@ int main() {
                     break;
                     case 3:
                         // Search by Research
-                        cout << endl "Search by specific research score or a minimum threshold?\n"
+                        cout << endl << "Search by specific research score or a minimum threshold?\n"
                         << "Type 1 for specific score\n"
                         << "Type 2 for minimum score\n"
                         << ">> ";
@@ -517,7 +643,7 @@ int main() {
                     break;
                     case 2:
                         // Seach by CGPA
-                        cout << endl "Search by specific CGPA score or a minimum threshold?\n"
+                        cout << endl << "Search by specific CGPA score or a minimum threshold?\n"
                         << "Type 1 for specific score\n"
                         << "Type 2 for minimum score\n"
                         << ">> ";
@@ -541,7 +667,7 @@ int main() {
                     break;
                     case 3:
                         // Search by Research
-                        cout << endl "Search by specific research score or a minimum threshold?\n"
+                        cout << endl << "Search by specific research score or a minimum threshold?\n"
                         << "Type 1 for specific score\n"
                         << "Type 2 for minimum score\n"
                         << ">> ";

@@ -3,7 +3,7 @@ project(FinalProject)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(FinalProject main.cpp student.cpp stu_sort.cpp list.cpp toeflscore.cpp)
+add_executable(FinalProject main.cpp student.cpp stu_sort.cpp list.cpp toeflscore.cpp validCheck.cpp validCheck.hpp)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/domestic-stu.txt
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

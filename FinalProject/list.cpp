@@ -1,7 +1,6 @@
 //list.cpp to implement linked list class
 
 #include "list.hpp"
-#include <iostream>
 using namespace std;
 
 
@@ -186,7 +185,8 @@ int LinkedList<T>::CompareNodes(NodePtr<T> first, NodePtr<T> second){
 }
 
 template <class T>
-void LinkedList<T>::insert(T student){ //insert in ordered list
+bool LinkedList<T>::insert(T student){ //insert in ordered list
+    // throws exception if bad alloc
     try
     {
         // new pointer
@@ -195,7 +195,6 @@ void LinkedList<T>::insert(T student){ //insert in ordered list
 
         // if linked list is empty node = head
         if(head == nullptr){
-            std::cout << "HEAD INSERTED\n";
             head = new_student;
         } else {
             // insert in overall sorted order
@@ -205,7 +204,7 @@ void LinkedList<T>::insert(T student){ //insert in ordered list
             while(current->link != nullptr && (CompareNodes(current->link,new_student) == 1)){
                 current = current->link;
             }
-            
+
             // set new head or insert into list
             if(CompareNodes(new_student,head)){
                 new_student->link = head;
@@ -218,51 +217,56 @@ void LinkedList<T>::insert(T student){ //insert in ordered list
 
         // Update tail
         tail = updateTail(head);
+        return true;
     }
-    catch(const std::bad_alloc & exception){
-        std::cout << "bad alloc: " << exception.what();
+    catch(const bad_alloc & exception){
+        cout << "bad alloc: " << exception.what();
+        return false;
     }
 }
 
 template <class T>
 bool LinkedList<T>::remove(string first, string last){
-    
-    NodePtr<T> current = head;
-    NodePtr<T> prev = nullptr;
+    try {
+        NodePtr<T> current = head;
+        NodePtr<T> prev = nullptr;
 
-    // Delete Head 
-    if(current != nullptr && (compareName(current,first,last))){
-        head = head->link;
-        delete current;
-        std::cout << "Delete\n";
-        return true;
-    } else {
-        while(current != nullptr && !(compareName(current,first,last))){
-            prev = current;
-            current = current->link;
+        // Delete Head
+        if (current != nullptr && (compareName(current, first, last))) {
+            head = head->link;
+            delete current;
+            std::cout << "Delete\n";
+            return true;
+        } else {
+            while (current != nullptr && !(compareName(current, first, last))) {
+                prev = current;
+                current = current->link;
+            }
+
+            //key not in list
+            if (current == nullptr) {
+                std::cout << "Not in Linked List\n";
+                return false;
+            }
+
+            // found current
+            // unlink
+            prev->link = current->link;
+            delete current;
+            std::cout << "Deleted\n";
+
+            // update tail
+            tail = updateTail(head);
+            return true;
         }
-
-        //key not in list
-        if(current == nullptr){
-            std::cout << "Not in Linked List\n";
-            return false;
-        }
-
-        // found current
-        // unlink
-        prev->link = current->link;
-        delete current;
-        std::cout << "Deleted\n";
-
-        // update tail
-        tail = updateTail(head);
-        return true;
     }
-    return false;
+    catch (const exception&) {
+        return false;
+    }
 }
 
 template <class T>
-void LinkedList<T>::searchCGPA(float CGPA){
+bool LinkedList<T>::searchCGPA(float CGPA){
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getCGPA() == CGPA){
@@ -272,12 +276,15 @@ void LinkedList<T>::searchCGPA(float CGPA){
     }
 
     if(counter == 0){
-        std::cout << "No Matching Students\n";
+        cout << "No Matching Students\n";
+        return false;
     }
+
+    return true;
 }
 
 template <class T>
-void LinkedList<T>::searchApplication(int id){
+bool LinkedList<T>::searchApplication(int id){
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getId() == id){
@@ -287,12 +294,15 @@ void LinkedList<T>::searchApplication(int id){
     }
 
     if(counter == 0){
-        std::cout << "No Matching Students\n";
+        cout << "No Matching Students\n";
+        return false;
     }
+
+    return true;
 }
 
 template <class T>
-void LinkedList<T>::searchResearch(int score){
+bool LinkedList<T>::searchResearch(int score){
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getResearchScore() == score){
@@ -302,12 +312,15 @@ void LinkedList<T>::searchResearch(int score){
     }
 
     if(counter == 0){
-        std::cout << "No Matching Students\n";
+        cout << "No Matching Students\n";
+        return false;
     }
+
+    return true;
 }
 
 template <class T>
-void LinkedList<T>::searchName(string first, string last){
+bool LinkedList<T>::searchName(string first, string last){
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getFirstName() == first && current->data.getLastName() == last){
@@ -317,8 +330,11 @@ void LinkedList<T>::searchName(string first, string last){
     }
 
     if(counter == 0){
-        std::cout << "No Matching Students\n";
+        cout << "No Matching Students\n";
+        return false;
     }
+
+    return true;
 }
 
 template <class T>

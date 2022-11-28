@@ -248,6 +248,30 @@ toeflscore.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/toeflscore.cpp.s
 .PHONY : toeflscore.cpp.s
 
+validCheck.obj: validCheck.cpp.obj
+.PHONY : validCheck.obj
+
+# target to build an object file
+validCheck.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/validCheck.cpp.obj
+.PHONY : validCheck.cpp.obj
+
+validCheck.i: validCheck.cpp.i
+.PHONY : validCheck.i
+
+# target to preprocess a source file
+validCheck.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/validCheck.cpp.i
+.PHONY : validCheck.cpp.i
+
+validCheck.s: validCheck.cpp.s
+.PHONY : validCheck.s
+
+# target to generate assembly for a file
+validCheck.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FinalProject.dir\build.make CMakeFiles/FinalProject.dir/validCheck.cpp.s
+.PHONY : validCheck.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -272,6 +296,9 @@ help:
 	@echo ... toeflscore.obj
 	@echo ... toeflscore.i
 	@echo ... toeflscore.s
+	@echo ... validCheck.obj
+	@echo ... validCheck.i
+	@echo ... validCheck.s
 .PHONY : help
 
 

@@ -6,11 +6,11 @@ run: main
 	./main
 
 #link main.o, student.o, and stu_sort.o to executable main
-main: main.o student.o stu_sort.o toeflscore.o list.o
-	g++ -g -o main main.o student.o stu_sort.o toeflscore.o list.o
+main: main.o student.o stu_sort.o toeflscore.o list.o validCheck.o
+	g++ -g -o main main.o student.o stu_sort.o toeflscore.o list.o validCheck.o
 
 #compile the main.cpp to main.o
-main.o: main.cpp student.hpp stu_sort.hpp toeflscore.hpp list.hpp
+main.o: main.cpp student.hpp stu_sort.hpp toeflscore.hpp list.hpp validCheck.hpp
 	g++ -g -c main.cpp
 
 #compile the student.cpp to student.o
@@ -28,6 +28,9 @@ toeflscore.o: toeflscore.cpp toeflscore.hpp
 list.o: list.cpp list.hpp
 	g++ -g -c list.cpp
 
+validCheck.o: validCheck.cpp validCheck.hpp
+	g++ -g -c validCheck.cpp
+
 #remove built files
 clean:
-	rm -rf main main.o student.o stu_sort.o toeflscore.o list.o *~
+	rm -rf main main.o student.o stu_sort.o toeflscore.o list.o validCheck.o*~

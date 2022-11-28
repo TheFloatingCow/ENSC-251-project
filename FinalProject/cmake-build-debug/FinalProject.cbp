@@ -109,6 +109,12 @@
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/toeflscore.hpp">
 			<Option target="FinalProject"/>
 		</Unit>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/validCheck.cpp">
+			<Option target="FinalProject"/>
+		</Unit>
+		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/validCheck.hpp">
+			<Option target="FinalProject"/>
+		</Unit>
 		<Unit filename="C:/Users/Kenji/Documents/GitHub/ENSC-251-project/FinalProject/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
