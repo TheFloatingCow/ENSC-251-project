@@ -4,10 +4,18 @@ dla207 kmp7 ses16 sas40
 
 Task Distribution				                        Contributors
 
-
-
-
-
+LinkedList                                              Kenji
+Search functions
+Insert
+Delete functions
+Merge
+Error checking                                          Kenji
+Unit tests                                              Kenji
+Fixing interm project code
+UI
+Innovations
+Complexity analysis                                     Kenji
+Slides presentation                                     Kenji
 
 
 Innovations
