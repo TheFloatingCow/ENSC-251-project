@@ -378,16 +378,20 @@ int main() {
 
     /** -------------------------Main function loop------------------------- **/
 
+    LinkedList<Student> merge;
+
     while(true) {
         int input;
         cout << endl << "\nStudent Directory\n"
             << "Type 1 to Print all Domestic Students\n"
             << "Type 2 to Print all International Students\n"
-            << "Type 3 for Domestic Student Functions\n"
-            << "Type 4 for International Student Functions\n"
-            << "Type 5 to Merge Linked Lists\n"
-            << "Type 6 to Compare Students\n"
-            << "Type 7 to exit program\n"
+            << "Type 3 to Print Merged List\n"
+            << "Type 4 for Domestic Student Functions\n"
+            << "Type 5 for International Student Functions\n"
+            << "Type 6 for Merge List Functions\n"
+            << "Type 7 to Merge Linked Lists\n"
+            << "Type 8 to Compare Students\n"
+            << "Type 9 to exit program\n"
             << ">> ";
 
         cin >> input;
@@ -399,7 +403,11 @@ int main() {
             case 2:
                 international_list.printList(international_list.getHead());
             break;
-            case 3: //domestic
+            case 3:{
+                merge.printList(merge.getHead());
+                break;
+            }
+            case 4: //domestic
                 cout << endl << "Domestic Functions: \n"
                 << "Type 1 to Search by Application ID\n"
                 << "Type 2 to Search by CGPA\n"
@@ -418,11 +426,51 @@ int main() {
                     break;
                     case 2:
                         // Seach by CGPA
-                        domestic_list.searchCGPA(validInputCGPA());
+                        cout << "\nSearch by specific CGPA score or a minimum threshold?\n"
+                        << "Type 1 for specific score\n"
+                        << "Type 2 for minimum score\n"
+                        << ">> ";
+                        
+                        int search1;
+                        cin >> search1;
+                        switch(search1) {
+                            case 1:
+                                domestic_list.searchCGPA(validInputCGPA());
+                            break;
+                            case 2:
+                                domestic_list.thresholdCGPA(validInputCGPA());
+                            break;
+                            default:
+                                cin.clear();
+                                cin.ignore();
+                                cout << endl << "Invalid option selected" << endl;
+                            break;
+                        
+                        }
                     break;
                     case 3:
                         // Search by Research
-                        domestic_list.searchResearch(validInputResearch());
+                        cout << "\nSearch by specific research score or a minimum threshold?\n"
+                        << "Type 1 for specific score\n"
+                        << "Type 2 for minimum score\n"
+                        << ">> ";
+                        
+                        int search2;
+                        cin >> search2;
+                        switch(search2) {
+                            case 1:
+                                domestic_list.searchResearch(validInputResearch());
+                            break;
+                            case 2:
+                                domestic_list.thresholdResearch(validInputResearch());
+                            break;
+                            default:
+                                cin.clear();
+                                cin.ignore();
+                                cout << endl << "Invalid option selected" << endl;
+                            break;
+                        
+                        }
                     break;
                     case 4: {
                         // Search by First and Last name
@@ -432,7 +480,7 @@ int main() {
                     }
                     case 5: {
                         // insert new student
-                        DomesticStudent new_student = DomesticStudent(validFirstName(),validLastName(),validInputCGPA(),validInputResearch(),validInputProvince());
+                        DomesticStudent new_student = DomesticStudent(validFirstName(),validLastName(),validInputCGPA(),validInputResearch(),validInputProvince(),validInputId());
                         domestic_list.insert(new_student);
                         break;
                     }
@@ -442,8 +490,7 @@ int main() {
                         break;
                     }
                     case 7: {
-                        domestic_list.removeHead();
-                        domestic_list.removeTail();
+                        domestic_list.removeHeadTail();
                         break;
                     }
                     case 8:
@@ -458,7 +505,7 @@ int main() {
                     break;
                 }
             break;
-            case 4: //international
+            case 5: //international
                 cout << endl << "International Functions: \n"
                 << "Type 1 to Search by Application ID\n"
                 << "Type 2 to Search by CGPA\n"
@@ -477,12 +524,51 @@ int main() {
                         international_list.searchApplication(validInputId());
                     break;
                     case 2:
-                        // search by cgpa
-                        international_list.searchCGPA(validInputCGPA());
+                        // Seach by CGPA
+                        cout << "\nSearch by specific CGPA score or a minimum threshold?\n"
+                        << "Type 1 for specific score\n"
+                        << "Type 2 for minimum score\n"
+                        << ">> ";
+                        
+                        int search3;
+                        cin >> search3;
+                        switch(search3) {
+                            case 1:
+                                international_list.searchCGPA(validInputCGPA());
+                            break;
+                            case 2:
+                                international_list.thresholdCGPA(validInputCGPA());
+                            break;
+                            default:
+                                cin.clear();
+                                cin.ignore();
+                                cout << endl << "Invalid option selected" << endl;
+                            break;
+                        
+                        }
                     break;
                     case 3:
-                        // Search research
-                        international_list.searchResearch(validInputResearch());
+                        // Search by Research
+                        cout << "\nSearch by specific research score or a minimum threshold?\n"
+                        << "Type 1 for specific score\n"
+                        << "Type 2 for minimum score\n"
+                        << ">> ";
+                        
+                        int search4;
+                        cin >> search4;
+                        switch(search4) {
+                            case 1:
+                                international_list.searchResearch(validInputResearch());
+                            break;
+                            case 2:
+                                international_list.thresholdResearch(validInputResearch());
+                            break;
+                            default:
+                                cin.clear();
+                                cin.ignore();
+                                cout << endl << "Invalid option selected" << endl;
+                            break;
+                        }
                     break;
                     case 4:
                         // Search Name
@@ -491,7 +577,7 @@ int main() {
                     case 5: {
                         // Insert student
                         InternationalStudent new_student = InternationalStudent(validFirstName(),validLastName(),validInputCGPA(),
-                            validInputResearch(),validInputCountry(),validToefl("Reading"), validToefl("Listening"), validToefl("Speaking"), validToefl("Writing"));
+                            validInputResearch(),validInputCountry(),validToefl("Reading"), validToefl("Listening"), validToefl("Speaking"), validToefl("Writing"),validInputId());
                         international_list.insert(new_student);
                     break;
                     }
@@ -500,8 +586,7 @@ int main() {
                     break;
                     }
                     case 7:{
-                        international_list.removeHead();
-                        international_list.removeTail();
+                        international_list.removeHeadTail();
                         break;
                     }
                     case 8: {
@@ -515,11 +600,114 @@ int main() {
                     break;
                 }
             break;
-            case 5:{
-                std::cout << "Not implemented yet\n";
+            case 6:{
+                cout << endl << "Merge Functions: \n"
+                << "Type 1 to Search by Threshold\n"
+                << "Type 2 to Search by Application ID\n"
+                << "Type 3 to Search by CGPA\n"
+                << "Type 4 to Search by Research Score\n"
+                << "Type 5 to Search by Firstname and Lastname\n"
+                << "Type 6 to Insert a New Domestic Student\n"
+                << "Type 7 to Insert a New International Student\n"
+                << "Type 8 to Delete by Firstname and Lastname\n"
+                << "Type 9 to Delete Head and Tail Node\n"
+                << "Type 10 to exit program\n"
+                << ">> ";
+                int in1;
+                cin >> in1;
+                switch(in1) {
+                    case 1:{
+                        std::cout << "Enter CGPA and Research Score Threshold: ";
+                        merge.threshold(validInputCGPA(),validInputResearch());
+                        break;
+                    }
+                    case 2:
+                        merge.searchApplication(validInputId());
+                    break;
+                    case 3:{
+                        merge.searchCGPA(validInputCGPA());
+                        break;
+                        }
+                    break;
+                    case 4:{
+                        merge.searchResearch(validInputResearch());
+                        break;
+                    }
+                    case 5: {
+                        // Search by First and Last name
+                        merge.searchName(validFirstName(),validLastName());
+                        
+                    break;
+                    }
+                    case 6: {
+                        // insert new student
+                        DomesticStudent new_student = DomesticStudent(validFirstName(),validLastName(),validInputCGPA(),validInputResearch(),validInputProvince(),validInputId());
+                        Student stu(new_student);
+                        stu.setHome(new_student.getHome());
+                        merge.insert(stu);
+                        break;
+                    }
+                    case 7:{
+                        // Insert student
+                        InternationalStudent new_student = InternationalStudent(validFirstName(),validLastName(),validInputCGPA(),
+                            validInputResearch(),validInputCountry(),validToefl("Reading"), validToefl("Listening"), validToefl("Speaking"), validToefl("Writing"),validInputId());
+                        Student stu(new_student);
+                        stu.setHome(new_student.getHome());
+                        merge.insert(stu);
+                        break;
+                    }
+                    case 8: {
+                        // delete student
+                        merge.remove(validFirstName(),validLastName());
+                        break;
+                    }
+                    case 9: {
+                        domestic_list.removeHeadTail();
+                        break;
+                    }
+                    case 10:
+                        cout << "Exiting program..." << endl;
+                        exit(1);
+                    break;
+
+                    default:
+                        cin.clear();
+                        cin.ignore();
+                        cout << endl << "Invalid option selected" << endl;
+                    break;
+                }
                 break;
             }
-            case 6: //Input of comparing based on student applicant ID
+            case 7:{
+                // Merge Lists
+                // add domestic students
+                while(domestic_list.getHead() != nullptr){
+                    Student newStudent(domestic_list.getHead()->data);
+                    newStudent.setType(true);
+                    newStudent.setHome(domestic_list.getHead()->data.getHome());
+                    merge.insert(newStudent);
+
+                    // remove head
+                    domestic_list.removeHead();
+                }
+
+                // add international students
+                while(international_list.getHead() != nullptr){
+                    Student newStudent(international_list.getHead()->data);
+                    newStudent.setType(false);
+                    newStudent.setHome(international_list.getHead()->data.getHome());
+                    merge.insert(newStudent);
+
+                    // remove head
+                    international_list.removeHead();
+                }
+
+                // print list 
+                merge.printList(merge.getHead());
+
+                break;
+            }
+            case 8: //Input of comparing based on student applicant ID
                 cout << endl << "What field would you want to compare by\n"
                 << "Type 1 for cgpa\n"
                 << "Type 2 for research score\n"
@@ -640,7 +828,7 @@ int main() {
 
             break;
             
-            case 7:
+            case 9:
                 cout << "Exiting program..." << endl;
                 exit(1);
             break;

@@ -32,6 +32,8 @@ Student::Student(const Student& s) {
     this->CGPA  = s.CGPA;
     this->researchScore = s.researchScore;
     this->id = s.id;
+    this->home = s.home;
+    this->type = s.type;
 } //copy constructor
 
 
@@ -114,6 +116,14 @@ int Student::getId() {
     return id;
 }
 
+string Student::getHome(){
+    return home;
+}
+
+bool Student::getType(){
+    return type;
+}
+
 // Setters
 void Student::setFirstName(const string& firstName) {
     this->firstName = firstName;
@@ -135,6 +145,13 @@ void Student::setId(const int& id) {
     this->id = id;
 }
 
+void Student::setHome(const string& newhome){
+    this->home = newhome;
+}
+
+void Student::setType(const bool& typestudent){
+    this->type = typestudent;
+}
 
 
 /** Domestic Student **/
@@ -146,12 +163,14 @@ DomesticStudent::DomesticStudent() {
 
 DomesticStudent::DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province)
 : Student(firstName, lastName, CGPA, researchScore) {
-    this->province = province;
+    this->home = province;
+    type = true;
 } //non-default constructor without id
 
 DomesticStudent::DomesticStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& province, const int& id)
         : Student(firstName, lastName, CGPA, researchScore, id) {
-    this->province = province;
+    this->home = province;
+    type = true;
 } //non-default constructor with id
 
 DomesticStudent::DomesticStudent(const DomesticStudent& s) {
@@ -160,24 +179,25 @@ DomesticStudent::DomesticStudent(const DomesticStudent& s) {
     this->CGPA  = s.CGPA;
     this->researchScore = s.researchScore;
     this->id = s.id;
-    this->province = s.province;
+    this->home = s.home;
+    type = true;
 } //copy constructor
 
 // Getter
 string DomesticStudent::getHome() {
-    return this->province;
+    return this->home;
 }
 
 // Setter
 void DomesticStudent::setProvince(const string& province) {
-    this->province = province;
+    this->home = province;
 }
 
 // Friend function
 ostream& operator <<(ostream &out, const DomesticStudent &s) {
     out << "Domestic student " << s.firstName << " "
         << s.lastName << " " << s.id << " from "
-        << s.province << " province has cgpa of "
+        << s.home << " province has cgpa of "
         << s.CGPA << ", and research score of " << s.researchScore << endl;
     return out;
 } //overload << operator
@@ -193,20 +213,22 @@ InternationalStudent::InternationalStudent() {
 
 InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing)
 : Student(firstName, lastName, CGPA, researchScore) {
-    this->country = country;
+    this->home = country;
     this->score.set_reading(reading);
     this->score.set_listening(listening);
     this->score.set_speaking(speaking);
     this->score.set_writing(writing);
+    type = false;
 } //non-default constructor
 
 InternationalStudent::InternationalStudent(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& country, const int& reading, const int& listening, const int& speaking, const int& writing, const int& id)
         : Student(firstName, lastName, CGPA, researchScore, id) {
-    this->country = country;
+    this->home = country;
     this->score.set_reading(reading);
     this->score.set_listening(listening);
     this->score.set_speaking(speaking);
     this->score.set_writing(writing);
+    type = false;
 } //non-default constructor
 
 InternationalStudent::InternationalStudent(const InternationalStudent& s) {
@@ -215,16 +237,17 @@ InternationalStudent::InternationalStudent(const InternationalStudent& s) {
     this->CGPA  = s.CGPA;
     this->researchScore = s.researchScore;
     this->id = s.id;
-    this->country = s.country;
+    this->home = s.home;
     this->score.set_reading(s.score.get_reading());
     this->score.set_listening(s.score.get_listening());
     this->score.set_speaking(s.score.get_speaking());
     this->score.set_writing(s.score.get_writing());
+    type = false;
 } //copy constructor
 
 // Getter
 string InternationalStudent::getHome() {
-    return this->country;
+    return this->home;
 }
 
 ToeflScore InternationalStudent::get_score(){
@@ -233,7 +256,7 @@ ToeflScore InternationalStudent::get_score(){
 
 // Setter
 void InternationalStudent::setCountry(const string& country) {
-    this->country = country;
+    this->home = country;
 }
 
 // Check if toefl requrements are met
@@ -248,7 +271,7 @@ bool InternationalStudent::meetToeflRequirements(){
 ostream& operator <<(ostream &out, const InternationalStudent &s) {
     out << "International student " << s.firstName << " "
              << s.lastName << " " << s.id << " from "
-             << s.country << " has cgpa of "
+             << s.home << " has cgpa of "
              << s.CGPA << ", research of " << s.researchScore
              << ", and TOEFL of " << s.score.get_totalScore() << endl;
     return out;
