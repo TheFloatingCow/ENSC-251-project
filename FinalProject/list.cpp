@@ -18,6 +18,8 @@ Node<T>::Node() {
     data.setCGPA(0);
     data.setResearchScore(0);
     data.setId(20220000);
+    data.setHome("N/A");
+    data.setType(true);
 } //default constructor
 
 template<class T>
@@ -163,10 +165,11 @@ NodePtr<T> LinkedList<T>::updateTail(NodePtr<T> current_head){
     return temp;
 }
 
-// Compare Nodes
+// Compare Nodes (first > second == 1) else 0
 template <class T>
-int LinkedList<T>::CompareNodes(NodePtr<T> first, NodePtr<T> second){
+int LinkedList<T>::CompareObjects(NodePtr<T> first, NodePtr<T> second){
     int output = 0;
+    // std::cout << first->data.getHome() << "\n";
     if(first->data.getResearchScore() > second->data.getResearchScore()){
         output = 1;
     } else if(first->data.getResearchScore() == second->data.getResearchScore()){
@@ -174,9 +177,18 @@ int LinkedList<T>::CompareNodes(NodePtr<T> first, NodePtr<T> second){
         if(first->data.getCGPA() > second->data.getCGPA()){
             output = 1;
         } else if(first->data.getCGPA() == second->data.getCGPA()){
-            // check province or country
-            if(first->data.getHome() < second->data.getHome()){
-                output = 1;
+            // check if both domestic || both internatial/ different
+            // both domestic
+            if(first->data.getType() == second->data.getType()){
+                // check province or country 
+                if(first->data.getHome() < second->data.getHome()){
+                    output = 1;
+                }
+            } else { // different types
+                // put domestic higher than international
+                if(first->data.getType() == true){
+                    output = 1;
+                }
             }
         }
     }
@@ -201,12 +213,12 @@ bool LinkedList<T>::insert(T student){ //insert in ordered list
             // research, cgpa, (province, country)
             NodePtr<T> current = head;
 
-            while(current->link != nullptr && (CompareNodes(current->link,new_student) == 1)){
+            while(current->link != nullptr && (CompareObjects(current->link,new_student) == 1)){
                 current = current->link;
             }
 
             // set new head or insert into list
-            if(CompareNodes(new_student,head)){
+            if(CompareObjects(new_student,head)){
                 new_student->link = head;
                 head = new_student;
             } else {
@@ -367,6 +379,32 @@ void LinkedList<T>::thresholdResearch(int score){
     }
 }
 
+template <class T>
+void LinkedList<T>::threshold(float CGPA,int score){
+    int counter = 0;
+    for(NodePtr<T> current = head; current != nullptr; current = current->link){
+        if(current->data.getCGPA() >= CGPA && current->data.getResearchScore() >= score){
+            printNode(current);
+            counter++;
+        }
+    }
+
+    if(counter == 0){
+        std::cout << "No Students Above CGPA " << CGPA << endl;
+    }
+}
+
+template <class T>
+bool LinkedList<T>::removeHead(){
+    if(head == nullptr){
+        return false;
+    }
+    NodePtr<T> temp = head;
+    head = head->link;
+    delete temp;
+    return true;
+}
+
 template<class T>
 bool LinkedList<T>::removeHeadTail() {
     //Start at head position
@@ -407,11 +445,20 @@ bool LinkedList<T>::removeHeadTail() {
 template<class T>
 void LinkedList<T>::printList(NodePtr<T> head)
 {
+    if(head == nullptr){
+        std::cout << "List has not been created yet\n";
+        return;
+    }
     NodePtr<T> here = head;
     while(here != nullptr)
     {
-         cout //<< here->data.getId() << " "
-        << here->data.getFirstName() << " "
+        //<< here->data.getId() << " "
+        if(here->data.getType() == true){
+            cout << "Domestic ";
+        } else if(here->data.getType() == false){
+            cout << "International ";
+        } 
+        cout << here->data.getFirstName() << " "
         << here->data.getLastName() << " "
         << here->data.getHome() << " "
         << here->data.getCGPA() << " "
@@ -423,8 +470,13 @@ void LinkedList<T>::printList(NodePtr<T> head)
 template<class T>
 void LinkedList<T>::printNode(NodePtr<T> here)
 {
-        cout //<< here->data.getId() << " "
-        << here->data.getFirstName() << " "
+         //<< here->data.getId() << " "
+        if(here->data.getType() == true){
+            cout << "Domestic ";
+        } else if(here->data.getType() == false){
+            cout << "International ";
+        } 
+        cout << here->data.getFirstName() << " "
         << here->data.getLastName() << " "
         << here->data.getCGPA() << " "
         << here->data.getResearchScore() << " " << endl;
@@ -446,3 +498,4 @@ bool compareName(NodePtr<T> node, string first, string last){
 // Template instantiations
 template class LinkedList<DomesticStudent>;
 template class LinkedList<InternationalStudent>;
+template class LinkedList<Student>;

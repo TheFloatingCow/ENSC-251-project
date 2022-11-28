@@ -59,8 +59,10 @@ public:
 
     // Update Tail
     NodePtr<T> updateTail(NodePtr<T> current_head);
+
     // Comprare Nodes
     int CompareNodes(NodePtr<T> first, NodePtr<T> second);
+    int CompareObjects(NodePtr<T> first, NodePtr<T> second);
 
     // Linked List operations 
     bool insert(T student); //insert in ordered list
@@ -74,7 +76,9 @@ public:
     
     void thresholdCGPA(float CGPA);
     void thresholdResearch(int score);
+    void threshold(float CGPA, int score);
 
+    bool removeHead();
     bool removeHeadTail();
     // Linked List operations international
     //void head_insert_int(NodePtr& head, T student); //insert at head

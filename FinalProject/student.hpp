@@ -17,12 +17,15 @@ protected:
     float CGPA;
     int researchScore;
     int id;
+    string home;
+    bool type; // true->domestic; false->international
 public:
     
 
     // Constructors
     Student(); //default constructor
-    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore); //non-default constructor without id
+    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore);
+    Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const string& home); //non-default constructor without id
     Student(const string& firstName, const string& lastName, const float& CGPA, const int& researchScore, const int& id); //non-default constructor with id
     Student(const Student& s); //copy constructor
 
@@ -32,6 +35,8 @@ public:
     float getCGPA();
     int getResearchScore();
     int getId();
+    string getHome();
+    bool getType();
 
     // Set functions
     void setFirstName(const string& firstName);
@@ -39,6 +44,8 @@ public:
     void setCGPA(const int& CGPA);
     void setResearchScore(const int& researchScore);
     void setId(const int& id);
+    void setHome(const string& newhome);
+    void setType(const bool& typestudent);
 
     // Set functions
 
@@ -53,7 +60,7 @@ class DomesticStudent : public Student
 {
 protected:
     // Variable
-    string province;
+    string home;
 public:
     
 
@@ -77,7 +84,7 @@ class InternationalStudent : public Student
 {
 protected:
     // Variables
-    string country;
+    string home;
     // int reading, listening, speaking, writing, toefl;
     // float ToeflScore; 
 
