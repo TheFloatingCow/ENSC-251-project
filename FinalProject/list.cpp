@@ -519,7 +519,8 @@ void LinkedList<T>::printList(NodePtr<T> head)
         << here->data.getLastName() << " "
         << here->data.getHome() << " "
         << here->data.getCGPA() << " "
-        << here->data.getResearchScore() << " " << endl;
+        << here->data.getResearchScore() << " "
+        << here->data.getId() << " " << endl;
         here = here->link;
     }
 }
@@ -537,7 +538,8 @@ void LinkedList<T>::printNode(NodePtr<T> here)
         << here->data.getLastName() << " "
         << here->data.getHome() << " "
         << here->data.getCGPA() << " "
-        << here->data.getResearchScore() << " " << endl;
+        << here->data.getResearchScore() << " "
+        << here->data.getId() << " " << endl;
         here = here->link;
 }
 
