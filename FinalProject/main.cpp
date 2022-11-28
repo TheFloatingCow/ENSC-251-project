@@ -899,7 +899,7 @@ int main() {
                         break;
                     }
                     case 9: {
-                        domestic_list.removeHeadTail();
+                        merge.removeHeadTail();
                         break;
                     }
                     case 10:

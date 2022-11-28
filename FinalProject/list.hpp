@@ -82,6 +82,7 @@ public:
 
     // Remove functions
     bool removeHead();
+    bool removeTail();
     bool removeHeadTail();
 
     // Check if student info is valid

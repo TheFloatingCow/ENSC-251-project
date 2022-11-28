@@ -426,22 +426,8 @@ bool LinkedList<T>::removeHead(){
     return true;
 }
 
-template<class T>
-bool LinkedList<T>::removeHeadTail() {
-    //Start at head position
-    if(head != NULL)
-    {
-        NodePtr<T> discard = head;
-        head = head->link;
-        delete discard;
-        cout << "Top listed applicant has been deleted" << endl;
-        return true;
-    }
-    else{
-        cout <<"No applicant to delete" << endl;
-        return false;
-    }
-
+template <class T>
+bool LinkedList<T>::removeTail(){
     if(head == nullptr){
         return false;
     }
@@ -461,6 +447,15 @@ bool LinkedList<T>::removeHeadTail() {
     std::cout<<"Bottom listed applicant deleted\n";
     return true;
 
+}
+
+template<class T>
+bool LinkedList<T>::removeHeadTail() {
+    bool output = false;
+    if(this->removeHead() && this->removeTail()){
+        return true;
+    }
+    return false;
 }
 
 // Check if student values are valid
@@ -540,6 +535,7 @@ void LinkedList<T>::printNode(NodePtr<T> here)
         } 
         cout << here->data.getFirstName() << " "
         << here->data.getLastName() << " "
+        << here->data.getHome() << " "
         << here->data.getCGPA() << " "
         << here->data.getResearchScore() << " " << endl;
         here = here->link;
