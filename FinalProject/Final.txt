@@ -4,15 +4,15 @@ dla207 kmp7 ses16 sas40
 
 -Task Distribution-				                        -Contributors-
 
-Creating LinkedList                                     Kenji
-Search functions                                        Derrick
-Insert
-Delete functions                                        Derrick
-Merge
+Creating LinkedList                                     Kenji Amaan
+Search functions                                        Derrick Amaan
+Insert                                                  Amaan
+Delete functions                                        Derrick Amaan
+Merge                                                   Amaan
 Error checking                                          Kenji
 Unit tests                                              Kenji
-Fixing interim project code
-UI                                                      Derrick
+Fixing interim project code                             Amaan
+UI                                                      Derrick Amaan
 Innovations                                             Kenji
 Complexity analysis                                     Kenji
 Slides presentation                                     Kenji Derrick
@@ -28,7 +28,7 @@ Compare Objects function: Compares Node objects and returns the object with high
 
 -Big O analysis-
 
-insert: O(1)
+insert: O(n)
 search functions (CGPA, ID, research, name): O(n)
 remove: O(n)
 merge: O(n)
