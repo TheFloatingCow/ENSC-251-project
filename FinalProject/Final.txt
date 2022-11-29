@@ -2,7 +2,7 @@ ENSC 251 FINAL PROJECT REPORT
 Group 9
 dla207 kmp7 ses16 sas40
 
-Task Distribution				                        Contributors
+-Task Distribution-				                        -Contributors-
 
 LinkedList                                              Kenji
 Search functions
@@ -11,20 +11,22 @@ Delete functions
 Merge
 Error checking                                          Kenji
 Unit tests                                              Kenji
-Fixing interm project code
+Fixing interim project code
 UI
-Innovations
+Innovations                                             Kenji
 Complexity analysis                                     Kenji
 Slides presentation                                     Kenji
 
 
-Innovations
+-Innovations-
 
+Using template for Student, InternationalStudent, and DomesticStudent
+Student Compare functions: Compares students by name and ID
+Average functions: Returns the average CGPA or Research Score of all students in the list
+Return the line containing the error when reading txt files
+Compare Objects function: Compares Node objects and returns the object with higher priority
 
-
-
-
-Big O analysis
+-Big O analysis-
 
 insert: O(1)
 search functions (CGPA, ID, research, name): O(n)

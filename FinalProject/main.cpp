@@ -655,7 +655,10 @@ int main() {
                 << "Type 5 to Insert a New Student\n"
                 << "Type 6 to Delete by Firstname and Lastname\n"
                 << "Type 7 to Delete Head and Tail Node\n"
-                << "Type 8 to exit program\n"
+                << "Type 8 to Display average CGPA\n"
+                << "Type 9 to Display average Research Score\n"
+                << "Type 10 to return to main menu\n"
+                << "Type 11 to exit program\n"
                 << ">> ";
                 int in1;
                 cin >> in1;
@@ -714,8 +717,7 @@ int main() {
                     case 4: {
                         // Search by First and Last name
                         domestic_list.searchName(validFirstName(),validLastName());
-                        
-                    break;
+                        break;
                     }
                     case 5: {
                         // insert new student
@@ -732,9 +734,23 @@ int main() {
                         domestic_list.removeHeadTail();
                         break;
                     }
-                    case 8:
+                    case 8: {
+                        float avg = domestic_list.averageCGPA();
+                        cout << "The average CGPA of all current students is " << avg << endl;
+                        break;
+                    }
+                    case 9: {
+                        float avg = domestic_list.averageResearch();
+                        cout << "The average Research Score of all current students is " << avg << endl;
+                        break;
+                    }
+                    case 10: { // Do nothing to return to main menu
+                        break;
+                    }
+                    case 11: {
                         cout << "Exiting program..." << endl;
                         exit(1);
+                    }
                     break;
 
                     default:
@@ -753,7 +769,10 @@ int main() {
                 << "Type 5 to Insert a New Student\n"
                 << "Type 6 to Delete by Firstname and Lastname\n"
                 << "Type 7 to Delete Head and Tail\n"
-                << "Type 8 to exit program\n"
+                << "Type 8 to Display average CGPA\n"
+                << "Type 9 to Display average Research Score\n"
+                << "Type 10 to return to main menu\n"
+                << "Type 11 to exit program\n"
                 << ">> ";
                 int in2;
                 cin >> in2;
@@ -829,8 +848,21 @@ int main() {
                         break;
                     }
                     case 8: {
+                        float avg = international_list.averageCGPA();
+                        cout << "The average CGPA of all current students is " << avg << endl;
+                        break;
+                    }
+                    case 9: {
+                        float avg = international_list.averageResearch();
+                        cout << "The average Research Score of all current students is " << avg << endl;
+                        break;
+                    }
+                    case 10: { // Do nothing to return to main menu
+                        break;
+                    }
+                    case 11: {
+                        cout << "Exiting program..." << endl;
                         exit(1);
-                    break;
                     }
                     default:
                         cin.clear();

@@ -401,7 +401,7 @@ bool LinkedList<T>::thresholdResearch(int score){
 }
 
 template <class T>
-void LinkedList<T>::threshold(float CGPA,int score){
+void LinkedList<T>::threshold(float CGPA, int score){
     int counter = 0;
     for(NodePtr<T> current = head; current != nullptr; current = current->link){
         if(current->data.getCGPA() >= CGPA && current->data.getResearchScore() >= score){
@@ -552,6 +552,37 @@ bool compareName(NodePtr<T> node, string first, string last){
         }
     }
     return false;
+}
+
+// Average functions
+// Return average CGPA
+template <class T>
+float LinkedList<T>::averageCGPA() {
+    NodePtr<T> temp = head;
+    float average = 0;
+    int counter = 0;
+    while(temp->link->link != nullptr){
+        average += temp->getData().getCGPA();
+        counter++;
+        temp = temp->link;
+    }
+    average = average / counter;
+    return average;
+}
+
+// Return average research score
+template <class T>
+float LinkedList<T>::averageResearch() {
+    NodePtr<T> temp = head;
+    float average = 0;
+    int counter = 0;
+    while(temp->link->link != nullptr){
+        average += temp->getData().getResearchScore();
+        counter++;
+        temp = temp->link;
+    }
+    average = average / counter;
+    return average;
 }
 
 

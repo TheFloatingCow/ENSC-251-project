@@ -93,6 +93,10 @@ public:
     void printList(NodePtr<T> head);
     void printNode(NodePtr<T> here);
 
+    // Average functions
+    float averageCGPA();
+    float averageResearch();
+
 };
 
 

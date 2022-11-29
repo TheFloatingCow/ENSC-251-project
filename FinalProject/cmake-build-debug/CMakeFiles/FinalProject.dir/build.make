@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject
+CMAKE_SOURCE_DIR = C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FinalProject.dir/depend.make
@@ -71,86 +71,86 @@ include CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/main.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FinalProject.dir/main.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FinalProject.dir/main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/main.cpp.obj -MF CMakeFiles\FinalProject.dir\main.cpp.obj.d -o CMakeFiles\FinalProject.dir\main.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FinalProject.dir/main.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/main.cpp.obj -MF CMakeFiles\FinalProject.dir\main.cpp.obj.d -o CMakeFiles\FinalProject.dir\main.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp
 
 CMakeFiles/FinalProject.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp > CMakeFiles\FinalProject.dir\main.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp > CMakeFiles\FinalProject.dir\main.cpp.i
 
 CMakeFiles/FinalProject.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp -o CMakeFiles\FinalProject.dir\main.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\main.cpp -o CMakeFiles\FinalProject.dir\main.cpp.s
 
 CMakeFiles/FinalProject.dir/student.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/student.cpp.obj: ../student.cpp
 CMakeFiles/FinalProject.dir/student.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FinalProject.dir/student.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/student.cpp.obj -MF CMakeFiles\FinalProject.dir\student.cpp.obj.d -o CMakeFiles\FinalProject.dir\student.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FinalProject.dir/student.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/student.cpp.obj -MF CMakeFiles\FinalProject.dir\student.cpp.obj.d -o CMakeFiles\FinalProject.dir\student.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp
 
 CMakeFiles/FinalProject.dir/student.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/student.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp > CMakeFiles\FinalProject.dir\student.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp > CMakeFiles\FinalProject.dir\student.cpp.i
 
 CMakeFiles/FinalProject.dir/student.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/student.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp -o CMakeFiles\FinalProject.dir\student.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\student.cpp -o CMakeFiles\FinalProject.dir\student.cpp.s
 
 CMakeFiles/FinalProject.dir/stu_sort.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/stu_sort.cpp.obj: ../stu_sort.cpp
 CMakeFiles/FinalProject.dir/stu_sort.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FinalProject.dir/stu_sort.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/stu_sort.cpp.obj -MF CMakeFiles\FinalProject.dir\stu_sort.cpp.obj.d -o CMakeFiles\FinalProject.dir\stu_sort.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FinalProject.dir/stu_sort.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/stu_sort.cpp.obj -MF CMakeFiles\FinalProject.dir\stu_sort.cpp.obj.d -o CMakeFiles\FinalProject.dir\stu_sort.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp
 
 CMakeFiles/FinalProject.dir/stu_sort.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/stu_sort.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp > CMakeFiles\FinalProject.dir\stu_sort.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp > CMakeFiles\FinalProject.dir\stu_sort.cpp.i
 
 CMakeFiles/FinalProject.dir/stu_sort.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/stu_sort.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp -o CMakeFiles\FinalProject.dir\stu_sort.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\stu_sort.cpp -o CMakeFiles\FinalProject.dir\stu_sort.cpp.s
 
 CMakeFiles/FinalProject.dir/list.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/list.cpp.obj: ../list.cpp
 CMakeFiles/FinalProject.dir/list.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FinalProject.dir/list.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/list.cpp.obj -MF CMakeFiles\FinalProject.dir\list.cpp.obj.d -o CMakeFiles\FinalProject.dir\list.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FinalProject.dir/list.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/list.cpp.obj -MF CMakeFiles\FinalProject.dir\list.cpp.obj.d -o CMakeFiles\FinalProject.dir\list.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp
 
 CMakeFiles/FinalProject.dir/list.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/list.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp > CMakeFiles\FinalProject.dir\list.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp > CMakeFiles\FinalProject.dir\list.cpp.i
 
 CMakeFiles/FinalProject.dir/list.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/list.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp -o CMakeFiles\FinalProject.dir\list.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\list.cpp -o CMakeFiles\FinalProject.dir\list.cpp.s
 
 CMakeFiles/FinalProject.dir/toeflscore.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/toeflscore.cpp.obj: ../toeflscore.cpp
 CMakeFiles/FinalProject.dir/toeflscore.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FinalProject.dir/toeflscore.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/toeflscore.cpp.obj -MF CMakeFiles\FinalProject.dir\toeflscore.cpp.obj.d -o CMakeFiles\FinalProject.dir\toeflscore.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FinalProject.dir/toeflscore.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/toeflscore.cpp.obj -MF CMakeFiles\FinalProject.dir\toeflscore.cpp.obj.d -o CMakeFiles\FinalProject.dir\toeflscore.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp
 
 CMakeFiles/FinalProject.dir/toeflscore.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/toeflscore.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp > CMakeFiles\FinalProject.dir\toeflscore.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp > CMakeFiles\FinalProject.dir\toeflscore.cpp.i
 
 CMakeFiles/FinalProject.dir/toeflscore.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/toeflscore.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp -o CMakeFiles\FinalProject.dir\toeflscore.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\toeflscore.cpp -o CMakeFiles\FinalProject.dir\toeflscore.cpp.s
 
 CMakeFiles/FinalProject.dir/validCheck.cpp.obj: CMakeFiles/FinalProject.dir/flags.make
 CMakeFiles/FinalProject.dir/validCheck.cpp.obj: ../validCheck.cpp
 CMakeFiles/FinalProject.dir/validCheck.cpp.obj: CMakeFiles/FinalProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FinalProject.dir/validCheck.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/validCheck.cpp.obj -MF CMakeFiles\FinalProject.dir\validCheck.cpp.obj.d -o CMakeFiles\FinalProject.dir\validCheck.cpp.obj -c C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FinalProject.dir/validCheck.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FinalProject.dir/validCheck.cpp.obj -MF CMakeFiles\FinalProject.dir\validCheck.cpp.obj.d -o CMakeFiles\FinalProject.dir\validCheck.cpp.obj -c C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp
 
 CMakeFiles/FinalProject.dir/validCheck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FinalProject.dir/validCheck.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp > CMakeFiles\FinalProject.dir\validCheck.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp > CMakeFiles\FinalProject.dir\validCheck.cpp.i
 
 CMakeFiles/FinalProject.dir/validCheck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FinalProject.dir/validCheck.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp -o CMakeFiles\FinalProject.dir\validCheck.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\validCheck.cpp -o CMakeFiles\FinalProject.dir\validCheck.cpp.s
 
 # Object files for target FinalProject
 FinalProject_OBJECTS = \
@@ -174,7 +174,7 @@ FinalProject.exe: CMakeFiles/FinalProject.dir/build.make
 FinalProject.exe: CMakeFiles/FinalProject.dir/linklibs.rsp
 FinalProject.exe: CMakeFiles/FinalProject.dir/objects1.rsp
 FinalProject.exe: CMakeFiles/FinalProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable FinalProject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable FinalProject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\FinalProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -186,6 +186,6 @@ CMakeFiles/FinalProject.dir/clean:
 .PHONY : CMakeFiles/FinalProject.dir/clean
 
 CMakeFiles/FinalProject.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug C:\Users\macma\OneDrive\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles\FinalProject.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug C:\Users\Kenji\Documents\GitHub\ENSC-251-project\FinalProject\cmake-build-debug\CMakeFiles\FinalProject.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/FinalProject.dir/depend
 
