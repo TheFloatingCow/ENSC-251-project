@@ -386,3 +386,7 @@ FinalProject/cmake-build-debug/FinalProject.cbp
 FinalProject/cmake-build-debug/FinalProject.exe
 FinalProject/cmake-build-debug/Makefile
 FinalProject/cmake-build-debug/Testing/Temporary/LastTest.log
+FinalProject/cmake-build-debug/Testing/Temporary/LastTest.log
+FinalProject/cmake-build-debug/FinalProject.exe
+*.exe
+*.log
