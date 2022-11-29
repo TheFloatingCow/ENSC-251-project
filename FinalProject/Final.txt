@@ -5,17 +5,17 @@ dla207 kmp7 ses16 sas40
 Task Distribution				                        Contributors
 
 LinkedList                                              Kenji
-Search functions
+Search functions                                        Derrick
 Insert
-Delete functions
+Delete functions                                        Derrick
 Merge
 Error checking                                          Kenji
 Unit tests                                              Kenji
 Fixing interm project code
-UI
+UI                                                      Derrick
 Innovations
 Complexity analysis                                     Kenji
-Slides presentation                                     Kenji
+Slides presentation                                     Kenji Derrick
 
 
 Innovations
@@ -26,7 +26,4 @@ Innovations
 
 Big O analysis
 
-insert: O(1)
-search functions (CGPA, ID, research, name): O(n)
-remove: O(n)
-merge: O(n)
+
