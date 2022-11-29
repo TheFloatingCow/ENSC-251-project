@@ -26,4 +26,7 @@ Innovations
 
 Big O analysis
 
-
+insert: O(1)
+search functions (CGPA, ID, research, name): O(n)
+remove: O(n)
+merge: O(n)

@@ -10,8 +10,8 @@
 
 
 
-    /** ------------------------Error checking------------------------ **/
 
+// Valid countries and provinces for error checking
 string validCountries[5] = {"Canada", "China", "India", "Iran", "Korea"};
 string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"};
 
@@ -19,11 +19,13 @@ string validProvinces[13] = {"NL", "PE", "NS", "NB", "QC", "ON", "MB", "SK", "AB
 
 int main() {
 
-   /** -------------------------Linked Lists------------------------- **/
+    /** -------------------------Linked Lists------------------------- **/
 
+    // Linked list
     LinkedList<DomesticStudent> domestic_list;
     LinkedList<InternationalStudent> international_list;
 
+    // For unit testing
     LinkedList<DomesticStudent> test_domestic_list;
     LinkedList<InternationalStudent> test_international_list;
 
