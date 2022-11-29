@@ -4,17 +4,18 @@ dla207 kmp7 ses16 sas40
 
 -Task Distribution-				                        -Contributors-
 
-Creating LinkedList                                     Kenji Amaan
+Creating LinkedList class                               Kenji Amaan Simon
 Search functions                                        Derrick Amaan
 Insert                                                  Amaan
 Delete functions                                        Derrick Amaan
 Merge                                                   Amaan
-Error checking                                          Kenji
-Unit tests                                              Kenji
-Fixing interim project code                             Amaan
+Error checking                                          Kenji Simon
+Unit tests                                              Kenji Simon
+Basic tests                                             All
+Fixing interim project code                             Amaan Kenji
 UI                                                      Derrick Amaan
-Innovations                                             Kenji
-Complexity analysis                                     Kenji
+Innovations                                             Kenji Amaan
+Complexity analysis                                     Kenji Simon
 Slides presentation                                     Kenji Derrick
 
 
