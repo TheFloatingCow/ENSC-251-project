@@ -62,7 +62,7 @@ public:
     // Update Tail
     NodePtr<T> updateTail(NodePtr<T> current_head);
 
-    // Comprare Nodes
+    // Compare Nodes
     int CompareObjects(NodePtr<T> first, NodePtr<T> second);
 
     // Linked List operations 
